@@ -1,0 +1,12 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/PartA.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module LEDdecoder
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/PartB.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module FourDigitLEDdriver
+INFO: [VRFC 10-2458] undeclared symbol CLKOUT1B, assumed default net type wire [C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/PartB.v:30]
+INFO: [VRFC 10-2458] undeclared symbol CLKFBIN, assumed default net type wire [C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/PartB.v:32]
+INFO: [VRFC 10-2458] undeclared symbol CLKFBOUTB, assumed default net type wire [C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/PartB.v:33]
+INFO: [VRFC 10-2458] undeclared symbol LOCKED, assumed default net type wire [C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/PartB.v:34]
+INFO: [VRFC 10-2458] undeclared symbol PWRDWN, assumed default net type wire [C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/PartB.v:38]
+INFO: [VRFC 10-2458] undeclared symbol RST, assumed default net type wire [C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/PartB.v:39]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sim_1/new/PartB_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module PartB_tb
