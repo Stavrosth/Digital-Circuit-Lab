@@ -1,10 +1,10 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-// Date        : Sun Nov 12 21:53:57 2023
-// Host        : dell-free running 64-bit major release  (build 9200)
+// Date        : Mon Nov 13 13:15:25 2023
+// Host        : stavros running 64-bit major release  (build 9200)
 // Command     : write_verilog -mode funcsim -nolib -force -file
-//               C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.sim/sim_2/synth/func/xsim/PartB_tb_func_synth.v
+//               C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.sim/sim_2/synth/func/xsim/PartB_tb_func_synth.v
 // Design      : FourDigitLEDdriver
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.

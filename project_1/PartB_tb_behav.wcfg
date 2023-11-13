@@ -12,12 +12,12 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="1234848487fs"></ZoomEndTime>
+      <ZoomEndTime time="893899205fs"></ZoomEndTime>
       <Cursor1Time time="243939000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="89"></NameColumnWidth>
-      <ValueColumnWidth column_width="71"></ValueColumnWidth>
+      <NameColumnWidth column_width="127"></NameColumnWidth>
+      <ValueColumnWidth column_width="108"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="4" />
    <wvobject fp_name="/PartB_tb/test1" type="logic">
@@ -31,7 +31,6 @@
    <wvobject fp_name="vbus454" type="vbus">
       <obj_property name="label">LED</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/PartB_tb/a" type="logic">
          <obj_property name="ElementShortName">a</obj_property>
          <obj_property name="ObjectShortName">a</obj_property>
