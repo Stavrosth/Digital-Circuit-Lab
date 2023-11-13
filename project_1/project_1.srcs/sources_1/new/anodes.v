@@ -3,7 +3,6 @@ module anodes(counter, char, anodes);
     output reg [3:0] anodes, char;
     
     always @(counter) begin
-        if 
         case(counter)
             4'b0000:begin anodes =4'b1111; char = 4'b0000; end
             4'b0001:begin anodes =4'b1111; char = 4'b0011; end
