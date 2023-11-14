@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="217320371900fs"></ZoomStartTime>
-      <ZoomEndTime time="225327889143fs"></ZoomEndTime>
-      <Cursor1Time time="921317500000fs"></Cursor1Time>
+      <ZoomStartTime time="5100000000fs"></ZoomStartTime>
+      <ZoomEndTime time="6488000001fs"></ZoomEndTime>
+      <Cursor1Time time="4905000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="127"></NameColumnWidth>
-      <ValueColumnWidth column_width="98"></ValueColumnWidth>
+      <ValueColumnWidth column_width="88"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="5" />
+   <WVObjectSize size="6" />
    <wvobject fp_name="/PartC_tb/reset" type="logic">
       <obj_property name="ElementShortName">reset</obj_property>
       <obj_property name="ObjectShortName">reset</obj_property>
@@ -31,7 +31,6 @@
    <wvobject fp_name="vbus144" type="vbus">
       <obj_property name="label">LED</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/PartC_tb/a" type="logic">
          <obj_property name="ElementShortName">a</obj_property>
          <obj_property name="ObjectShortName">a</obj_property>
@@ -85,8 +84,14 @@
          <obj_property name="ObjectShortName">an0</obj_property>
       </wvobject>
    </wvobject>
-   <wvobject fp_name="/PartC_tb/test" type="array">
-      <obj_property name="ElementShortName">test[3:0]</obj_property>
-      <obj_property name="ObjectShortName">test[3:0]</obj_property>
+   <wvobject fp_name="/PartC_tb/button" type="array">
+      <obj_property name="ElementShortName">button[10:0]</obj_property>
+      <obj_property name="ObjectShortName">button[10:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PartC_tb/pointer" type="array">
+      <obj_property name="ElementShortName">pointer[3:0]</obj_property>
+      <obj_property name="ObjectShortName">pointer[3:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
    </wvobject>
 </wave_config>

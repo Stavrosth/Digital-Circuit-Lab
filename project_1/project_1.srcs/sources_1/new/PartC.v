@@ -1,14 +1,15 @@
-module ButtonRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp, button_move, test);
+module ButtonRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp, button_move, test, button);
     input clk, reset=1'b1, button_move=1'b0;
     reg [3:0] message [15:0];
     wire clk_out;
     reg [3:0] pointer=4'b0000;
     reg [3:0] char, count=4'b0000;
-    reg [21:0] anti_bounce=22'b1111111111111111111111;
+    reg [10:0] anti_bounce=11'b1111111111111111111111;
     output reg an3, an2, an1, an0;
     output  a, b, c, d, e, f, g, dp;
     wire [3:0] pointer_temp, count_use;
     output [3:0] test;
+    output [10:0] button;
 
     //memory instantiation
     always @(posedge reset) begin
@@ -98,20 +99,29 @@ module ButtonRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp, but
     always @(posedge clk_out) count = count + 1;
 
     //anti-bounce
-    always @(posedge clk_out) begin
+    always @(posedge clk_out or posedge reset) begin
+        if ( reset == 1'b1)
+            anti_bounce = 11'b11111111111;
         if (button_move == 1'b1) begin
-            if ( anti_bounce > 22'b0000000000000000000000) 
+            if ( anti_bounce > 11'b00000000000) 
                 anti_bounce = anti_bounce - 1;
-        end else
-            anti_bounce = 22'b1001101110100011110000;
+            else 
+                anti_bounce = anti_bounce; //in order not to create a latch
+        end
     end
 
     //moves pointer after anti-bounce
-    always @(anti_bounce)
-        if (anti_bounce == 22'b0000000000000000000000) 
+    always @(posedge clk_out or anti_bounce) begin
+        if (anti_bounce == 11'b00000000000) 
             pointer = pointer + 1;
-//
+        else 
+            pointer = pointer;
+    end
+
 assign test = pointer;
+assign button = anti_bounce;
+
+
     //Drives Anodes and assigns the approptiate char
     always @(count_use) begin
         case(count_use)
