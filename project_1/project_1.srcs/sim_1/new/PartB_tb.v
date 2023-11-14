@@ -6,7 +6,7 @@ module PartB_tb;
     wire a, b, c, d, e, f, g, dp;
     wire test1; //used to see the output of the clock
 
-    FourDigitLEDdriver test(reset, clk, an3, an2, an1, an0, a, b, c, d, e, f, g, dp, test1);
+    FourDigitLEDdriver test2(reset, clk, an3, an2, an1, an0, a, b, c, d, e, f, g, dp, test1);
     
     //initializes the clk and reset values
     initial begin clk = 1'b0; reset = 1'b0; end

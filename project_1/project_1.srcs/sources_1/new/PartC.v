@@ -1,14 +1,35 @@
-module ButtonRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp, button_move);
-    reg [7:0] message [15:0];
+module ButtonRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp, button_move, test);
+    input clk, reset=1'b1, button_move=1'b0;
+    reg [3:0] message [15:0];
     wire clk_out;
     reg [3:0] pointer=4'b0000;
-    reg [3:0] count=4'b1111;
-    reg [21:0] anti_bounce=23'b1111111111111111111111;
-    output an3, an2, an1, an0, a, b, c, d, e, f, g, dp;
+    reg [3:0] char, count=4'b0000;
+    reg [21:0] anti_bounce=22'b1111111111111111111111;
+    output reg an3, an2, an1, an0;
+    output  a, b, c, d, e, f, g, dp;
     wire [3:0] pointer_temp, count_use;
+    output [3:0] test;
 
     //memory instantiation
-    $readmemh("memory.txt", message);
+    always @(posedge reset) begin
+        message[0] =  4'b0000;
+        message[1] =  4'b0001;
+        message[2] =  4'b0010;
+        message[3] =  4'b0011;
+        message[4] =  4'b0100;
+        message[5] =  4'b0101;
+        message[6] =  4'b0110;
+        message[7] =  4'b0111;
+        message[8] =  4'b1000;
+        message[9] =  4'b1001;
+        message[10] = 4'b1010;
+        message[11] = 4'b1011;
+        message[12] = 4'b1100;
+        message[13] = 4'b1101;
+        message[14] = 4'b1110;
+        message[15] = 4'b1111;
+    end
+
 
     //modules for clock speed modification
     MMCME2_BASE #(
@@ -64,84 +85,57 @@ module ButtonRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp, but
         // Status Ports: 1-bit (each) output: MMCM status ports
         .LOCKED(LOCKED),       // 1-bit output: LOCK
         // Clock Inputs: 1-bit (each) input: Clock input
-        .CLKIN1(CLKIN1),       // 1-bit input: Clock
+        .CLKIN1(clk),       // 1-bit input: Clock
         // Control Ports: 1-bit (each) input: MMCM control ports
         .PWRDWN(PWRDWN),       // 1-bit input: Power-down
         .RST(RST),             // 1-bit input: Reset
         // Feedback Clocks: 1-bit (each) input: Clock feedback ports
         .CLKFBIN(CLKFBIN)      // 1-bit input: Feedback clock
     );
+    
+    //counter
+    assign count_use = count;
+    always @(posedge clk_out) count = count + 1;
 
     //anti-bounce
     always @(posedge clk_out) begin
         if (button_move == 1'b1) begin
-            if ( anti_bounce >= 22'b0000000000000000000000) 
+            if ( anti_bounce > 22'b0000000000000000000000) 
                 anti_bounce = anti_bounce - 1;
         end else
             anti_bounce = 22'b1001101110100011110000;
     end
 
     //moves pointer after anti-bounce
-    always @(anti_bounce) begin 1001101110100011110000
-        if (anti_bounce <= 22'b0000000000000000000000) begin
-            if (pointer < 4'b1111)
-                pointer = pointer + 1;
-            else 
-                pointer = 4'b0000;
-        end
-    end
-
-    //counter
-    assign count_use = count;
-    always @(posedge clk_out) begin
-        if (count_use == 4'b0000)
-            count = 4'b1111;
-        else
-            count = count - 1;
-    end
-
-    //protecting code from end-cases
-    assign pointer_temp = pointer;
-    always @(pointer_temp) begin
-        if (pointer+2 > 4'b1111) begin //pointer=15
-            temp3 = 4'b0010;
-            temp2 = 4'b0001;
-            temp1 = 4'b0000;
-        end else if (pointer+1 > 4'b1111) begin //pointer=14
-            temp3 = 4'b0001;
-            temp2 = 4'b0000;
-            temp1 = pointer+1;
-        end else if (pointer+1 > 4'b1111) begin //pointer=14
-            temp3 = 4'b0000;
-            temp2 = pointer + 2;
-            temp1 = pointer + 1;
-        end else begin
-            temp3 = pointer + 3;
-            temp2 = pointer + 2;
-            temp1 = pointer + 1;
-        end
-    end
-
-    //assigns LED display
-    always @(posedge clk_out) begin
+    always @(anti_bounce)
+        if (anti_bounce == 22'b0000000000000000000000) 
+            pointer = pointer + 1;
+//
+assign test = pointer;
+    //Drives Anodes and assigns the approptiate char
+    always @(count_use) begin
         case(count_use)
-            4'b0000:begin {an3, an2, an1, an0} = 4'b1111; {a, b, c, d, e, f, g} = message[pointer]; end
-            4'b0001:begin {an3, an2, an1, an0} = 4'b1111; {a, b, c, d, e, f, g} = message[temp3]; end
-            4'b0010:begin {an3, an2, an1, an0} = 4'b1110; {a, b, c, d, e, f, g} = message[temp3]; end
-            4'b0011:begin {an3, an2, an1, an0} = 4'b1111; {a, b, c, d, e, f, g} = message[temp3]; end
-            4'b0100:begin {an3, an2, an1, an0} = 4'b1111; {a, b, c, d, e, f, g} = message[temp3]; end
-            4'b0101:begin {an3, an2, an1, an0} = 4'b1111; {a, b, c, d, e, f, g} = message[temp2]; end
-            4'b0110:begin {an3, an2, an1, an0} = 4'b1101; {a, b, c, d, e, f, g} = message[temp2]; end
-            4'b0111:begin {an3, an2, an1, an0} = 4'b1111; {a, b, c, d, e, f, g} = message[temp2]; end
-            4'b1000:begin {an3, an2, an1, an0} = 4'b1111; {a, b, c, d, e, f, g} = message[temp2]; end
-            4'b1001:begin {an3, an2, an1, an0} = 4'b1111; {a, b, c, d, e, f, g} = message[temp1]; end
-            4'b1010:begin {an3, an2, an1, an0} = 4'b1011; {a, b, c, d, e, f, g} = message[temp1]; end
-            4'b1011:begin {an3, an2, an1, an0} = 4'b1111; {a, b, c, d, e, f, g} = message[temp1]; end
-            4'b1100:begin {an3, an2, an1, an0} = 4'b1111; {a, b, c, d, e, f, g} = message[temp1]; end
-            4'b1101:begin {an3, an2, an1, an0} = 4'b1111; {a, b, c, d, e, f, g} = message[pointer]; end
-            4'b1110:begin {an3, an2, an1, an0} = 4'b0111; {a, b, c, d, e, f, g} = message[pointer]; end
-            4'b1111:begin {an3, an2, an1, an0} = 4'b1111; {a, b, c, d, e, f, g} = message[pointer]; end
+            4'b0000:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer]; end
+            4'b0001:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+3]; end
+            4'b0010:begin {an3, an2, an1, an0} = 4'b1110; char = message[pointer+3]; end
+            4'b0011:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+3]; end
+            4'b0100:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+3]; end
+            4'b0101:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+2]; end
+            4'b0110:begin {an3, an2, an1, an0} = 4'b1101; char = message[pointer+2]; end
+            4'b0111:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+2]; end
+            4'b1000:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+2]; end
+            4'b1001:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+1]; end
+            4'b1010:begin {an3, an2, an1, an0} = 4'b1011; char = message[pointer+1]; end
+            4'b1011:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+1]; end
+            4'b1100:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+1]; end
+            4'b1101:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer]; end
+            4'b1110:begin {an3, an2, an1, an0} = 4'b0111; char = message[pointer]; end
+            4'b1111:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer]; end
         endcase
     end
+
+    //assigns the LED display based on the memory
+    assign dp = 1'b0;
+    LEDdecoder LEDdecoder_inst (char, {a, b, c, d, e, f, g});
 
 endmodule

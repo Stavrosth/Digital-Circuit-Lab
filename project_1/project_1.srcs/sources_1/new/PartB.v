@@ -1,7 +1,7 @@
 module FourDigitLEDdriver(reset, clk, an3, an2, an1, an0, a, b, c, d, e, f, g, dp, test);
     input clk, reset=1'b1;
     output a, b, c, d, e, f, g, dp;
-    output an3, an2, an1, an0;
+    output reg an3, an2, an1, an0;
     wire [3:0] count_use;
     reg [3:0] char, count=4'b1111; //initializes counter
     wire clk_out; //Clock that is outputed after modification
@@ -55,12 +55,12 @@ module FourDigitLEDdriver(reset, clk, an3, an2, an1, an0, a, b, c, d, e, f, g, d
         .CLKOUT5(CLKOUT5),     // 1-bit output: CLKOUT5
         .CLKOUT6(CLKOUT6),     // 1-bit output: CLKOUT6
         // Feedback Clocks: 1-bit (each) output: Clock feedback ports
-        .CLKFBOUT(CLKFBOUT),   // 1-bit output: Feedback clock
-        .CLKFBOUTB(CLKFBIN), // 1-bit output: Inverted CLKFBOUT
+        .CLKFBOUT(CLKFBIN),   // 1-bit output: Feedback clock
+        .CLKFBOUTB(CLKFBOUTB), // 1-bit output: Inverted CLKFBOUT
         // Status Ports: 1-bit (each) output: MMCM status ports
         .LOCKED(LOCKED),       // 1-bit output: LOCK
         // Clock Inputs: 1-bit (each) input: Clock input
-        .CLKIN1(CLKIN1),       // 1-bit input: Clock
+        .CLKIN1(clk),       // 1-bit input: Clock
         // Control Ports: 1-bit (each) input: MMCM control ports
         .PWRDWN(PWRDWN),       // 1-bit input: Power-down
         .RST(RST),             // 1-bit input: Reset
@@ -77,7 +77,6 @@ module FourDigitLEDdriver(reset, clk, an3, an2, an1, an0, a, b, c, d, e, f, g, d
     end
     
     assign count_use = count;
-    assign dp = 1'b0;
     output test;
     assign test = clk_out;
   
@@ -103,6 +102,7 @@ module FourDigitLEDdriver(reset, clk, an3, an2, an1, an0, a, b, c, d, e, f, g, d
         endcase
     end
     
+    assign dp = 1'b0;
     LEDdecoder LEDdecoder_inst (char, {a, b, c, d, e, f, g});
 
 endmodule
