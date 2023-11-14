@@ -1,14 +1,15 @@
-module ButtonRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp, button_move, test, button);
-    input clk, reset=1'b1, button_move=1'b0;
+module ButtonRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp, button_move, test, button, char_use);
+    input clk, reset=1'b1;
+    input button_move=1'b0;
     reg [3:0] message [15:0];
     wire clk_out;
     reg [3:0] pointer=4'b0000;
-    reg [3:0] char, count=4'b0000;
-    reg [10:0] anti_bounce=11'b1111111111111111111111;
+    reg [3:0] char, count=4'b1111, second_counter=4'b0000;
+    reg [10:0] anti_bounce=11'b11111111111;
     output reg an3, an2, an1, an0;
     output  a, b, c, d, e, f, g, dp;
     wire [3:0] pointer_temp, count_use;
-    output [3:0] test;
+    output [3:0] test, char_use;
     output [10:0] button;
 
     //memory instantiation
@@ -96,11 +97,16 @@ module ButtonRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp, but
     
     //counter
     assign count_use = count;
-    always @(posedge clk_out) count = count + 1;
+     always @(posedge clk_out) begin
+        if (reset == 1'b1)
+            count = 4'b1111;
+        else
+            count = count - 1;
+    end
 
     //anti-bounce
     always @(posedge clk_out or posedge reset) begin
-        if ( reset == 1'b1)
+        if ( reset == 1'b1 || button_move == 1'b0)
             anti_bounce = 11'b11111111111;
         if (button_move == 1'b1) begin
             if ( anti_bounce > 11'b00000000000) 
@@ -112,15 +118,22 @@ module ButtonRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp, but
 
     //moves pointer after anti-bounce
     always @(posedge clk_out or anti_bounce) begin
-        if (anti_bounce == 11'b00000000000) 
-            pointer = pointer + 1;
-        else 
+        if (anti_bounce <= 11'b11111111110) begin
+            if ( second_counter != 4'b1111 )
+                second_counter = second_counter + 1;
+            else begin
+                pointer = pointer + 1;
+                second_counter = 4'b0000;
+            end
+        end else begin
             pointer = pointer;
+            second_counter = 4'b0000;
+        end
     end
 
-assign test = pointer;
+assign test = pointer+3;
 assign button = anti_bounce;
-
+assign char_use = char;
 
     //Drives Anodes and assigns the approptiate char
     always @(count_use) begin
