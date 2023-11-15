@@ -1,16 +1,19 @@
-module ButtonRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp, button_move, test, button, char_use);
+module ButtonRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp, button_move);
     input clk, reset=1'b1;
     input button_move=1'b0;
     reg [3:0] message [15:0];
     wire clk_out;
     reg [3:0] pointer=4'b0000;
-    reg [3:0] char, count=4'b1111, second_counter=4'b0000;
+    reg [3:0] char, count=4'b1111;
+    reg second_counter=1'b0;
     reg [10:0] anti_bounce=11'b11111111111;
     output reg an3, an2, an1, an0;
     output  a, b, c, d, e, f, g, dp;
     wire [3:0] pointer_temp, count_use;
-    output [3:0] test, char_use;
+    //wire second_counter_use;
+/*    output [3:0] test, char_use, count_use_test;
     output [10:0] button;
+    output clk_use;*/
 
     //memory instantiation
     always @(posedge reset) begin
@@ -82,8 +85,8 @@ module ButtonRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp, but
         .CLKOUT5(CLKOUT5),     // 1-bit output: CLKOUT5
         .CLKOUT6(CLKOUT6),     // 1-bit output: CLKOUT6
         // Feedback Clocks: 1-bit (each) output: Clock feedback ports
-        .CLKFBOUT(CLKFBOUT),   // 1-bit output: Feedback clock
-        .CLKFBOUTB(CLKFBIN), // 1-bit output: Inverted CLKFBOUT
+        .CLKFBOUT(CLKFBIN),   // 1-bit output: Feedback clock
+        .CLKFBOUTB(CLKFBOUTB), // 1-bit output: Inverted CLKFBOUT
         // Status Ports: 1-bit (each) output: MMCM status ports
         .LOCKED(LOCKED),       // 1-bit output: LOCK
         // Clock Inputs: 1-bit (each) input: Clock input
@@ -99,25 +102,36 @@ module ButtonRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp, but
     assign count_use = count;
      always @(posedge clk_out) begin
         if (reset == 1'b1)
-            count = 4'b1111;
+            count <= 4'b1111;
         else
-            count = count - 1;
+            count <= count - 1;
     end
 
     //anti-bounce
-    always @(posedge clk_out or posedge reset) begin
+    always @(posedge clk_out) begin
         if ( reset == 1'b1 || button_move == 1'b0)
-            anti_bounce = 11'b11111111111;
-        if (button_move == 1'b1) begin
-            if ( anti_bounce > 11'b00000000000) 
-                anti_bounce = anti_bounce - 1;
-            else 
-                anti_bounce = anti_bounce; //in order not to create a latch
-        end
+            anti_bounce <= 11'b11111111111;
+        else 
+            anti_bounce <= anti_bounce;
+
+        if (button_move == 1'b1 && anti_bounce > 11'b00000000000 )
+            anti_bounce <= anti_bounce - 1;
+        else    
+            anti_bounce <= anti_bounce; //in order not to create a latch
     end
 
+   // assign second_counter_use = second_counter;
+
+    always @(posedge clk_out) begin
+        if ( button_move == 1'b1 && second_counter == 1'b0) begin
+            pointer <= pointer + 1;
+            second_counter <= 1'b1;
+        end else if ( button_move == 1'b0)
+            second_counter <= 1'b0;
+    end
+/*
     //moves pointer after anti-bounce
-    always @(posedge clk_out or anti_bounce) begin
+    always @(posedge clk_out or anti_bounce or posedge reset) begin
         if (anti_bounce <= 11'b11111111110) begin
             if ( second_counter != 4'b1111 )
                 second_counter = second_counter + 1;
@@ -131,34 +145,36 @@ module ButtonRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp, but
         end
     end
 
-assign test = pointer+3;
+assign test = pointer;
 assign button = anti_bounce;
 assign char_use = char;
-
-    //Drives Anodes and assigns the approptiate char
+assign count_use_test = count_use;
+assign clk_use = clk_out;
+*/
+  //Drives Anodes and assigns the approptiate char
     always @(count_use) begin
         case(count_use)
             4'b0000:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer]; end
-            4'b0001:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+3]; end
-            4'b0010:begin {an3, an2, an1, an0} = 4'b1110; char = message[pointer+3]; end
-            4'b0011:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+3]; end
-            4'b0100:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+3]; end
-            4'b0101:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+2]; end
-            4'b0110:begin {an3, an2, an1, an0} = 4'b1101; char = message[pointer+2]; end
-            4'b0111:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+2]; end
-            4'b1000:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+2]; end
-            4'b1001:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+1]; end
-            4'b1010:begin {an3, an2, an1, an0} = 4'b1011; char = message[pointer+1]; end
-            4'b1011:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+1]; end
-            4'b1100:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+1]; end
+            4'b0001:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+2'b11]; end
+            4'b0010:begin {an3, an2, an1, an0} = 4'b1110; char = message[pointer+2'b11]; end
+            4'b0011:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+2'b11]; end
+            4'b0100:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+2'b11]; end
+            4'b0101:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+2'b10]; end
+            4'b0110:begin {an3, an2, an1, an0} = 4'b1101; char = message[pointer+2'b10]; end
+            4'b0111:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+2'b10]; end
+            4'b1000:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+2'b10]; end
+            4'b1001:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+2'b01]; end
+            4'b1010:begin {an3, an2, an1, an0} = 4'b1011; char = message[pointer+2'b01]; end
+            4'b1011:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+2'b01]; end
+            4'b1100:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+2'b01]; end
             4'b1101:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer]; end
             4'b1110:begin {an3, an2, an1, an0} = 4'b0111; char = message[pointer]; end
             4'b1111:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer]; end
         endcase
     end
-
+    
     //assigns the LED display based on the memory
-    assign dp = 1'b0;
+    assign dp = 1'b1;
     LEDdecoder LEDdecoder_inst (char, {a, b, c, d, e, f, g});
 
 endmodule

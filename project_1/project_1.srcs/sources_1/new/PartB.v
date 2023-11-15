@@ -1,7 +1,7 @@
-module FourDigitLEDdriver(reset, clk, an3, an2, an1, an0, a, b, c, d, e, f, g, dp, test);
+module FourDigitLEDdriver(reset, clk, an3, an2, an1, an0, a, b, c, d, e, f, g, dp);
     input clk, reset=1'b1;
     output a, b, c, d, e, f, g, dp;
-    output reg an3, an2, an1, an0;
+    output an3, an2, an1, an0;
     wire [3:0] count_use;
     reg [3:0] char, count=4'b1111; //initializes counter
     wire clk_out; //Clock that is outputed after modification
@@ -71,15 +71,15 @@ module FourDigitLEDdriver(reset, clk, an3, an2, an1, an0, a, b, c, d, e, f, g, d
     //4-bit counter
     always @(posedge clk_out) begin
         if (reset == 1'b1)
-            count = 4'b1111;
+            count <= 4'b1111;
         else
-            count = count - 1;
+            count <= count - 1;
     end
     
     assign count_use = count;
-    output test;
-    assign test = clk_out;
-  
+
+    anodes anodesDrive(count_use, char, {an3, an2, an1, an0}, 4'b0000);
+/*
     //Driving anodes
     always @(count_use) begin
         case(count_use)
@@ -101,8 +101,8 @@ module FourDigitLEDdriver(reset, clk, an3, an2, an1, an0, a, b, c, d, e, f, g, d
             4'b1111:begin {an3, an2, an1, an0} =4'b1111; char = 4'b0000; end
         endcase
     end
-    
-    assign dp = 1'b0;
+    */
+    assign dp = 1'b1;
     LEDdecoder LEDdecoder_inst (char, {a, b, c, d, e, f, g});
 
 endmodule

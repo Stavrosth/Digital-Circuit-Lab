@@ -6,4 +6,4 @@ REM          to be invoked for Vivado to track run status.
 REM Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 REM
 
-vivado -log FourDigitLEDdriver.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source FourDigitLEDdriver.tcl -notrace
+vivado -log ButtonRotate.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source ButtonRotate.tcl -notrace

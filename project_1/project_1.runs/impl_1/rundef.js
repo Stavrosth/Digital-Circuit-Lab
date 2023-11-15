@@ -25,7 +25,7 @@ eval( EAInclude(ISEJScriptLib) );
 // pre-commands:
 ISETouchFile( "init_design", "begin" );
 ISEStep( "vivado",
-         "-log FourDigitLEDdriver.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source FourDigitLEDdriver.tcl -notrace" );
+         "-log ButtonRotate.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source ButtonRotate.tcl -notrace" );
 
 
 
