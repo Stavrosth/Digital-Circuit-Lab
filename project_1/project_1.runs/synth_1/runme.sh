@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.runs/synth_1'
+HD_PWD='C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log
@@ -40,4 +40,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log ButtonRotate.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source ButtonRotate.tcl
+EAStep vivado -log AutoRotate.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source AutoRotate.tcl

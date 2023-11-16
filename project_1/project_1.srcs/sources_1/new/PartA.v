@@ -1,3 +1,4 @@
+//4-bit decoder
 module LEDdecoder(char, LED);
     input [3:0] char;
     output reg [7:0] LED;

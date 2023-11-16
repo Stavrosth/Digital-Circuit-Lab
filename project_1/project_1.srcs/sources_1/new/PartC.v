@@ -119,17 +119,17 @@ module ButtonRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp, but
     //makes the pointer move 4 stages after the button is 1 so we have a smooth transition
     always @(posedge clk_out) begin
         if ( button_real == 1'b1 && second_counter == 1'b0) begin //increases the pointer
-            pointer <= pointer + 1;
+            pointer <= pointer + 1'b1;
             second_counter <= 1'b1; //makes sure the pointer is not increasing repeatdly
         end else if ( button_move == 1'b0)
             second_counter <= 1'b0;
     end
     
     //Drives Anodes and assigns the approptiate char
-    anodes anodesDrive(count_use, char, {an3, an2, an1, an0}, pointer);
+    anodes anodesDrive3(count_use, char, {an3, an2, an1, an0}, pointer);
     
     //assigns the LED display based on the memory
-    LEDdecoder LEDdecoder_inst (char, {a, b, c, d, e, f, g, dp});
+    LEDdecoder LEDdecoder_inst3(char, {a, b, c, d, e, f, g, dp});
     
     /* TEST PARAMETERS
     //wire second_counter_use;

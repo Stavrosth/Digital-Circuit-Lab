@@ -25,7 +25,7 @@ eval( EAInclude(ISEJScriptLib) );
 // pre-commands:
 ISETouchFile( "init_design", "begin" );
 ISEStep( "vivado",
-         "-log ButtonRotate.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source ButtonRotate.tcl -notrace" );
+         "-log AutoRotate.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source AutoRotate.tcl -notrace" );
 
 
 

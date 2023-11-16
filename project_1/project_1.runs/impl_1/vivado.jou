@@ -2,11 +2,11 @@
 # Vivado v2018.3 (64-bit)
 # SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 # IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
-# Start of session at: Wed Nov 15 16:01:59 2023
-# Process ID: 10624
-# Current directory: C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.runs/impl_1
-# Command line: vivado.exe -log ButtonRotate.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source ButtonRotate.tcl -notrace
-# Log file: C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.runs/impl_1/ButtonRotate.vdi
-# Journal file: C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.runs/impl_1\vivado.jou
+# Start of session at: Thu Nov 16 19:03:42 2023
+# Process ID: 10108
+# Current directory: C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.runs/impl_1
+# Command line: vivado.exe -log AutoRotate.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source AutoRotate.tcl -notrace
+# Log file: C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.runs/impl_1/AutoRotate.vdi
+# Journal file: C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.runs/impl_1\vivado.jou
 #-----------------------------------------------------------
-source ButtonRotate.tcl -notrace
+source AutoRotate.tcl -notrace

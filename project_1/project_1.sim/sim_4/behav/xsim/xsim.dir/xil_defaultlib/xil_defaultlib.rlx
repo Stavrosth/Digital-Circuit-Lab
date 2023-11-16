@@ -1,0 +1,11 @@
+0.6
+2018.3
+Dec  7 2018
+00:33:28
+C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.sim/sim_4/behav/xsim/glbl.v,1544155481,verilog,,,,glbl,,,,,,,,
+C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sim_4/new/PartD_tb.v,1700153024,verilog,,,,PartD_tb,,,,,,,,
+C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/PartA.v,1700151277,verilog,,C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/anodes.v,,LEDdecoder,,,,,,,,
+C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/PartB.v,1700151713,verilog,,C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/PartC.v,,FourDigitLEDdriver,,,,,,,,
+C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/PartC.v,1700152253,verilog,,C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/PartD.v,,ButtonRotate,,,,,,,,
+C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/PartD.v,1700153940,verilog,,C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sim_4/new/PartD_tb.v,,AutoRotate,,,,,,,,
+C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/anodes.v,1700151277,verilog,,C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/PartB.v,,anodes,,,,,,,,

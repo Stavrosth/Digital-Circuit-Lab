@@ -23,7 +23,7 @@ eval( EAInclude(ISEJScriptLib) );
 
 
 ISEStep( "vivado",
-         "-log ButtonRotate.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source ButtonRotate.tcl" );
+         "-log AutoRotate.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source AutoRotate.tcl" );
 
 
 
