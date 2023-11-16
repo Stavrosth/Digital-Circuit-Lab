@@ -21,10 +21,10 @@ module PartC_tb;
     initial begin
         //#500 reset = 1'b0;
         #100 reset = 1'b1;
-        /*#150 reset = 1'b0;
+        #150 reset = 1'b0;
         #200 button_move = 1'b1;
-        #40000 button_move = 1'b0;
-        #41000 button_move = 1'b1;
+        #10000 button_move = 1'b0;
+       /* #41000 button_move = 1'b1;
         #42000 button_move = 1'b0;
         #4350 button_move = 1'b1;
         #50000 button_move = 1'b0;
@@ -49,11 +49,11 @@ module PartC_tb;
         #99000 button_move = 1'b1;
         #100000 button_move = 1'b0;
         #102000 button_move = 1'b1;
-        */
+        
         #1000 button_move = 1'b0;
         #2000 button_move = 1'b1;
         #3000 reset = 1'b1;
-        #5000 reset = 1'b0;
+        #5000 reset = 1'b0;*/
         //#15000button_move = 1'b1;
         //#20000button_move = 1'b0;
     end

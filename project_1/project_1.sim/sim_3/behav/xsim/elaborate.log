@@ -6,11 +6,13 @@ Starting static elaboration
 Completed static elaboration
 Starting simulation data flow analysis
 WARNING: [XSIM 43-4099] "C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/PartC.v" Line 1. Module ButtonRotate doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/anodes.v" Line 1. Module anodes doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/PartA.v" Line 1. Module LEDdecoder doesn't have a timescale but at least one module in design has a timescale.
 Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
 Compiling module unisims_ver.MMCME2_ADV(CLKFBOUT_MULT_F=6.0,C...
 Compiling module unisims_ver.MMCME2_BASE(CLKFBOUT_MULT_F=6.0,...
+Compiling module xil_defaultlib.anodes
 Compiling module xil_defaultlib.LEDdecoder
 Compiling module xil_defaultlib.ButtonRotate
 Compiling module xil_defaultlib.PartC_tb

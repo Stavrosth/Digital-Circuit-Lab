@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1700056881">
   <File Type="PA-TCL" Name="ButtonRotate.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="ButtonRotate_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="ButtonRotate_reports.tcl"/>
   <File Type="RDS-RDS" Name="ButtonRotate.vds"/>
   <File Type="RDS-UTIL" Name="ButtonRotate_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="ButtonRotate_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="ButtonRotate.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="ButtonRotate_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="ButtonRotate_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/PartA.v">

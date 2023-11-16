@@ -1,9 +1,10 @@
-module FourDigitLEDdriver(reset, clk, an3, an2, an1, an0, a, b, c, d, e, f, g, dp);
+module FourDigitLEDdriver(reset, clk, an3, an2, an1, an0, a, b, c, d, e, f, g, dp);//, char);
     input clk, reset=1'b1;
     output a, b, c, d, e, f, g, dp;
     output an3, an2, an1, an0;
-    wire [3:0] count_use;
-    reg [3:0] char, count=4'b1111; //initializes counter
+    wire [3:0] char;
+    wire [3:0] count_use, char_use;
+    reg [3:0] count=4'b1111; //initializes counter
     wire clk_out; //Clock that is outputed after modification
 
     //modules for clock speed modification
@@ -79,30 +80,7 @@ module FourDigitLEDdriver(reset, clk, an3, an2, an1, an0, a, b, c, d, e, f, g, d
     assign count_use = count;
 
     anodes anodesDrive(count_use, char, {an3, an2, an1, an0}, 4'b0000);
-/*
-    //Driving anodes
-    always @(count_use) begin
-        case(count_use)
-            4'b0000:begin {an3, an2, an1, an0} =4'b1111; char = 4'b0000; end
-            4'b0001:begin {an3, an2, an1, an0} =4'b1111; char = 4'b0011; end
-            4'b0010:begin {an3, an2, an1, an0} =4'b1110; char = 4'b0011; end
-            4'b0011:begin {an3, an2, an1, an0} =4'b1111; char = 4'b0011; end
-            4'b0100:begin {an3, an2, an1, an0} =4'b1111; char = 4'b0011; end
-            4'b0101:begin {an3, an2, an1, an0} =4'b1111; char = 4'b0010; end
-            4'b0110:begin {an3, an2, an1, an0} =4'b1101; char = 4'b0010; end
-            4'b0111:begin {an3, an2, an1, an0} =4'b1111; char = 4'b0010; end
-            4'b1000:begin {an3, an2, an1, an0} =4'b1111; char = 4'b0010; end
-            4'b1001:begin {an3, an2, an1, an0} =4'b1111; char = 4'b0001; end
-            4'b1010:begin {an3, an2, an1, an0} =4'b1011; char = 4'b0001; end
-            4'b1011:begin {an3, an2, an1, an0} =4'b1111; char = 4'b0001; end
-            4'b1100:begin {an3, an2, an1, an0} =4'b1111; char = 4'b0001; end
-            4'b1101:begin {an3, an2, an1, an0} =4'b1111; char = 4'b0000; end
-            4'b1110:begin {an3, an2, an1, an0} =4'b0111; char = 4'b0000; end
-            4'b1111:begin {an3, an2, an1, an0} =4'b1111; char = 4'b0000; end
-        endcase
-    end
-    */
-    assign dp = 1'b1;
-    LEDdecoder LEDdecoder_inst (char, {a, b, c, d, e, f, g});
+//assign char_use = char;
+    LEDdecoder LEDdecoder_inst (char, {a, b, c, d, e, f, g, dp});
 
 endmodule

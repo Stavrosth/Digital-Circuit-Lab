@@ -1,19 +1,14 @@
-module ButtonRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp, button_move);
+module ButtonRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp, button_move);//, test, button, char_use, count_use_test, clk_use);
     input clk, reset=1'b1;
     input button_move=1'b0;
-    reg [3:0] message [15:0];
-    wire clk_out;
-    reg [3:0] pointer=4'b0000;
-    reg [3:0] char, count=4'b1111;
-    reg second_counter=1'b0;
-    reg [10:0] anti_bounce=11'b11111111111;
-    output reg an3, an2, an1, an0;
+    output an3, an2, an1, an0;
     output  a, b, c, d, e, f, g, dp;
-    wire [3:0] pointer_temp, count_use;
-    //wire second_counter_use;
-/*    output [3:0] test, char_use, count_use_test;
-    output [10:0] button;
-    output clk_use;*/
+    reg [3:0] message [15:0]; //stores the memory
+    reg button_real=1'b0, second_counter=1'b0;
+    reg [3:0] pointer=4'b0000, count=4'b1111;
+    reg [10:0] anti_bounce=11'b11111111111;
+    wire [3:0] char, count_use;
+    wire clk_out;
 
     //memory instantiation
     always @(posedge reset) begin
@@ -100,7 +95,7 @@ module ButtonRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp, but
     
     //counter
     assign count_use = count;
-     always @(posedge clk_out) begin
+    always @(posedge clk_out) begin
         if (reset == 1'b1)
             count <= 4'b1111;
         else
@@ -109,72 +104,43 @@ module ButtonRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp, but
 
     //anti-bounce
     always @(posedge clk_out) begin
-        if ( reset == 1'b1 || button_move == 1'b0)
+        if ( reset == 1'b1 || button_move == 1'b0) begin //resets the counter
             anti_bounce <= 11'b11111111111;
-        else 
+            button_real <= 1'b0;
+        end else if ( reset == 1'b0 && button_move == 1'b1 )
             anti_bounce <= anti_bounce;
 
-        if (button_move == 1'b1 && anti_bounce > 11'b00000000000 )
+        if (button_move == 1'b1 && anti_bounce > 11'b00000000000 ) //reduces the counter if button=1
             anti_bounce <= anti_bounce - 1;
-        else    
-            anti_bounce <= anti_bounce; //in order not to create a latch
+        else if (anti_bounce == 11'b00000000000) //assigns the button to 1 because 500 us has passed
+            button_real <= 1'b1; //in order not to create a latch
     end
 
-   // assign second_counter_use = second_counter;
-
+    //makes the pointer move 4 stages after the button is 1 so we have a smooth transition
     always @(posedge clk_out) begin
-        if ( button_move == 1'b1 && second_counter == 1'b0) begin
+        if ( button_real == 1'b1 && second_counter == 1'b0) begin //increases the pointer
             pointer <= pointer + 1;
-            second_counter <= 1'b1;
+            second_counter <= 1'b1; //makes sure the pointer is not increasing repeatdly
         end else if ( button_move == 1'b0)
             second_counter <= 1'b0;
     end
-/*
-    //moves pointer after anti-bounce
-    always @(posedge clk_out or anti_bounce or posedge reset) begin
-        if (anti_bounce <= 11'b11111111110) begin
-            if ( second_counter != 4'b1111 )
-                second_counter = second_counter + 1;
-            else begin
-                pointer = pointer + 1;
-                second_counter = 4'b0000;
-            end
-        end else begin
-            pointer = pointer;
-            second_counter = 4'b0000;
-        end
-    end
-
-assign test = pointer;
-assign button = anti_bounce;
-assign char_use = char;
-assign count_use_test = count_use;
-assign clk_use = clk_out;
-*/
-  //Drives Anodes and assigns the approptiate char
-    always @(count_use) begin
-        case(count_use)
-            4'b0000:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer]; end
-            4'b0001:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+2'b11]; end
-            4'b0010:begin {an3, an2, an1, an0} = 4'b1110; char = message[pointer+2'b11]; end
-            4'b0011:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+2'b11]; end
-            4'b0100:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+2'b11]; end
-            4'b0101:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+2'b10]; end
-            4'b0110:begin {an3, an2, an1, an0} = 4'b1101; char = message[pointer+2'b10]; end
-            4'b0111:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+2'b10]; end
-            4'b1000:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+2'b10]; end
-            4'b1001:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+2'b01]; end
-            4'b1010:begin {an3, an2, an1, an0} = 4'b1011; char = message[pointer+2'b01]; end
-            4'b1011:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+2'b01]; end
-            4'b1100:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer+2'b01]; end
-            4'b1101:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer]; end
-            4'b1110:begin {an3, an2, an1, an0} = 4'b0111; char = message[pointer]; end
-            4'b1111:begin {an3, an2, an1, an0} = 4'b1111; char = message[pointer]; end
-        endcase
-    end
+    
+    //Drives Anodes and assigns the approptiate char
+    anodes anodesDrive(count_use, char, {an3, an2, an1, an0}, pointer);
     
     //assigns the LED display based on the memory
-    assign dp = 1'b1;
-    LEDdecoder LEDdecoder_inst (char, {a, b, c, d, e, f, g});
+    LEDdecoder LEDdecoder_inst (char, {a, b, c, d, e, f, g, dp});
+    
+    /* TEST PARAMETERS
+    //wire second_counter_use;
+    output [3:0] test, char_use, count_use_test;
+    output [10:0] button;
+    output clk_use;
 
+    //assign second_counter_use = second_counter;
+    assign test = pointer;
+    assign button = anti_bounce;
+    assign char_use = char;
+    assign count_use_test = count_use;
+    assign clk_use = clk_out;*/
 endmodule
