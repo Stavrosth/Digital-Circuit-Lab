@@ -4,14 +4,14 @@ module ButtonRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp, but
     output an3, an2, an1, an0;
     output  a, b, c, d, e, f, g, dp;
     reg [3:0] message [15:0]; //stores the memory
-    reg button_real=1'b0, second_counter=1'b0;
+    reg button_real=1'b0, second_counter=1'b0, reset_temp, reset_use, button_use, button_temp;
     reg [3:0] pointer=4'b0000, count=4'b1111;
     reg [10:0] anti_bounce=11'b11111111111;
     wire [3:0] char, count_use;
-    wire clk_out;
+    wire clk_out, reset_real;
 
     //memory instantiation
-    always @(posedge reset) begin
+    always @(posedge reset_real) begin
         message[0] =  4'b0000;
         message[1] =  4'b0001;
         message[2] =  4'b0010;
@@ -92,22 +92,35 @@ module ButtonRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp, but
         // Feedback Clocks: 1-bit (each) input: Clock feedback ports
         .CLKFBIN(CLKFBIN)      // 1-bit input: Feedback clock
     );
+
+    //synchronizes reset in order to avoid metasthathia
+    always @(posedge clk_out) begin 
+        reset_temp <= reset;
+        button_temp <= button_real;
+    end
+    
+    always @(posedge clk_out) begin 
+        reset_use <= reset_temp;
+        button_use <= button_temp;
+    end
+    
+    assign reset_real = reset_use;
     
     //counter
     assign count_use = count;
-    always @(posedge clk_out) begin
-        if (reset == 1'b1)
+    always @(posedge clk_out or posedge reset_real) begin
+        if (reset_real == 1'b1)
             count <= 4'b1111;
         else
             count <= count - 1;
     end
 
     //anti-bounce
-    always @(posedge clk_out) begin
-        if ( reset == 1'b1 || button_move == 1'b0) begin //resets the counter
+    always @(posedge clk_out or posedge reset_real) begin
+        if ( reset_real == 1'b1 || button_move == 1'b0) begin //resets the counter
             anti_bounce <= 11'b11111111111;
             button_real <= 1'b0;
-        end else if ( reset == 1'b0 && button_move == 1'b1 )
+        end else if ( reset_real == 1'b0 && button_move == 1'b1 )
             anti_bounce <= anti_bounce;
 
         if (button_move == 1'b1 && anti_bounce > 11'b00000000000 ) //reduces the counter if button=1
@@ -119,17 +132,17 @@ module ButtonRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp, but
     //makes the pointer move 4 stages after the button is 1 so we have a smooth transition
     always @(posedge clk_out) begin
         if ( button_real == 1'b1 && second_counter == 1'b0) begin //increases the pointer
-            pointer <= pointer + 1;
+            pointer <= pointer + 1'b1;
             second_counter <= 1'b1; //makes sure the pointer is not increasing repeatdly
         end else if ( button_move == 1'b0)
             second_counter <= 1'b0;
     end
     
     //Drives Anodes and assigns the approptiate char
-    anodes anodesDrive(count_use, char, {an3, an2, an1, an0}, pointer);
+    anodes anodesDrive3(count_use, char, {an3, an2, an1, an0}, pointer);
     
     //assigns the LED display based on the memory
-    LEDdecoder LEDdecoder_inst (char, {a, b, c, d, e, f, g, dp});
+    LEDdecoder LEDdecoder_inst3(char, {a, b, c, d, e, f, g, dp});
     
     /* TEST PARAMETERS
     //wire second_counter_use;

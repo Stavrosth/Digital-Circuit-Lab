@@ -17,7 +17,6 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
-set_param xicom.use_bs_reader 1
 create_project -in_memory -part xc7a100tcsg324-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -31,7 +30,10 @@ set_property ip_output_repo c:/Users/sstat/OneDrive/Documents/GitHub/Digital-Cir
 set_property ip_cache_permissions {read write} [current_project]
 read_verilog -library xil_defaultlib {
   C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/PartA.v
+  C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/anodes.v
+  C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/PartB.v
   C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/PartC.v
+  C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/PartD.v
 }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the

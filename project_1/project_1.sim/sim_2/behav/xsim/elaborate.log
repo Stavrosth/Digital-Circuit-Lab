@@ -4,4 +4,17 @@ Running: C:/Xilinx/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe -wto b000b44419
 Using 2 slave threads.
 Starting static elaboration
 Completed static elaboration
-INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4099] "C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/PartB.v" Line 1. Module FourDigitLEDdriver doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/anodes.v" Line 1. Module anodes doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/PartA.v" Line 2. Module LEDdecoder doesn't have a timescale but at least one module in design has a timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module unisims_ver.MMCME2_ADV(CLKFBOUT_MULT_F=6.0,C...
+Compiling module unisims_ver.MMCME2_BASE(CLKFBOUT_MULT_F=6.0,...
+Compiling module xil_defaultlib.anodes
+Compiling module xil_defaultlib.LEDdecoder
+Compiling module xil_defaultlib.FourDigitLEDdriver
+Compiling module xil_defaultlib.PartB_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot PartB_tb_behav

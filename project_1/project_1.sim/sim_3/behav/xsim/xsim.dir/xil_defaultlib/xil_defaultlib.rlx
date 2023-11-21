@@ -4,7 +4,8 @@ Dec  7 2018
 00:33:28
 C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.sim/sim_3/behav/xsim/glbl.v,1544155481,verilog,,,,glbl,,,,,,,,
 C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sim_3/new/PartC_tb.v,1700131182,verilog,,,,PartC_tb,,,,,,,,
-C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/PartA.v,1700119896,verilog,,C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/anodes.v,,LEDdecoder,,,,,,,,
+C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/PartA.v,1700577733,verilog,,C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/anodes.v,,LEDdecoder,,,,,,,,
 C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/PartB.v,1700126696,verilog,,C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/PartC.v,,FourDigitLEDdriver,,,,,,,,
-C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/PartC.v,1700131626,verilog,,C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sim_3/new/PartC_tb.v,,ButtonRotate,,,,,,,,
-C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/anodes.v,1700126493,verilog,,C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/PartB.v,,anodes,,,,,,,,
+C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/PartC.v,1700131626,verilog,,C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/PartD.v,,ButtonRotate,,,,,,,,
+,,,,C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sim_3/new/PartC_tb.v,,AutoRotate,,,,,,,,
+C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/anodes.v,1700577733,verilog,,C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/project_1/project_1.srcs/sources_1/new/PartB.v,,anodes,,,,,,,,
