@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="PartB_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="PartB_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="18507130750fs"></ZoomStartTime>
+      <ZoomEndTime time="34495302268fs"></ZoomEndTime>
+      <Cursor1Time time="245225000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="171"></NameColumnWidth>
+      <ValueColumnWidth column_width="93"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="4" />
+   <wvobject fp_name="/PartB_tb/clk_out" type="logic">
+      <obj_property name="ElementShortName">clk_out</obj_property>
+      <obj_property name="ObjectShortName">clk_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PartB_tb/reset" type="logic">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="vbus55" type="vbus">
+      <obj_property name="label">LED</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <wvobject fp_name="/PartB_tb/a" type="logic">
+         <obj_property name="ElementShortName">a</obj_property>
+         <obj_property name="ObjectShortName">a</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PartB_tb/b" type="logic">
+         <obj_property name="ElementShortName">b</obj_property>
+         <obj_property name="ObjectShortName">b</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PartB_tb/c" type="logic">
+         <obj_property name="ElementShortName">c</obj_property>
+         <obj_property name="ObjectShortName">c</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PartB_tb/d" type="logic">
+         <obj_property name="ElementShortName">d</obj_property>
+         <obj_property name="ObjectShortName">d</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PartB_tb/e" type="logic">
+         <obj_property name="ElementShortName">e</obj_property>
+         <obj_property name="ObjectShortName">e</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PartB_tb/f" type="logic">
+         <obj_property name="ElementShortName">f</obj_property>
+         <obj_property name="ObjectShortName">f</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PartB_tb/g" type="logic">
+         <obj_property name="ElementShortName">g</obj_property>
+         <obj_property name="ObjectShortName">g</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PartB_tb/dp" type="logic">
+         <obj_property name="ElementShortName">dp</obj_property>
+         <obj_property name="ObjectShortName">dp</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="vbus56" type="vbus">
+      <obj_property name="label">anodes</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/PartB_tb/an3" type="logic">
+         <obj_property name="ElementShortName">an3</obj_property>
+         <obj_property name="ObjectShortName">an3</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PartB_tb/an2" type="logic">
+         <obj_property name="ElementShortName">an2</obj_property>
+         <obj_property name="ObjectShortName">an2</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PartB_tb/an1" type="logic">
+         <obj_property name="ElementShortName">an1</obj_property>
+         <obj_property name="ObjectShortName">an1</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PartB_tb/an0" type="logic">
+         <obj_property name="ElementShortName">an0</obj_property>
+         <obj_property name="ObjectShortName">an0</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

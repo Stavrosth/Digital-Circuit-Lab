@@ -1,35 +1,8 @@
-module AutoRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp);//, test, test_counter, char_use);
+module AutoRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp);//, test, char_use, test_counter);
     input clk, reset=1'b1;
-    output an3, an2, an1, an0;
-    output  a, b, c, d, e, f, g, dp;
-    reg [3:0] message [15:0]; //stores the memory
-    reg [22:0] big_counter=23'b11111111111111111111111;
-    reg [3:0] pointer=4'b0000, count_anodes=4'b1111;
-    reg reset_temp, reset_use;
-    wire [3:0] char, count_use;
-    wire clk_out;
-
-
-    //memory instantiation
-    always @(posedge reset_use) begin
-        message[0] =  4'b0000;
-        message[1] =  4'b0001;
-        message[2] =  4'b0010;
-        message[3] =  4'b0011;
-        message[4] =  4'b0100;
-        message[5] =  4'b0101;
-        message[6] =  4'b0110;
-        message[7] =  4'b0111;
-        message[8] =  4'b1000;
-        message[9] =  4'b1001;
-        message[10] = 4'b1010;
-        message[11] = 4'b1011;
-        message[12] = 4'b1100;
-        message[13] = 4'b1101;
-        message[14] = 4'b1110;
-        message[15] = 4'b1111;
-    end
-
+    output an3, an2, an1, an0, a, b, c, d, e, f, g, dp;
+    wire [3:0] char, count, pointer;
+    wire clk_out, reset_use;
 
     //modules for clock speed modification
     MMCME2_BASE #(
@@ -95,43 +68,22 @@ module AutoRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp);//, t
     );
 
     //synchronizes reset in order to avoid metasthathia
-    always @(posedge clk_out) begin 
-        reset_temp <= reset;
-    end
-    
-    always @(posedge clk_out) begin 
-        reset_use <= reset_temp;
-    end
+    SignalSynchronizer reset_button(clk_out, reset, reset_use);
 
-    //counter
-    assign count_use = count_anodes;
-    always @(posedge clk_out or posedge reset_use) begin
-        if (reset_use == 1'b1)
-            count_anodes <= 4'b1111;
-        else
-            count_anodes <= count_anodes - 1;
-    end
+    //4-bit counter
+    FourBitCounter counter(clk_out, reset_use, count);
 
-    //moves pointer steadily after 1.6 seconds
-    always @(posedge clk_out or posedge reset_use) begin
-        if (reset_use == 1'b1 || big_counter == 23'b00000000000000000000000)
-            big_counter <= 23'b11111111111111111111111;
-        else 
-            big_counter  <= big_counter - 1;
-    
-        if (big_counter == 23'b00000000000000000000001)
-            pointer <= pointer + 1'b1;
-        else
-            pointer <= pointer;
-    end
+    //timer of 1.6 seconds
+    Timer timer(clk_out, reset_use, pointer);
 
     //Drives Anodes and assigns the approptiate char
-    anodes anodesDrive4(count_use, char, {an3, an2, an1, an0}, pointer);
+    anodes anodesDrive4(count, char, {an3, an2, an1, an0}, pointer);
     
     //assigns the LED display based on the memory
     LEDdecoder LEDdecoder_inst4(char, {a, b, c, d, e, f, g, dp});
 
     /*TEST PARAMETERS
+    wire [22:0] big_counter;
     output [3:0] test; assign test = pointer;
     output [22:0] test_counter; assign test_counter = big_counter;
     output [3:0] char_use; assign char_use = char;*/

@@ -1,10 +1,12 @@
-module anodes(counter, char, anodes, start_bit); //Drives Anodes
+/*Drives Anodes*/
+module anodes(counter, char, anodes, start_bit); 
     input [3:0] counter, start_bit;
     output reg [3:0] anodes, char;
+    reg [3:0] message [15:0];
     
     /*based on the counter the right anode is beeing opened 
       and the right message is beingdisplayed */
-    always @(counter) begin
+    always @(counter or start_bit) begin
         case(counter)
             4'b0000:begin anodes =4'b1111; char = start_bit;       end
             4'b0001:begin anodes =4'b1111; char = start_bit+2'b11; end
