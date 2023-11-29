@@ -15,7 +15,7 @@ module PartA_tb;
     always #5 clk = ~clk;
 
     initial begin
-        #350 reset = 1'b1;
+        #500 reset = 1'b1;
         #200 reset = 1'b0;
         #500 baud_select = 3'b000;
         #1000000 baud_select = 3'b100;

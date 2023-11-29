@@ -4,8 +4,8 @@ module baud_controller(reset, clk, baud_select, sample_ENABLE);//, counter_out);
     input reset, clk;
     input [2:0] baud_select;
     output reg sample_ENABLE;
-    reg [14:0] counter=15'b0, target_counter=15'b100000100110;
-//output [14:0] counter_out; assign counter_out = counter;
+    reg [14:0] counter=15'b0, target_counter;//=15'b100000100110;
+ //output [14:0] counter_out; assign counter_out = counter;
     
     //based on the desired baud rate, a corresponding counter lmit is selected
     always @(posedge clk) begin
@@ -26,10 +26,10 @@ module baud_controller(reset, clk, baud_select, sample_ENABLE);//, counter_out);
         if (target_counter == counter) begin
             sample_ENABLE <= 1'b1; 
             counter <= 15'b0; //resets the counter
+        end else if ( counter == 15'b0 || reset == 1'b0) begin
+            sample_ENABLE <= 1'b0; //resets the enable signal
+            counter <= counter + 1'b1; //increases the counter
         end else
             counter <= counter + 1'b1; //increases the counter
-            
-        if ( counter == 15'b0 || reset == 1'b1) 
-            sample_ENABLE <= 1'b0; //resets the enable signal
     end
 endmodule
