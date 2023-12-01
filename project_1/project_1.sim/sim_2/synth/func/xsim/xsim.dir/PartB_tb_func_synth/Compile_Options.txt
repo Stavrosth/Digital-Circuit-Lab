@@ -1,1 +1,0 @@
--wto "b000b444197c40c2bb6bda0e03a6c237" --incr --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "unisims_ver" -L "secureip" --snapshot "PartB_tb_func_synth" "xil_defaultlib.PartB_tb" "xil_defaultlib.glbl" -log "elaborate.log" 

@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="73212385000000fs"></ZoomEndTime>
-      <Cursor1Time time="35944320000000fs"></Cursor1Time>
+      <ZoomStartTime time="14277094294355fs"></ZoomStartTime>
+      <ZoomEndTime time="88765535141130fs"></ZoomEndTime>
+      <Cursor1Time time="76350795000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="171"></NameColumnWidth>
-      <ValueColumnWidth column_width="73"></ValueColumnWidth>
+      <ValueColumnWidth column_width="61"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="12" />
    <wvobject fp_name="/PartB_tb/reset" type="logic">
@@ -49,14 +49,6 @@
       <obj_property name="ElementShortName">TxD</obj_property>
       <obj_property name="ObjectShortName">TxD</obj_property>
    </wvobject>
-   <wvobject fp_name="/PartB_tb/counter" type="array">
-      <obj_property name="ElementShortName">counter[3:0]</obj_property>
-      <obj_property name="ObjectShortName">counter[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/PartB_tb/set_clk_counter" type="array">
-      <obj_property name="ElementShortName">set_clk_counter[3:0]</obj_property>
-      <obj_property name="ObjectShortName">set_clk_counter[3:0]</obj_property>
-   </wvobject>
    <wvobject fp_name="/PartB_tb/sum_inputs" type="array">
       <obj_property name="ElementShortName">sum_inputs[3:0]</obj_property>
       <obj_property name="ObjectShortName">sum_inputs[3:0]</obj_property>
@@ -65,8 +57,16 @@
       <obj_property name="ElementShortName">Tx_BUSY</obj_property>
       <obj_property name="ObjectShortName">Tx_BUSY</obj_property>
    </wvobject>
-   <wvobject fp_name="/PartB_tb/second_counter" type="array">
-      <obj_property name="ElementShortName">second_counter[3:0]</obj_property>
-      <obj_property name="ObjectShortName">second_counter[3:0]</obj_property>
+   <wvobject fp_name="/PartB_tb/current_state" type="array">
+      <obj_property name="ElementShortName">current_state[3:0]</obj_property>
+      <obj_property name="ObjectShortName">current_state[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PartB_tb/next_state" type="array">
+      <obj_property name="ElementShortName">next_state[3:0]</obj_property>
+      <obj_property name="ObjectShortName">next_state[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PartB_tb/select" type="logic">
+      <obj_property name="ElementShortName">select</obj_property>
+      <obj_property name="ObjectShortName">select</obj_property>
    </wvobject>
 </wave_config>
