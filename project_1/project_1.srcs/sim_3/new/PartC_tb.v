@@ -54,8 +54,8 @@ module PartC_tb;
         #2000 button_move = 1'b1;
         #3000 reset = 1'b1;
         #5000 reset = 1'b0;
-        //#15000button_move = 1'b1;
-        //#20000button_move = 1'b0;
+        #15000 button_move = 1'b1;
+        #20000 button_move = 1'b0;
     end
 
 endmodule

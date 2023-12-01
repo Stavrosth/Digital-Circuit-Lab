@@ -1,35 +1,10 @@
-module ButtonRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp, button_move);//, test, button, char_use, count_use_test, clk_use);
-    input clk, reset=1'b1;
-    input button_move=1'b0;
-    output an3, an2, an1, an0;
-    output  a, b, c, d, e, f, g, dp;
-    reg [3:0] message [15:0]; //stores the memory
-    reg button_real=1'b0, second_counter=1'b0, reset_temp, reset_use, button_use, button_temp;
-    reg [3:0] pointer=4'b0000, count=4'b1111;
-    reg [10:0] anti_bounce=11'b11111111111;
-    wire [3:0] char, count_use;
-    wire clk_out, reset_real;
-
-    //memory instantiation
-    always @(posedge reset_real) begin
-        message[0] =  4'b0000;
-        message[1] =  4'b0001;
-        message[2] =  4'b0010;
-        message[3] =  4'b0011;
-        message[4] =  4'b0100;
-        message[5] =  4'b0101;
-        message[6] =  4'b0110;
-        message[7] =  4'b0111;
-        message[8] =  4'b1000;
-        message[9] =  4'b1001;
-        message[10] = 4'b1010;
-        message[11] = 4'b1011;
-        message[12] = 4'b1100;
-        message[13] = 4'b1101;
-        message[14] = 4'b1110;
-        message[15] = 4'b1111;
-    end
-
+module ButtonRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp, button_move);//, test, button, char_use, count_use_test, clk_use, button_use1);
+    input clk, reset, button_move;
+    output an3, an2, an1, an0, a, b, c, d, e, f, g, dp;
+    reg [3:0] message [15:0]; //stores the message
+    reg reset_use, button_use;
+    wire [3:0] char, count, pointer;
+    wire clk_out, button_real;
 
     //modules for clock speed modification
     MMCME2_BASE #(
@@ -93,53 +68,21 @@ module ButtonRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp, but
         .CLKFBIN(CLKFBIN)      // 1-bit input: Feedback clock
     );
 
-    //synchronizes reset in order to avoid metasthathia
-    always @(posedge clk_out) begin 
-        reset_temp <= reset;
-        button_temp <= button_real;
-    end
-    
-    always @(posedge clk_out) begin 
-        reset_use <= reset_temp;
-        button_use <= button_temp;
-    end
-    
-    assign reset_real = reset_use;
-    
-    //counter
-    assign count_use = count;
-    always @(posedge clk_out or posedge reset_real) begin
-        if (reset_real == 1'b1)
-            count <= 4'b1111;
-        else
-            count <= count - 1;
-    end
+    //synchronizes reset and the button signals in order to avoid metasthathia
+    SignalSynchronizer reset_button(clk_out, reset, reset_use);
+    SignalSynchronizer reset_button(clk_out, button, button_use);
 
-    //anti-bounce
-    always @(posedge clk_out or posedge reset_real) begin
-        if ( reset_real == 1'b1 || button_move == 1'b0) begin //resets the counter
-            anti_bounce <= 11'b11111111111;
-            button_real <= 1'b0;
-        end else if ( reset_real == 1'b0 && button_move == 1'b1 )
-            anti_bounce <= anti_bounce;
+    //4-bit counter
+    FourBitCounter counter(clk_out, reset_use, count);
 
-        if (button_move == 1'b1 && anti_bounce > 11'b00000000000 ) //reduces the counter if button=1
-            anti_bounce <= anti_bounce - 1;
-        else if (anti_bounce == 11'b00000000000) //assigns the button to 1 because 500 us has passed
-            button_real <= 1'b1; //in order not to create a latch
-    end
-
-    //makes the pointer move 4 stages after the button is 1 so we have a smooth transition
-    always @(posedge clk_out) begin
-        if ( button_real == 1'b1 && second_counter == 1'b0) begin //increases the pointer
-            pointer <= pointer + 1'b1;
-            second_counter <= 1'b1; //makes sure the pointer is not increasing repeatdly
-        end else if ( button_move == 1'b0)
-            second_counter <= 1'b0;
-    end
+    //implements the anti-bounce function
+    AntiBounce antibounce(clk_out, reset_use, button_use, button_real);
+    
+    //Increases the pointer respectively when the button_real is one
+    PointerAdder addpoint(clk_out, reset_use, button_real, pointer)
     
     //Drives Anodes and assigns the approptiate char
-    anodes anodesDrive3(count_use, char, {an3, an2, an1, an0}, pointer);
+    anodes anodesDrive3(count, char, {an3, an2, an1, an0}, message[pointer]);
     
     //assigns the LED display based on the memory
     LEDdecoder LEDdecoder_inst3(char, {a, b, c, d, e, f, g, dp});
@@ -147,13 +90,14 @@ module ButtonRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp, but
     /* TEST PARAMETERS
     //wire second_counter_use;
     output [3:0] test, char_use, count_use_test;
-    output [10:0] button;
-    output clk_use;
+    output [18:0] button;
+    output clk_use, button_use1;
 
     //assign second_counter_use = second_counter;
     assign test = pointer;
     assign button = anti_bounce;
     assign char_use = char;
     assign count_use_test = count_use;
-    assign clk_use = clk_out;*/
+    assign clk_use = clk_out;
+    assign button_use1 = button_use;*/
 endmodule

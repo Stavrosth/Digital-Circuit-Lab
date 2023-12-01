@@ -49,12 +49,21 @@ set_property used_in_implementation false [get_files C:/Users/sstat/Documents/Gi
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
 
+<<<<<<<< HEAD:project_1/project_1.runs/synth_1/AutoRotate.tcl
 synth_design -top AutoRotate -part xc7a100tcsg324-1
+========
+synth_design -top FourDigitLEDdriver -part xc7a100tcsg324-1
+>>>>>>>> a7fccbf39b63fd39992c14815c4ad8bff912fe31:project_1/project_1.runs/synth_1/FourDigitLEDdriver.tcl
 
 
 # disable binary constraint mode for synth run checkpoints
 set_param constraints.enableBinaryConstraints false
+<<<<<<<< HEAD:project_1/project_1.runs/synth_1/AutoRotate.tcl
 write_checkpoint -force -noxdef AutoRotate.dcp
 create_report "synth_1_synth_report_utilization_0" "report_utilization -file AutoRotate_utilization_synth.rpt -pb AutoRotate_utilization_synth.pb"
+========
+write_checkpoint -force -noxdef FourDigitLEDdriver.dcp
+create_report "synth_1_synth_report_utilization_0" "report_utilization -file FourDigitLEDdriver_utilization_synth.rpt -pb FourDigitLEDdriver_utilization_synth.pb"
+>>>>>>>> a7fccbf39b63fd39992c14815c4ad8bff912fe31:project_1/project_1.runs/synth_1/FourDigitLEDdriver.tcl
 file delete __synthesis_is_running__
 close [open __synthesis_is_complete__ w]

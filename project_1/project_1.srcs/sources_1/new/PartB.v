@@ -1,11 +1,8 @@
-module FourDigitLEDdriver(reset, clk, an3, an2, an1, an0, a, b, c, d, e, f, g, dp);//, char);
-    input clk, reset=1'b1;
-    output a, b, c, d, e, f, g, dp;
-    output an3, an2, an1, an0;
-    reg [3:0] count=4'b1111; //initializes counter
-    wire [3:0] char, count_use;
-    wire clk_out; //Clock that is outputed after modification
-    reg reset_temp, reset_use;
+module FourDigitLEDdriver(reset, clk, an3, an2, an1, an0, a, b, c, d, e, f, g, dp);//, test);
+    input clk, reset
+    output a, b, c, d, e, f, g, dp, an3, an2, an1, an0;
+    wire [3:0] char, count;
+    wire clk_out, reset_enable, reset_use;
 
     //modules for clock speed modification
     MMCME2_BASE #(
@@ -69,22 +66,14 @@ module FourDigitLEDdriver(reset, clk, an3, an2, an1, an0, a, b, c, d, e, f, g, d
         .CLKFBIN(CLKFBIN)      // 1-bit input: Feedback clock
     );
 
-    //synchronizes reset in order to avoid metasthathia
-    always @(posedge clk_out) reset_temp <= reset;
-    always @(posedge clk_out) reset_use <= reset_temp;
-
-    //4-bit counter
-    always @(posedge clk_out or posedge reset_use) begin
-        if (reset_use == 1'b1)
-            count <= 4'b1111;
-        else
-            count <= count - 1;
-    end
+   //synchronizes reset in order to avoid metasthathia
+    SignalSynchronizer reset_button(clk_out, reset, reset_use);
     
-    assign count_use = count;
+    //4-bit counter
+    FourBitCounter counter(clk_out, reset_use, count);
 
     //Drives Anodes and assigns the approptiate char
-    anodes anodesDrive2(count_use, char, {an3, an2, an1, an0}, 4'b0000);
+    anodes anodesDrive2(count, char, {an3, an2, an1, an0}, 4'b0000);
 
     //assigns the LED display from 0 to 3 in series
     LEDdecoder LEDdecoder_inst2(char, {a, b, c, d, e, f, g, dp});
