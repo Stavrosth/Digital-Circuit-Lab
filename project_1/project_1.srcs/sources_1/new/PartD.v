@@ -5,12 +5,13 @@ module AutoRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp);//, t
     reg [3:0] message [15:0]; //stores the memory
     reg [22:0] big_counter=23'b11111111111111111111111;
     reg [3:0] pointer=4'b0000, count_anodes=4'b1111;
+    reg reset1, reset2, reset3
     wire [3:0] char, count_use;
-    wire clk_out;
+    wire clk_out, reset_use;
 
 
     //memory instantiation
-    always @(posedge reset) begin
+    always @(posedge reset_use) begin
         message[0] =  4'b0000;
         message[1] =  4'b0001;
         message[2] =  4'b0010;
@@ -93,18 +94,33 @@ module AutoRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp);//, t
         .CLKFBIN(CLKFBIN)      // 1-bit input: Feedback clock
     );
 
+     //synchronizes reset in order to avoid metasthathia
+    always @(posedge clk_out) begin 
+        reset1 <= reset;
+    end
+    
+    always @(posedge clk_out) begin 
+        reset2 <= reset1;
+    end
+
+    always @(posedge clk_out) begin
+        reset3 <= reset2;
+    end
+    
+    assign reset_use = reset3;
+
     //counter
     assign count_use = count_anodes;
-    always @(posedge clk_out) begin
-        if (reset == 1'b1)
+    always @(posedge clk_out or posedge reset_use) begin
+        if (reset_use == 1'b1)
             count_anodes <= 4'b1111;
         else
             count_anodes <= count_anodes - 1;
     end
 
     //moves pointer steadily after 1.6 seconds
-    always @(posedge clk_out) begin
-        if (reset == 1'b1 || big_counter == 23'b00000000000000000000000)
+    always @(posedge clk_out or posedge reset_use) begin
+        if (reset_use == 1'b1 || big_counter == 23'b00000000000000000000000)
             big_counter <= 23'b11111111111111111111111;
         else 
             big_counter  <= big_counter - 1;
@@ -114,8 +130,6 @@ module AutoRotate(clk, reset, an3, an2, an1, an0, a, b, c, d, e, f, g, dp);//, t
         else
             pointer <= pointer;
     end
-
-
 
     //Drives Anodes and assigns the approptiate char
     anodes anodesDrive4(count_use, char, {an3, an2, an1, an0}, pointer);
