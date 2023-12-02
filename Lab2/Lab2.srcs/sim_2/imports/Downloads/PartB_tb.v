@@ -6,12 +6,12 @@ module PartB_tb;
     reg [2:0] baud_select;
     wire TxD, Tx_BUSY, clk_out, select;
     wire [3:0] sum_inputs, current_state, next_state;
-  
-    uart_transmitter testb(.reset(reset), .clk(clk), .Tx_DATA(Tx_DATA), .baud_select(baud_select), .Tx_WR(Tx_WR), .Tx_EN(Tx_EN), .TxD(TxD), .Tx_BUSY(Tx_BUSY), .sum_inputs(sum_inputs), .clk_out_use(clk_out), .current_state_use(current_state), .next_state_use(next_state), .select(select));
+
+    uart_transmitter testb(.reset(reset), .clk(clk), .Tx_DATA(Tx_DATA), .baud_select(baud_select), .Tx_WR(Tx_WR), .Tx_EN(Tx_EN), .TxD(TxD), .Tx_BUSY(Tx_BUSY), .sum_inputs(sum_inputs));//, .clk_out_use(clk_out), .current_state_use(current_state), .next_state_use(next_state), .select(select));
 
     //initializes the clk and reset values
     initial begin clk = 1'b0; reset = 1'b0; end
-    
+  
     //Clock generation of 100 MHz
     always #5 clk = ~clk;
 
@@ -33,5 +33,4 @@ module PartB_tb;
         Tx_WR = 1'b1;
         #3600000 Tx_WR = 1'b0;
     end 
-
 endmodule
