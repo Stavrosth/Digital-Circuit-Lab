@@ -1,5 +1,5 @@
-module receive_bits(clk_out, clk_out_quick, reset, Rx_EN, RxD, Rx_DATA, Rx_FERROR, Rx_PERROR, Rx_VALID, current_state, next_state, counter_begin, temp, select_begin, starter);
-    input clk_out, clk_out_quick, reset, Rx_EN, RxD;
+module receive_bits(clk_out, clk_out_slow, reset, Rx_EN, RxD, Rx_DATA, Rx_FERROR, Rx_PERROR, Rx_VALID, current_state, next_state, counter_begin, temp, select_begin, starter);
+    input clk_out, clk_out_slow, reset, Rx_EN, RxD;
     output reg Rx_FERROR, Rx_PERROR, Rx_VALID;
     output reg [7:0] Rx_DATA;
 
@@ -105,17 +105,17 @@ module receive_bits(clk_out, clk_out_quick, reset, Rx_EN, RxD, Rx_DATA, Rx_FERRO
     end
 
     //moves to the next state when feasible
-    always @(posedge clk_out) begin
+    always @(posedge clk_out_slow) begin
         if (reset == 1'b1 || Rx_EN == 1'b0 || select_begin == 1'b0) begin
             current_state <= 4'd1;
         end else
             current_state <= next_state;
     end
 
-    //checks the RXD value 16 times quicker than the transmitter sends
-    always @(posedge clk_out_quick) begin
+    //checks the RXD value 16 times slower than the transmitter sends
+    always @(posedge clk_out) begin
         if ( reset == 1'b1) begin
-            counter_begin <= 4'b0;
+            counter_begin <= 5'b0;
             select_begin <= 1'b0;
             starter <= 1'b0;
         end else if ( RxD == 1'b0 || starter == 1'b1)

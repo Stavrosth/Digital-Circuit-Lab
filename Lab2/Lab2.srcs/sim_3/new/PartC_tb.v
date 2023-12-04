@@ -5,15 +5,14 @@ module PartC_tb;
     reg [2:0] baud_select;
     wire [7:0] Rx_DATA;
     wire Rx_FERROR, Rx_PERROR, Rx_VALID;
-    wire clk_out_quick, clk_out;
 
-    /* Test Parameters*/
+    /* Test Parameters */
     wire [3:0] current_state, next_state;
     wire [4:0] counter_begin;
     wire [7:0] temp;
-    wire starter, select_begin, clk_out, clk_out_quick;
+    wire starter, select_begin, clk_out, clk_out_slow;
 
-    uart_receiver rceive_test(reset, clk, Rx_DATA, baud_select, Rx_EN, RxD, Rx_FERROR, Rx_PERROR, Rx_VALID, current_state, next_state, counter_begin, temp, select_begin, starter, clk_out_quick, clk_out);
+    uart_receiver rceive_test(reset, clk, Rx_DATA, baud_select, Rx_EN, RxD, Rx_FERROR, Rx_PERROR, Rx_VALID, current_state, next_state, counter_begin, temp, select_begin, starter, clk_out_slow, clk_out);
 
     //initializes the clk and reset values
     initial begin clk = 1'b0; reset = 1'b0; end
@@ -26,11 +25,18 @@ module PartC_tb;
         Rx_EN = 1'b1;
         reset = 1'b1;
         RxD = 1'b1;
-        #10000000 reset = 1'b0;
-        #350 Rx = 1'b0;
-        #3600000 RxD = 1'b1;
-
-
+        #1000000 reset = 1'b0;
+        #350 RxD = 1'b0;
+        #4000000 RxD = 1'b1;
+        #4000000 RxD = 1'b0;
+        #4000000 RxD = 1'b1;
+        #4000000 RxD = 1'b0;
+        #4000000 RxD = 1'b1;
+        #4000000 RxD = 1'b0;
+        #4000000 RxD = 1'b1;
+        #4000000 RxD = 1'b1;
+        #4000000 RxD = 1'b0;
+        #4000000 RxD = 1'b1;
     end
 
 endmodule
