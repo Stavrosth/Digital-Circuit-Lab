@@ -8,7 +8,7 @@ module receive_bits(clk_out, clk_out_slow, reset, Rx_EN, RxD, Rx_DATA, Rx_FERROR
     output reg select_begin, starter;
     output reg [7:0] temp;
 
-    always @(current_state) begin
+    always @(current_state or select_begin) begin
         next_state = current_state;
         Rx_VALID = 1'b0;
         Rx_FERROR = 1'b0;
@@ -128,9 +128,10 @@ module receive_bits(clk_out, clk_out_slow, reset, Rx_EN, RxD, Rx_DATA, Rx_FERROR
 
         if ( counter_begin > 5'd0 && counter_begin < 5'd24)
             starter <= 1'b1; //keeps starter one so the receiver can receive data
-        else 
+        else if ( counter_begin != 5'b0) begin
             starter <= 1'b0; //resets the starter
             counter_begin <= 5'd0; //resets the counter
+        end
     end
 
 endmodule

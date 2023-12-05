@@ -26,7 +26,7 @@ module PartC_tb;
         reset = 1'b1;
         RxD = 1'b1;
         #1000000 reset = 1'b0;
-        #350 RxD = 1'b0;
+        #400000 RxD = 1'b0;
         #4000000 RxD = 1'b1;
         #4000000 RxD = 1'b0;
         #4000000 RxD = 1'b1;
@@ -38,5 +38,4 @@ module PartC_tb;
         #4000000 RxD = 1'b0;
         #4000000 RxD = 1'b1;
     end
-
 endmodule
