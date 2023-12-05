@@ -21,21 +21,21 @@ module PartC_tb;
     always #5 clk = ~clk;
 
     initial begin
-        baud_select = 3'b0;
+        baud_select = 3'b111;
         Rx_EN = 1'b1;
         reset = 1'b1;
         RxD = 1'b1;
         #1000000 reset = 1'b0;
-        #400000 RxD = 1'b0;
-        #4000000 RxD = 1'b1;
-        #4000000 RxD = 1'b0;
-        #4000000 RxD = 1'b1;
-        #4000000 RxD = 1'b0;
-        #4000000 RxD = 1'b1;
-        #4000000 RxD = 1'b0;
-        #4000000 RxD = 1'b1;
-        #4000000 RxD = 1'b1;
-        #4000000 RxD = 1'b0;
-        #4000000 RxD = 1'b1;
+        #400000 RxD = 1'b0;//start bit
+        #8800 RxD = 1'b1;
+        #8800 RxD = 1'b0;
+        #8800 RxD = 1'b0;
+        #8800 RxD = 1'b0;
+        #8800 RxD = 1'b0;
+        #8800 RxD = 1'b0;
+        #8800 RxD = 1'b1;
+        #8800 RxD = 1'b1;
+        #8800 RxD = 1'b0;//parity bit
+        #8800 RxD = 1'b1;//stop bit
     end
 endmodule
