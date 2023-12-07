@@ -1,4 +1,4 @@
-module send_bits(clk_out, reset, Tx_WR, Tx_EN, Tx_DATA, Tx_BUSY, TxD, current_state, next_state, select);
+module send_bits(clk_out, reset, Tx_WR, Tx_EN, Tx_DATA, Tx_BUSY, TxD, current_state, next_state, select, counter);
     input clk_out, reset, Tx_WR, Tx_EN;
     input [7:0] Tx_DATA;
     output reg TxD, Tx_BUSY;
@@ -94,13 +94,15 @@ module send_bits(clk_out, reset, Tx_WR, Tx_EN, Tx_DATA, Tx_BUSY, TxD, current_st
             end    
             4'd10:begin 
                 TxD = sum_inputs; //parity bit
-                Tx_BUSY = 1'b1;
                 if (select == 1'b1)
                     next_state = 4'd11;
                 else
                     next_state = 4'd0;  
             end     
-            4'd11: next_state = 4'd0; //stop bit
+            4'd11:begin 
+                next_state = 4'd0; //stop bit
+                Tx_BUSY = 1'b1;
+            end
             default:begin    
                 TxD = 1'b1; 
                 Tx_BUSY = 1'b0; 

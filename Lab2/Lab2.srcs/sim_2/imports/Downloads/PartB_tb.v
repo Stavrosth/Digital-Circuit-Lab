@@ -5,10 +5,10 @@ module PartB_tb;
     reg [7:0] Tx_DATA;
     reg [2:0] baud_select;
     wire TxD, Tx_BUSY, clk_out, select;
-    wire [3:0] current_state, next_state;
+    wire [3:0] current_state, next_state, counter;
 
   //  uart_transmitter testb(.reset(reset), .clk(clk), .Tx_DATA(Tx_DATA), .baud_select(baud_select), .Tx_WR(Tx_WR), .Tx_EN(Tx_EN), .TxD(TxD), .Tx_BUSY(Tx_BUSY) .clk_out_use(clk_out));//, .current_state_use(current_state), .next_state_use(next_state), .select(select));
-    uart_transmitter testb(reset, clk, Tx_DATA, baud_select, Tx_WR, Tx_EN, TxD, Tx_BUSY, clk_out, current_state, next_state, select);
+    uart_transmitter testb(reset, clk, Tx_DATA, baud_select, Tx_WR, Tx_EN, TxD, Tx_BUSY, clk_out, current_state, next_state, select, counter);
     //initializes the clk and reset values
     initial begin clk = 1'b0; reset = 1'b0; end
   
@@ -20,19 +20,18 @@ module PartB_tb;
         Tx_DATA = 8'b10101010;
         Tx_WR = 1'b0;
         Tx_EN = 1'b1;
-        #100 reset = 1'b1;
+        reset = 1'b1;
         #1000000 reset = 1'b0;    
-        #1000 Tx_WR = 1'b1;
+        #48000 Tx_WR = 1'b1;
         #8800 Tx_WR = 1'b0;
-        #96800 Tx_DATA = 8'b01010101; 
-        #1000 Tx_WR = 1'b1;
+        #114400 Tx_DATA = 8'b01010101; 
+         Tx_WR = 1'b1;
         #8800 Tx_WR = 1'b0;
-        #96800 Tx_DATA = 8'b11001100; 
-        #1000 Tx_WR = 1'b1;
+        #114400 Tx_DATA = 8'b11001100; 
+         Tx_WR = 1'b1;
         #8800 Tx_WR = 1'b0;
-        #96800 Tx_DATA = 8'b11001100; 
-        #1000 Tx_WR = 1'b1;
-        #96800 Tx_DATA = 8'b10001001; 
-        #1000 Tx_WR = 1'b1;
-    end 
+        #114400 Tx_DATA = 8'b10001001; 
+         Tx_WR = 1'b1;
+        #8800 Tx_WR = 1'b0;         
+    end
 endmodule
