@@ -16,12 +16,12 @@ module PartB_tb;
     always #5 clk = ~clk;
 
     initial begin
+        baud_select = 3'b111;
         Tx_DATA = 8'b10101010;
         Tx_WR = 1'b0;
-        baud_select = 3'b000;
         Tx_EN = 1'b1;
         #100 reset = 1'b1;
-        #10000000 reset = 1'b0;
+        #10000000 reset = 1'b0;    
         #350 Tx_WR = 1'b1;
         #3600000 Tx_WR = 1'b0;
         Tx_DATA = 8'b11001100;
@@ -32,5 +32,10 @@ module PartB_tb;
         Tx_DATA = 8'b10001001;
         Tx_WR = 1'b1;
         #3600000 Tx_WR = 1'b0;
+#96800
+Tx_DATA = 8'b11001100;
+        #1000000 reset = 1'b0;
+       
+Tx_DATA = 8'b10001001;
     end 
 endmodule

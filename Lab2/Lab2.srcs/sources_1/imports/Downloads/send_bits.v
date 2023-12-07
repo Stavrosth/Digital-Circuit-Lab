@@ -1,10 +1,12 @@
-module send_bits(clk_out, reset, Tx_WR, Tx_EN, Tx_DATA, Tx_BUSY, TxD, sum_inputs);//, current_state, next_state, select);
+module send_bits(clk_out, reset, Tx_WR, Tx_EN, Tx_DATA, Tx_BUSY, TxD);//, current_state, next_state, select);
     input clk_out, reset, Tx_WR, Tx_EN;
-    input [3:0] sum_inputs;
     input [7:0] Tx_DATA;
     output reg TxD, Tx_BUSY;
     reg [3:0] current_state, next_state, counter;
     reg select;
+    wire sum_inputs;
+
+    assign sum_inputs = Tx_DATA[0] ^ Tx_DATA[1] ^ Tx_DATA[2] ^ Tx_DATA[3] ^ Tx_DATA[4] ^ Tx_DATA[5] ^ Tx_DATA[6] ^ Tx_DATA[7];
 
     //transmits the data in serial mode
     always @(current_state or counter) begin
@@ -13,7 +15,7 @@ module send_bits(clk_out, reset, Tx_WR, Tx_EN, Tx_DATA, Tx_BUSY, TxD, sum_inputs
         Tx_BUSY = 1'b0;
         case (current_state)
             4'd0:begin  
-                if (select == 1'b1) 
+                if (select == 1'b1) //allows the fsm to move to the next state
                     next_state = 4'd1;
                 else
                     next_state = 4'd0;
@@ -27,7 +29,7 @@ module send_bits(clk_out, reset, Tx_WR, Tx_EN, Tx_DATA, Tx_BUSY, TxD, sum_inputs
                     next_state = 4'd0;
             end 
             4'd2:begin  
-                TxD = Tx_DATA[0];
+                TxD = Tx_DATA[0]; //stars sending the data
                 Tx_BUSY = 1'b1;
                 if (select == 1'b1)
                     next_state = 4'd3;
@@ -91,7 +93,7 @@ module send_bits(clk_out, reset, Tx_WR, Tx_EN, Tx_DATA, Tx_BUSY, TxD, sum_inputs
                     next_state = 4'd0;
             end    
             4'd10:begin 
-                TxD = sum_inputs[0]; //parity bit
+                TxD = sum_inputs; //parity bit
                 Tx_BUSY = 1'b1;
                 if (select == 1'b1)
                     next_state = 4'd11;
@@ -99,11 +101,11 @@ module send_bits(clk_out, reset, Tx_WR, Tx_EN, Tx_DATA, Tx_BUSY, TxD, sum_inputs
                     next_state = 4'd0;  
             end     
             4'd11: next_state = 4'd0; //stop bit
-            default:begin   
+            default:begin //case with worng counter value   
                 TxD = 1'b1; 
                 Tx_BUSY = 1'b0; 
                 next_state = 4'd0;
-            end//xcase with worng counter value
+            end
         endcase
     end
 
