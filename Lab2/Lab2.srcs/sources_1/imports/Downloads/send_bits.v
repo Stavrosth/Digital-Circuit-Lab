@@ -1,9 +1,9 @@
-module send_bits(clk_out, reset, Tx_WR, Tx_EN, Tx_DATA, Tx_BUSY, TxD);//, current_state, next_state, select);
+module send_bits(clk_out, reset, Tx_WR, Tx_EN, Tx_DATA, Tx_BUSY, TxD, current_state, next_state, select);
     input clk_out, reset, Tx_WR, Tx_EN;
     input [7:0] Tx_DATA;
     output reg TxD, Tx_BUSY;
-    reg [3:0] current_state, next_state, counter;
-    reg select;
+    output reg [3:0] current_state, next_state, counter;
+    output reg select;
     wire sum_inputs;
 
     assign sum_inputs = Tx_DATA[0] ^ Tx_DATA[1] ^ Tx_DATA[2] ^ Tx_DATA[3] ^ Tx_DATA[4] ^ Tx_DATA[5] ^ Tx_DATA[6] ^ Tx_DATA[7];
@@ -101,7 +101,7 @@ module send_bits(clk_out, reset, Tx_WR, Tx_EN, Tx_DATA, Tx_BUSY, TxD);//, curren
                     next_state = 4'd0;  
             end     
             4'd11: next_state = 4'd0; //stop bit
-            default:begin //case with worng counter value   
+            default:begin    
                 TxD = 1'b1; 
                 Tx_BUSY = 1'b0; 
                 next_state = 4'd0;
