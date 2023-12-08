@@ -119,9 +119,11 @@ module send_bits(clk_out, reset, Tx_WR, Tx_EN, Tx_DATA, Tx_BUSY, TxD);//, curren
             select <= 1'b0;
         end else
             current_state <= next_state;
+    end
 
+    always @(posedge clk_out) begin
         //controls the select signal and enables it for 11 cycles when a new signal has arrived
-        if (Tx_WR == 1'b1) begin
+        if (Tx_WR == 1'b1 || reset == 1'b0) begin
             counter <= counter + 1'b1;
             select <= 1'b1;//0
         end else if ( counter > 4'd0 && counter < 4'd12) begin
@@ -130,6 +132,6 @@ module send_bits(clk_out, reset, Tx_WR, Tx_EN, Tx_DATA, Tx_BUSY, TxD);//, curren
         end else begin
             counter <= 4'd0;
             select <= 1'b0;
-        end 
+        end
     end
 endmodule

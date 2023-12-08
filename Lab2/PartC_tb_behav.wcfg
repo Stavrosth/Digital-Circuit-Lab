@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="1405801666667fs"></ZoomStartTime>
-      <ZoomEndTime time="1536501666668fs"></ZoomEndTime>
-      <Cursor1Time time="1421185000000fs"></Cursor1Time>
+      <ZoomStartTime time="2940064166666fs"></ZoomStartTime>
+      <ZoomEndTime time="14180699166667fs"></ZoomEndTime>
+      <Cursor1Time time="12307260000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="152"></NameColumnWidth>
+      <NameColumnWidth column_width="142"></NameColumnWidth>
       <ValueColumnWidth column_width="72"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="17" />
+   <WVObjectSize size="15" />
    <wvobject fp_name="/PartC_tb/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -48,10 +48,6 @@
       <obj_property name="ElementShortName">Rx_VALID</obj_property>
       <obj_property name="ObjectShortName">Rx_VALID</obj_property>
    </wvobject>
-   <wvobject fp_name="/PartC_tb/clk_out_slow" type="logic">
-      <obj_property name="ElementShortName">clk_out_slow</obj_property>
-      <obj_property name="ObjectShortName">clk_out_slow</obj_property>
-   </wvobject>
    <wvobject fp_name="/PartC_tb/RxD" type="logic">
       <obj_property name="ElementShortName">RxD</obj_property>
       <obj_property name="ObjectShortName">RxD</obj_property>
@@ -69,18 +65,6 @@
       <obj_property name="ObjectShortName">temp[7:0]</obj_property>
       <obj_property name="Radix">BINARYRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/PartC_tb/select_begin" type="logic">
-      <obj_property name="ElementShortName">select_begin</obj_property>
-      <obj_property name="ObjectShortName">select_begin</obj_property>
-   </wvobject>
-   <wvobject fp_name="/PartC_tb/starter" type="logic">
-      <obj_property name="ElementShortName">starter</obj_property>
-      <obj_property name="ObjectShortName">starter</obj_property>
-   </wvobject>
-   <wvobject fp_name="/PartC_tb/counter_begin" type="array">
-      <obj_property name="ElementShortName">counter_begin[4:0]</obj_property>
-      <obj_property name="ObjectShortName">counter_begin[4:0]</obj_property>
-   </wvobject>
    <wvobject fp_name="/PartC_tb/Rx_DATA" type="array">
       <obj_property name="ElementShortName">Rx_DATA[7:0]</obj_property>
       <obj_property name="ObjectShortName">Rx_DATA[7:0]</obj_property>
@@ -89,5 +73,13 @@
    <wvobject fp_name="/PartC_tb/baud_select" type="array">
       <obj_property name="ElementShortName">baud_select[2:0]</obj_property>
       <obj_property name="ObjectShortName">baud_select[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PartC_tb/select" type="array">
+      <obj_property name="ElementShortName">select[1:0]</obj_property>
+      <obj_property name="ObjectShortName">select[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PartC_tb/rceive_test/receive/counter" type="array">
+      <obj_property name="ElementShortName">counter[4:0]</obj_property>
+      <obj_property name="ObjectShortName">counter[4:0]</obj_property>
    </wvobject>
 </wave_config>

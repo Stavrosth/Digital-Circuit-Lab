@@ -34,13 +34,13 @@ module PartD_tb;
     end
 
     always @(posedge clk) begin
-        if ( select_data == 2'b0) Tx_DATA <= 8'b10101010;  
-        else if ( select_data == 3'b001) Tx_DATA <= 8'b1010101; 
-        else if ( select_data == 3'b010) Tx_DATA <= 8'b11001100;
-        else if ( select_data == 3'b011) Tx_DATA <= 8'b10001001;
+        if ( select_data == 3'b000) begin Tx_DATA <= 8'b10101010;  Tx_WR <= 1'b1; end
+        else if ( select_data == 3'b001) begin Tx_DATA <= 8'b1010101; Tx_WR = 1'b1; end
+        else if ( select_data == 3'b010) begin Tx_DATA <= 8'b11001100; Tx_WR = 1'b1; end
+        else if ( select_data == 3'b011) begin Tx_DATA <= 8'b10001001; Tx_WR = 1'b1; end
         else if ( select_data == 3'b100) $finish;
 
-        Tx_WR = 1'b1;
+        Tx_WR <= 1'b1;
         if (Tx_BUSY == 1'b1 ) begin 
             busy_check <= 1'b1; 
             Tx_WR <= 1'b0; 
@@ -52,10 +52,5 @@ module PartD_tb;
             receive_check <= 1'b0;
             select_data <= select_data + 1'b1;
         end
-
-
-
     end
-
-
 endmodule
