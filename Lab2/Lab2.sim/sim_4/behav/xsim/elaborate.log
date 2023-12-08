@@ -14,7 +14,6 @@ Compiling module xil_defaultlib.baud_controller
 Compiling module xil_defaultlib.clk_multiplier
 Compiling module xil_defaultlib.send_bits
 Compiling module xil_defaultlib.uart_transmitter
-Compiling module xil_defaultlib.ckl_multiplier
 Compiling module xil_defaultlib.receive_bits
 Compiling module xil_defaultlib.uart_receiver
 Compiling module xil_defaultlib.UART

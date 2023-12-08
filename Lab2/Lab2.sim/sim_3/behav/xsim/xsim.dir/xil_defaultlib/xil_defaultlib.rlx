@@ -3,7 +3,7 @@
 Dec  7 2018
 00:33:28
 C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.sim/sim_3/behav/xsim/glbl.v,1544155481,verilog,,,,glbl,,,,,,,,
-C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.srcs/sim_3/new/PartC_tb.v,1702036326,verilog,,,,PartC_tb,,,,,,,,
+C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.srcs/sim_3/new/PartC_tb.v,1702047009,verilog,,,,PartC_tb,,,,,,,,
 C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.srcs/sources_1/imports/Downloads/PartA.v,1701280207,verilog,,C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.srcs/sources_1/imports/Downloads/PartC.v,,baud_controller,,,,,,,,
-C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.srcs/sources_1/imports/Downloads/PartC.v,1702036780,verilog,,C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.srcs/sources_1/imports/Downloads/receive_bits.v,,uart_receiver,,,,,,,,
-C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.srcs/sources_1/imports/Downloads/receive_bits.v,1702037319,verilog,,C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.srcs/sim_3/new/PartC_tb.v,,receive_bits,,,,,,,,
+C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.srcs/sources_1/imports/Downloads/PartC.v,1702046995,verilog,,C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.srcs/sources_1/imports/Downloads/receive_bits.v,,uart_receiver,,,,,,,,
+C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.srcs/sources_1/imports/Downloads/receive_bits.v,1702060717,verilog,,C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.srcs/sim_3/new/PartC_tb.v,,receive_bits,,,,,,,,

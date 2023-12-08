@@ -10,10 +10,10 @@ module PartC_tb;
     wire [3:0] current_state, next_state;
     wire [4:0] counter;
     wire [7:0] temp;
-    wire clk_out;
+    wire clk_out, starter;
     wire [1:0] select;
 
-    uart_receiver rceive_test(reset, clk, Rx_DATA, baud_select, Rx_EN, RxD, Rx_FERROR, Rx_PERROR, Rx_VALID, current_state, next_state, counter, temp, select, clk_out);
+    uart_receiver rceive_test(reset, clk, Rx_DATA, baud_select, Rx_EN, RxD, Rx_FERROR, Rx_PERROR, Rx_VALID, current_state, next_state, counter, temp, select, clk_out, starter);
 
     //initializes the clk and reset values
     initial begin clk = 1'b0; reset = 1'b0; end
