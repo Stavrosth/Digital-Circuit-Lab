@@ -1,9 +1,9 @@
-module send_bits(clk_out, reset, Tx_WR, Tx_EN, Tx_DATA, Tx_BUSY, TxD, current_state, next_state, select, counter);
+module send_bits(clk_out, reset, Tx_WR, Tx_EN, Tx_DATA, Tx_BUSY, TxD);//, current_state, next_state, select, counter);
     input clk_out, reset, Tx_WR, Tx_EN;
     input [7:0] Tx_DATA;
     output reg TxD, Tx_BUSY;
-    output reg [3:0] current_state, next_state, counter;
-    output reg select;
+    reg [3:0] current_state, next_state, counter;
+    reg select;
     wire sum_inputs;
 
     assign sum_inputs = Tx_DATA[0] ^ Tx_DATA[1] ^ Tx_DATA[2] ^ Tx_DATA[3] ^ Tx_DATA[4] ^ Tx_DATA[5] ^ Tx_DATA[6] ^ Tx_DATA[7];
@@ -94,6 +94,7 @@ module send_bits(clk_out, reset, Tx_WR, Tx_EN, Tx_DATA, Tx_BUSY, TxD, current_st
             end    
             4'd10:begin 
                 TxD = sum_inputs; //parity bit
+                Tx_BUSY = 1'b1;
                 if (select == 1'b1)
                     next_state = 4'd11;
                 else
@@ -101,7 +102,7 @@ module send_bits(clk_out, reset, Tx_WR, Tx_EN, Tx_DATA, Tx_BUSY, TxD, current_st
             end     
             4'd11:begin 
                 next_state = 4'd0; //stop bit
-                Tx_BUSY = 1'b1;
+                Tx_BUSY = 1'b0;
             end
             default:begin    
                 TxD = 1'b1; 
@@ -122,7 +123,7 @@ module send_bits(clk_out, reset, Tx_WR, Tx_EN, Tx_DATA, Tx_BUSY, TxD, current_st
         //controls the select signal and enables it for 11 cycles when a new signal has arrived
         if (Tx_WR == 1'b1) begin
             counter <= counter + 1'b1;
-            select <= 1'b0;
+            select <= 1'b1;//0
         end else if ( counter > 4'd0 && counter < 4'd12) begin
             counter <= counter + 1'b1;
             select <= 1'b1;

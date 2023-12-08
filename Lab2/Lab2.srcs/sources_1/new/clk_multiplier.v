@@ -1,7 +1,7 @@
-module ckl_multiplier(clk_out, clk_out_slow, counter);
+module ckl_multiplier(clk_out, clk_out_slow);
     input clk_out;
     output reg clk_out_slow;
-    output reg [3:0] counter=4'b0;
+    reg [3:0] counter=4'b0;
 
     always @(posedge clk_out) begin 
         counter <= counter + 1'b1;

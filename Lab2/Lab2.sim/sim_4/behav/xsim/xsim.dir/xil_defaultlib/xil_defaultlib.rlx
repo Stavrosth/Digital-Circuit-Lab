@@ -1,0 +1,14 @@
+0.6
+2018.3
+Dec  7 2018
+00:33:28
+C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.sim/sim_4/behav/xsim/glbl.v,1544155481,verilog,,,,glbl,,,,,,,,
+C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.srcs/sim_4/new/PartD_tb.v,1701991578,verilog,,,,PartD_tb,,,,,,,,
+C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.srcs/sources_1/imports/Downloads/PartA.v,1701456835,verilog,,C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.srcs/sources_1/imports/Downloads/PartB.v,,baud_controller,,,,,,,,
+C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.srcs/sources_1/imports/Downloads/PartB.v,1701991109,verilog,,C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.srcs/sources_1/imports/Downloads/PartC.v,,uart_transmitter,,,,,,,,
+C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.srcs/sources_1/imports/Downloads/PartC.v,1701991118,verilog,,C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.srcs/sources_1/new/PartD.v,,uart_receiver,,,,,,,,
+C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.srcs/sources_1/imports/Downloads/receive_bits.v,1701991700,verilog,,C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.srcs/sources_1/imports/Downloads/send_bits.v,,receive_bits,,,,,,,,
+C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.srcs/sources_1/imports/Downloads/send_bits.v,1701993000,verilog,,C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.srcs/sim_4/new/PartD_tb.v,,send_bits,,,,,,,,
+C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.srcs/sources_1/new/PartD.v,1701992798,verilog,,C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.srcs/sources_1/new/clk_multiplier.v,,UART,,,,,,,,
+C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.srcs/sources_1/new/clk_multiplier.v,1701991178,verilog,,C:/Users/sstat/Downloads/clk_multiplier.v,,ckl_multiplier,,,,,,,,
+C:/Users/sstat/Downloads/clk_multiplier.v,1701467203,verilog,,C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.srcs/sources_1/imports/Downloads/receive_bits.v,,clk_multiplier,,,,,,,,
