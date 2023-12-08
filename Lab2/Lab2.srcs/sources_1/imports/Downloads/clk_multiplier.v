@@ -1,3 +1,4 @@
+/* Has as an output a signal that is 16 times slower than the inputed clock*/
 module ckl_multiplier(clk_out, clk_out_slow);
     input clk_out;
     output reg clk_out_slow;

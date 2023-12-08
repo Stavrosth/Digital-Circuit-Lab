@@ -4,9 +4,6 @@ module send_bits(clk_out, reset, Tx_WR, Tx_EN, Tx_DATA, Tx_BUSY, TxD);//, curren
     output reg TxD, Tx_BUSY;
     reg [3:0] current_state, next_state, counter;
     reg select;
-    wire sum_inputs;
-
-    assign sum_inputs = Tx_DATA[0] ^ Tx_DATA[1] ^ Tx_DATA[2] ^ Tx_DATA[3] ^ Tx_DATA[4] ^ Tx_DATA[5] ^ Tx_DATA[6] ^ Tx_DATA[7];
 
     //transmits the data in serial mode
     always @(current_state or counter) begin
@@ -92,8 +89,8 @@ module send_bits(clk_out, reset, Tx_WR, Tx_EN, Tx_DATA, Tx_BUSY, TxD);//, curren
                 else
                     next_state = 4'd0;
             end    
-            4'd10:begin 
-                TxD = sum_inputs; //parity bit
+            4'd10:begin //calculates and sends the parity bit
+                TxD = Tx_DATA[0] ^ Tx_DATA[1] ^ Tx_DATA[2] ^ Tx_DATA[3] ^ Tx_DATA[4] ^ Tx_DATA[5] ^ Tx_DATA[6] ^ Tx_DATA[7]; 
                 Tx_BUSY = 1'b1;
                 if (select == 1'b1)
                     next_state = 4'd11;
@@ -112,20 +109,23 @@ module send_bits(clk_out, reset, Tx_WR, Tx_EN, Tx_DATA, Tx_BUSY, TxD);//, curren
         endcase
     end
 
+    //sequential always of the FSM
     always @(posedge clk_out) begin
         if ( reset == 1'b1 || Tx_EN == 1'b0) begin //asynchronoys reset
             current_state <= 4'd0;
             counter <= 4'd0;
             select <= 1'b0;
         end else
-            current_state <= next_state;
+            current_state <= next_state; //moves the fsm to the next state
     end
 
+    /*        Always Block that is NOT included in the fsm
+      controls the select signal and enables it for 11 cycles when a new 
+      signal has arrived because Tx_Wr is only active for one cycle*/
     always @(posedge clk_out) begin
-        //controls the select signal and enables it for 11 cycles when a new signal has arrived
         if (Tx_WR == 1'b1 || reset == 1'b0) begin
             counter <= counter + 1'b1;
-            select <= 1'b1;//0
+            select <= 1'b1;
         end else if ( counter > 4'd0 && counter < 4'd12) begin
             counter <= counter + 1'b1;
             select <= 1'b1;

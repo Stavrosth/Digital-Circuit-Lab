@@ -14,11 +14,17 @@ module PartA_tb;
     //Clock generation of 100 MHz
     always #5 clk = ~clk;
 
+    //tests all the valuse of the baud select in order to test all the baud rates
     initial begin
         #500 reset = 1'b1;
         #200 reset = 1'b0;
         #500 baud_select = 3'b000;
+        #1000000 baud_select = 3'b001;
+        #1000000 baud_select = 3'b010;
         #1000000 baud_select = 3'b100;
+        #1000000 baud_select = 3'b101;
+        #1000000 baud_select = 3'b110;
+        #1000000 baud_select = 3'b111;
     end 
 
 endmodule
