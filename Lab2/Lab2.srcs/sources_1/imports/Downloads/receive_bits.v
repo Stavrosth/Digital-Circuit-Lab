@@ -3,13 +3,12 @@ module receive_bits(clk_out, reset, Rx_EN, RxD, Rx_DATA, Rx_FERROR, Rx_PERROR, R
     output reg Rx_FERROR, Rx_PERROR, Rx_VALID;
     output reg [7:0] Rx_DATA;
 
-    /* Test Parameters 
-    output reg [3:0] counter;
-    output reg [3:0] current_state, next_state;
-    output reg [1:0] select;
-    output reg [7:0] temp;
-    output reg starter;
-    reg [2:0] second_counter;*/
+    /* Test Parameters */
+    reg [3:0] current_state, next_state, counter;
+    reg [1:0] select;
+    reg [7:0] temp;
+    reg starter;
+    reg [2:0] second_counter;
 
     //combinational always
     always @(current_state or select) begin
@@ -138,7 +137,7 @@ module receive_bits(clk_out, reset, Rx_EN, RxD, Rx_DATA, Rx_FERROR, Rx_PERROR, R
     //FSM sequentional block
     always @(posedge clk_out) begin
         if (reset == 1'b1 || Rx_EN == 1'b0) begin
-            current_state <= 4'd0;
+            current_state <= 4'b0;
             temp <= 8'b11111111;
         end else
             current_state <= next_state; //moves the FSM to the next state
@@ -163,10 +162,10 @@ module receive_bits(clk_out, reset, Rx_EN, RxD, Rx_DATA, Rx_FERROR, Rx_PERROR, R
             //enables the receiver to receive data every 16 cycles because the clock of the transmiter is 16 times slower
             if (select == 2'b01 && current_state > 4'b0) begin
                 select <= 2'b10;
-                counter <= 4'd0;
+                counter <= 4'b0;
             end else if ( counter == 4'd14 ) begin
                 select <= 2'b01;
-                counter <= 4'd0;
+                counter <= 4'b0;
             end else if (starter == 1'b1) begin
                 counter <= counter + 1'b1;
                 second_counter <= 3'b0;

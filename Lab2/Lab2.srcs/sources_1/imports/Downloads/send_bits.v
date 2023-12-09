@@ -123,15 +123,15 @@ module send_bits(clk_out, reset, Tx_WR, Tx_EN, Tx_DATA, Tx_BUSY, TxD);//, curren
       controls the select signal and enables it for 11 cycles when a new 
       signal has arrived because Tx_Wr is only active for one cycle*/
     always @(posedge clk_out) begin
-        if (Tx_WR == 1'b1 || reset == 1'b0) begin
+        if (reset == 1'b1) begin
+            counter <= 4'd0;
+            select <= 1'b0;
+        end else if (Tx_WR == 1'b1 || reset == 1'b0) begin
             counter <= counter + 1'b1;
             select <= 1'b1;
         end else if ( counter > 4'd0 && counter < 4'd12) begin
             counter <= counter + 1'b1;
             select <= 1'b1;
-        end else begin
-            counter <= 4'd0;
-            select <= 1'b0;
         end
     end
 endmodule
