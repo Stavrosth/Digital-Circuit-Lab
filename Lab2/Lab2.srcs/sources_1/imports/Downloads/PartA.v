@@ -5,14 +5,14 @@ module baud_controller(reset, clk, baud_select, sample_ENABLE);//, counter_out);
     input reset, clk;
     input [2:0] baud_select;
     output reg sample_ENABLE;
-    reg [14:0] counter=15'b0, target_counter;
+    reg [18:0] counter=15'b0, target_counter;
  //output [14:0] counter_out; assign counter_out = counter;
     
     //based on the desired baud rate, a corresponding counter lmit is selected
     always @(posedge clk) begin
       case (baud_select)
-        3'b000: target_counter <= 15'd20833; //20833,33 ~ 20833
-        3'b001: target_counter <= 15'd5208;  //5208,33 ~ 5208
+        3'b000: target_counter <= 15'd20833; //20833,33 ~ 20833 
+        3'b001: target_counter <= 15'd5208;  //5208,33 ~ 5208    
         3'b010: target_counter <= 15'd1302;  //1302,,083 ~ 1302
         3'b011: target_counter <= 15'd651;   //651,041 ~ 651
         3'b100: target_counter <= 15'd325;   //325,52 ~ 325

@@ -16,5 +16,5 @@ module uart_receiver(reset, clk, Rx_DATA, baud_select, Rx_EN, RxD, Rx_FERROR, Rx
     baud_controller baud_controller_rx_inst(.reset(reset), .clk(clk), .baud_select(baud_select), .sample_ENABLE(clk_out));
 
     //FSM that implements the receiver
-    receive_bits receive(.clk_out(clk_out), .reset(reset), .Rx_EN(Rx_EN), .RxD(RxD), .Rx_DATA(Rx_DATA), .Rx_FERROR(Rx_FERROR), .Rx_PERROR(Rx_PERROR), .Rx_VALID(Rx_VALID));//, .current_state(current_state), .next_state(next_state), .counter(counter), .temp(temp), .select(select), .starter(starter));
+    receive_bits receive(.clk(clk), .clk_out(clk_out), .reset(reset), .Rx_EN(Rx_EN), .RxD(RxD), .Rx_DATA(Rx_DATA), .Rx_FERROR(Rx_FERROR), .Rx_PERROR(Rx_PERROR), .Rx_VALID(Rx_VALID));//, .current_state(current_state), .next_state(next_state), .counter(counter), .temp(temp), .select(select), .starter(starter));
 endmodule

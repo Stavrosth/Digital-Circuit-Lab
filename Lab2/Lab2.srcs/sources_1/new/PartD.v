@@ -1,6 +1,6 @@
 module UART(clk, reset, baud_select, Tx_EN, Tx_WR, Tx_DATA, Tx_BUSY, Rx_EN, Rx_FERROR, Rx_PERROR, Rx_VALID, Rx_DATA);//, data_transfer_use);
     input clk, reset;
-    input [3:0] baud_select;
+    input [2:0] baud_select;
     wire data_transfer;
     //output data_transfer_use; assign data_transfer_use = data_transfer;
 

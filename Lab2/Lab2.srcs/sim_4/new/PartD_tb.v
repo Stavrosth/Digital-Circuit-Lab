@@ -1,6 +1,6 @@
 module PartD_tb;
     reg clk, reset;
-    reg [3:0] baud_select;
+    reg [2:0] baud_select;
     wire data_transfer;
 
     //Transmitter
@@ -26,7 +26,7 @@ module PartD_tb;
     always #5 clk = ~clk;
 
     initial begin
-        baud_select = 3'b100;
+        baud_select = 3'b111;
         Rx_EN = 1'b1;
         Tx_EN = 1'b1;
         reset = 1'b1;

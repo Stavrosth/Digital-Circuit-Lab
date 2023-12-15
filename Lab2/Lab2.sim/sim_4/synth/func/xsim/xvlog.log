@@ -1,0 +1,12 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.sim/sim_4/synth/func/xsim/PartD_tb_func_synth.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module UART
+INFO: [VRFC 10-311] analyzing module baud_controller
+INFO: [VRFC 10-311] analyzing module baud_controller_0
+INFO: [VRFC 10-311] analyzing module ckl_multiplier
+INFO: [VRFC 10-311] analyzing module receive_bits
+INFO: [VRFC 10-311] analyzing module send_bits
+INFO: [VRFC 10-311] analyzing module uart_receiver
+INFO: [VRFC 10-311] analyzing module uart_transmitter
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.srcs/sim_4/new/PartD_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module PartD_tb

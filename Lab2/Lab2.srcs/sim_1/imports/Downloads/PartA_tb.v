@@ -19,7 +19,7 @@ module PartA_tb;
         #500 reset = 1'b1;
         #200 reset = 1'b0;
         #500 baud_select = 3'b000;
-        #1000000 baud_select = 3'b001;
+        #10000000 baud_select = 3'b001;
         #1000000 baud_select = 3'b010;
         #1000000 baud_select = 3'b100;
         #1000000 baud_select = 3'b101;
