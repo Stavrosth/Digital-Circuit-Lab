@@ -5,7 +5,7 @@ Using 2 slave threads.
 Starting static elaboration
 Completed static elaboration
 Starting simulation data flow analysis
-WARNING: [XSIM 43-4100] "C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.sim/sim_4/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+WARNING: [XSIM 43-4100] "C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.sim/sim_4/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
 Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
 Compiling module xil_defaultlib.baud_controller

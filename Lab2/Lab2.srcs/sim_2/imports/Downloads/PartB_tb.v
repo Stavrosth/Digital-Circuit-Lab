@@ -16,7 +16,7 @@ module PartB_tb;
     always #5 clk = ~clk;
 
     initial begin
-        baud_select = 3'b0;
+        baud_select = 3'b111;
         Tx_DATA = 8'b10101010;
         Tx_WR = 1'b0;
         Tx_EN = 1'b1;

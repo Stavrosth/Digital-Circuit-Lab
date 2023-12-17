@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1702667885">
+<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1702842412">
   <File Type="PA-TCL" Name="UART.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="UART_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="UART_reports.tcl"/>
@@ -38,7 +38,7 @@
     </File>
     <File Path="$PSRCDIR/sources_1/imports/Downloads/clk_multiplier.v">
       <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../Downloads/clk_multiplier.v"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../Downloads/clk_multiplier.v"/>
         <Attr Name="ImportTime" Val="1702027041"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>

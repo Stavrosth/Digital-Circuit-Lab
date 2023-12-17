@@ -133,22 +133,19 @@ module receive_bits(clk, clk_out, reset, Rx_EN, RxD, Rx_DATA, Rx_FERROR, Rx_PERR
     //FSM sequentional block
     always @(posedge clk or posedge reset) begin
         if (reset == 1'b1)
-            current_state <= 4'b0;
+            current_state <= 4'b0; 
         else begin
             if ( clk_out == 1'b1) begin
                 if ( Rx_EN == 1'b0)
                     current_state <= 4'b0;
-                else begin
+                else
                     current_state <= next_state; //moves the FSM to the next state
-                    if ( save_data < 4'd8)
-                        temp[save_data] <= RxD;
-                end
             end
         end
     end
 
     //checks the RXD value 16 times faster than the transmitter sends
-    always @(posedge clk) begin 
+    always @(posedge clk or posedge reset) begin 
         /*resets all the necessary values when reset is one
           or when the system needs to be ready to receive new signals*/
         if (reset == 1'b1) begin
@@ -156,8 +153,15 @@ module receive_bits(clk, clk_out, reset, Rx_EN, RxD, Rx_DATA, Rx_FERROR, Rx_PERR
             second_counter <= 3'b0;
             select <= 2'b00;
             starter <= 1'b0;
+            temp <= 8'b11111111;
         end else begin
             if ( clk_out == 1'b1) begin
+
+                if ( Rx_EN != 1'b0) begin
+                    if ( save_data < 4'd8)
+                        temp[save_data] <= RxD;
+                end
+            
                 if ( next_state == 4'b0 && select == 2'b01) begin 
                     counter <= 4'b0;
                     second_counter <= 3'b0;

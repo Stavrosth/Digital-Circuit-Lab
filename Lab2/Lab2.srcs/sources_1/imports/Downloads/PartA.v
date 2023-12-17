@@ -24,7 +24,7 @@ module baud_controller(reset, clk, baud_select, sample_ENABLE);//, counter_out);
 
     //changes the enable signal once every time the couter has reached its target value
     always @(posedge clk or posedge reset) begin
-        if ( 16*target_counter <= counter) begin
+        if ( target_counter <= counter) begin
             sample_ENABLE <= 1'b1; 
             counter <= 15'b0; //resets the counter
         end else if ( counter == 15'b0 || reset == 1'b0) begin

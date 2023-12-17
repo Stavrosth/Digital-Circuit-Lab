@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="39" Path="C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.xpr">
+<Project Version="7" Minor="39" Path="C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/Lab2/Lab2.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="dd36bb68b27e4e7a990bf431dba52324"/>
@@ -33,7 +33,7 @@
     <Option Name="DSAVendor" Val="xilinx"/>
     <Option Name="DSABoardId" Val="nexys-a7-100t"/>
     <Option Name="DSANumComputeUnits" Val="60"/>
-    <Option Name="WTXSimLaunchSim" Val="708"/>
+    <Option Name="WTXSimLaunchSim" Val="718"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
@@ -88,7 +88,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/Downloads/clk_multiplier.v">
         <FileInfo RelPath="clk_multiplier.v">
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../../../Downloads/clk_multiplier.v"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../../Downloads/clk_multiplier.v"/>
           <Attr Name="ImportTime" Val="1702027041"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -242,9 +242,9 @@
         <Option Name="TopAutoSet" Val="TRUE"/>
         <Option Name="TransportPathDelay" Val="0"/>
         <Option Name="TransportIntDelay" Val="0"/>
+        <Option Name="SimMode" Val="post-synthesis"/>
         <Option Name="SrcSet" Val="sources_1"/>
         <Option Name="XSimWcfgFile" Val="$PPRDIR/PartD_tb_behav.wcfg"/>
-        <Option Name="NLNetlistMode" Val="funcsim"/>
       </Config>
     </FileSet>
   </FileSets>
