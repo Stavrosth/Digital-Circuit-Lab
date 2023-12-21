@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="PartC_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="PartC_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="1432339166666fs"></ZoomStartTime>
+      <ZoomEndTime time="21295634166667fs"></ZoomEndTime>
+      <Cursor1Time time="17985085000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="137"></NameColumnWidth>
+      <ValueColumnWidth column_width="64"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="9" />
+   <wvobject fp_name="/PartC_tb/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PartC_tb/reset" type="logic">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PartC_tb/Vsync" type="logic">
+      <obj_property name="ElementShortName">Vsync</obj_property>
+      <obj_property name="ObjectShortName">Vsync</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PartC_tb/Vsync_allow" type="logic">
+      <obj_property name="ElementShortName">Vsync_allow</obj_property>
+      <obj_property name="ObjectShortName">Vsync_allow</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PartC_tb/Vpixel" type="array">
+      <obj_property name="ElementShortName">Vpixel[6:0]</obj_property>
+      <obj_property name="ObjectShortName">Vpixel[6:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PartC_tb/testB/counter" type="array">
+      <obj_property name="ElementShortName">counter[20:0]</obj_property>
+      <obj_property name="ObjectShortName">counter[20:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PartC_tb/testB/second_counter" type="array">
+      <obj_property name="ElementShortName">second_counter[15:0]</obj_property>
+      <obj_property name="ObjectShortName">second_counter[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PartC_tb/testB/current_state" type="array">
+      <obj_property name="ElementShortName">current_state[2:0]</obj_property>
+      <obj_property name="ObjectShortName">current_state[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PartC_tb/testB/next_state" type="array">
+      <obj_property name="ElementShortName">next_state[2:0]</obj_property>
+      <obj_property name="ObjectShortName">next_state[2:0]</obj_property>
+   </wvobject>
+</wave_config>
