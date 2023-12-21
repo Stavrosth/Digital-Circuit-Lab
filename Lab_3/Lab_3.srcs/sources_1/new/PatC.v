@@ -4,6 +4,12 @@ module Vsync(clk, reset, Vsync, Vpixel, Vsync_allow);
     output reg [6:0] Vpixel;
 
     reg current_state, next_state;
+    reg [20:0] counter=21'b0;
+    //O:1667000 cycles
+    //P:6400 cycles
+    //Q:92800 cycles
+    //R:1536000 cycles
+    //S:32000 cycles
 
     //FSM
     always @(current_state) begin

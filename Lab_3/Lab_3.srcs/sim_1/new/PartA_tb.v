@@ -21,6 +21,7 @@ module PartA_tb;
         address = 14'd128;        //red=F
         #10000 address = 14'd2176;//green=F
         #10000 address = 14'd4224;//blue=F
+        #10000 address = 14'd6384;//all=F
         #10000 $finish;
     end
 
