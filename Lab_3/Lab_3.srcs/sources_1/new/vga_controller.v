@@ -16,6 +16,6 @@ module vgacontroller(reset, clk, VGA_RED, VGA_GREEN, VGA_BLUE, VGA_HSYNC, VGA_VS
     VRAMblue  blue (.DO(VGA_BLUE) , .ADDR(address), .CLK(clk), .DI(0), .EN(1), .REGCE(0), .RST(reset), .WE(0));
 
     //modules that control the vsync and hsync times for the VGA display
-    //Hsync hsync(.clk(clk), .reset(reset), .Hsync(VGA_HSYNC), .Hpixel(Hpixel), .Hsync_allow(Hsync_allow));
+    Hsync hsync(.clk(clk), .reset(reset), .Hsync(VGA_HSYNC), .Hpixel(Hpixel), .Hsync_allow(Hsync_allow));
     //Vsync vsync(.clk(clk), .reset(reset), .Vsync(VGA_VSYNC), .Vpixel(Vpixel), .Vsync_allow(Vsync_allow));
 endmodule
