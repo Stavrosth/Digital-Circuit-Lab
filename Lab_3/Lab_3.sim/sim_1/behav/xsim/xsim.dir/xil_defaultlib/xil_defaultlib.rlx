@@ -2,9 +2,8 @@
 2018.3
 Dec  7 2018
 00:33:28
-C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/Lab_3/Lab_3.sim/sim_1/behav/xsim/glbl.v,1544155481,verilog,,,,glbl,,,,,,,,
-C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/Lab_3/Lab_3.srcs/sim_1/new/PartA_tb.v,1703094770,verilog,,,,PartA_tb,,,,,,,,
-C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/Lab_3/Lab_3.srcs/sources_1/new/PartA_blue.v,1703082687,verilog,,C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/Lab_3/Lab_3.srcs/sources_1/new/PartA_green.v,,VRAMblue,,,,,,,,
-C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/Lab_3/Lab_3.srcs/sources_1/new/PartA_green.v,1703082697,verilog,,C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/Lab_3/Lab_3.srcs/sources_1/new/PartA_red.v,,VRAMgreen,,,,,,,,
-C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/Lab_3/Lab_3.srcs/sources_1/new/PartA_red.v,1703082665,verilog,,C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/Lab_3/Lab_3.srcs/sim_1/new/PartA_tb.v,,VRAMred,,,,,,,,
-C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/Lab_3/Lab_3.srcs/sources_1/new/vga_controller.v,1703082734,verilog,,,,vgacontroller,,,,,,,,
+C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/Lab_3/Lab_3.sim/sim_1/behav/xsim/glbl.v,1703090316,verilog,,,,glbl,,,,,,,,
+C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/Lab_3/Lab_3.srcs/sim_1/new/PartA_tb.v,1703182768,verilog,,,,PartA_tb,,,,,,,,
+C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/Lab_3/Lab_3.srcs/sources_1/new/PartA_blue.v,1703090316,verilog,,C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/Lab_3/Lab_3.srcs/sources_1/new/PartA_green.v,,VRAMblue,,,,,,,,
+C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/Lab_3/Lab_3.srcs/sources_1/new/PartA_green.v,1703090316,verilog,,C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/Lab_3/Lab_3.srcs/sources_1/new/PartA_red.v,,VRAMgreen,,,,,,,,
+C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/Lab_3/Lab_3.srcs/sources_1/new/PartA_red.v,1703090316,verilog,,C:/Users/sstat/Documents/GitHub/Digital-Circuit-Lab/Lab_3/Lab_3.srcs/sim_1/new/PartA_tb.v,,VRAMred,,,,,,,,

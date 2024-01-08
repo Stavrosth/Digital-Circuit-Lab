@@ -21,28 +21,28 @@ module Hsync(clk, reset, Hsync, Hpixel, Hsync_allow);
         case (current_state)
             3'd0:begin//Hsync pulse (B time)
                 Hsync = 1'b0;
-                if (counter == 11'd384)
+                if (counter == 12'd384)
                     next_state = 3'd1;
                 else
                     next_state = 3'd0;
             end 
             3'd1:begin//Back Porch (C time)
-                if (counter ==  11'd576)
+                if (counter ==  12'd576)
                     next_state = 3'd2;
                 else
                     next_state = 3'd1;
             end 
             3'd2:begin//Display time (D time)
                 Hsync_allow = 1'b1;
-                if (counter == 11'd3136)
+                if (counter == 12'd3136)
                     next_state = 3'd3;
                 else
                     next_state = 3'd2;
             end 
             3'd3: begin//Front Porch (E time)
-                if (counter == 11'd3199) begin
+                if (counter == 12'd3199) begin
                     next_state = 3'd0;
-                    counter = 11'b0;
+                    counter = 12'b0;
                 end else
                     next_state = 3'd3;
             end
