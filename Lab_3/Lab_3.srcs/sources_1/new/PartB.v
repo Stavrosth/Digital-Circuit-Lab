@@ -17,7 +17,7 @@ module Hsync(clk, reset, Hsync, Hpixel, Hsync_allow);
         next_state = current_state;        
         Hsync = 1'b1;
         Hsync_allow = 1'b0;
-
+        
         case (current_state)
             3'd0:begin//Hsync pulse (B time)
                 Hsync = 1'b0;

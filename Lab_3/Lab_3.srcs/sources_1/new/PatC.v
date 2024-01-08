@@ -51,6 +51,7 @@ module Vsync(clk, reset, Vsync, Vpixel, Vsync_allow);
                 counter = 21'b0;
                 Vsync = 1'b1;
                 Vsync_allow = 1'b0;
+                Vpixel = 7'b0;
             end
        endcase
     end

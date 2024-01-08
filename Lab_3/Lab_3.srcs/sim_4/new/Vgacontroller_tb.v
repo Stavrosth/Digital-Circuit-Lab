@@ -2,9 +2,7 @@
 
 module Vgacontroller_tb;
     reg clk, reset;
-    wire Hsync, Hsync_allow;
     wire VGA_RED, VGA_GREEN, VGA_BLUE;
-    wire [6:0] Hpixel;
 
     vgacontroller TEST(reset, clk, VGA_RED, VGA_GREEN, VGA_BLUE, VGA_HSYNC, VGA_VSYNC);
 
