@@ -21,37 +21,35 @@ module Vsync(clk, reset, Vsync, Vpixel, Vsync_allow);
        case (current_state)
             3'd0:begin//Vsync pulse (P time)
                 Vsync = 1'b0;
-                Vpixel = 7'b0;
-                if (counter == 21'd6400)
+              //  Vpixel = 7'b0;
+                if (counter == 21'd6399)
                     next_state = 3'd1;
                 else
                     next_state = 3'd0;
             end 
             3'd1:begin//Back Porch (Q time)
-                if (counter ==  21'd99200)
+                if (counter ==  21'd99199)
                     next_state = 3'd2;
                 else
                     next_state = 3'd1;
             end 
             3'd2:begin//Display time (Rtime)
                 Vsync_allow = 1'b1;
-                if (counter == 21'd1635200)
+                if (counter == 21'd1635199)
                     next_state = 3'd3;
                 else
                     next_state = 3'd2;
             end 
             3'd3: begin//Front Porch (S time)
-                if (counter == 21'd1667000) begin ////////////propably should be 1667000
+                if (counter == 21'd1667199) ////////////propably should be 1667000
                     next_state = 3'd0;
-                    counter = 21'b0;
-                end else
+                else
                     next_state = 3'd3;
             end
             default: begin
-                counter = 21'b0;
                 Vsync = 1'b1;
                 Vsync_allow = 1'b0;
-                Vpixel = 7'b0;
+               // Vpixel = 7'b0;
             end
        endcase
     end
@@ -70,12 +68,18 @@ module Vsync(clk, reset, Vsync, Vpixel, Vsync_allow);
             counter <= 21'b0;
         end else begin 
             counter <= counter + 1'b1;
+
+            if ( counter == 21'd1667199 )
+                counter <= 21'b0;
+
             if (Vsync_allow == 1'b1) begin
                 second_counter <= second_counter + 1'b1;
 
                 if (second_counter == 14'd15999) begin
                     Vpixel <= Vpixel + 1'b1;
                     second_counter <= 14'd0;
+                    if ( Vpixel == 7'd95)
+                        Vpixel <= 7'd0;
                 end
             end
         end

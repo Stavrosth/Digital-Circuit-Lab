@@ -1,0 +1,7 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"Vgacontroller_tb_time_impl.v" \
+"../../../../../Lab_3.srcs/sim_4/new/Vgacontroller_tb.v" \
+
+# Do not sort compile order
+nosort

@@ -1,6 +1,6 @@
 //Vram for blue light
-module VRAMblue(DO, ADDR, CLK, DI, EN, REGCE, RST, WE);
-      input CLK, RST, WE, REGCE, DI, EN;
+module VRAMblue(DO, ADDR, CLK, RST);
+      input CLK, RST;
       input [13:0] ADDR;
       output DO;
             
@@ -201,11 +201,11 @@ module VRAMblue(DO, ADDR, CLK, DI, EN, REGCE, RST, WE);
          .DO(DO),       // Output data, width defined by READ_WIDTH parameter
          .ADDR(ADDR),   // Input address, width defined by read/write port depth
          .CLK(CLK),     // 1-bit input clock
-         .DI(DI),       // Input data port, width defined by WRITE_WIDTH parameter
-         .EN(EN),       // 1-bit input RAM enable
-         .REGCE(REGCE), // 1-bit input output register enable
+         .DI(0),       // Input data port, width defined by WRITE_WIDTH parameter
+         .EN(1),       // 1-bit input RAM enable
+         .REGCE(0), // 1-bit input output register enable
          .RST(RST),     // 1-bit input reset
-         .WE(WE)        // Input write enable, width defined by write port depth
+         .WE(0)        // Input write enable, width defined by write port depth
       );
 
       // End of BRAM_SINGLE_MACRO_inst instantiation	

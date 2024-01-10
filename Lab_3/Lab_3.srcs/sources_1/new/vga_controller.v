@@ -11,9 +11,9 @@ module vgacontroller(reset, clk, VGA_RED, VGA_GREEN, VGA_BLUE, VGA_HSYNC, VGA_VS
     assign address = (Hsync_allow == 1'b1 && Vsync_allow == 1'b1) ? {Vpixel, Hpixel} : 14'b0;
 
     //intantiates the memories
-    VRAMred   red  (.DO(VGA_RED)  , .ADDR(address), .CLK(clk), .DI(0), .EN(1), .REGCE(0), .RST(reset), .WE(0));
-    VRAMgreen green(.DO(VGA_GREEN), .ADDR(address), .CLK(clk), .DI(0), .EN(1), .REGCE(0), .RST(reset), .WE(0));
-    VRAMblue  blue (.DO(VGA_BLUE) , .ADDR(address), .CLK(clk), .DI(0), .EN(1), .REGCE(0), .RST(reset), .WE(0));
+    VRAMred   red  (.DO(VGA_RED)  , .ADDR(address), .CLK(clk), .RST(reset));
+    VRAMgreen green(.DO(VGA_GREEN), .ADDR(address), .CLK(clk), .RST(reset));
+    VRAMblue  blue (.DO(VGA_BLUE) , .ADDR(address), .CLK(clk), .RST(reset));
 
     //modules that control the vsync and hsync times for the VGA display
     Hsync hsync(.clk(clk), .reset(reset), .Hsync(VGA_HSYNC), .Hpixel(Hpixel), .Hsync_allow(Hsync_allow));

@@ -10,7 +10,7 @@ module Hsync(clk, reset, Hsync, Hpixel, Hsync_allow);
     //B:384  cycles
     //C:192  cycles
     //D:2560 cycles
-    //E:63   cycles
+    //E:64   cycles
 
     //FSM
     always @(current_state or counter) begin
@@ -21,33 +21,31 @@ module Hsync(clk, reset, Hsync, Hpixel, Hsync_allow);
         case (current_state)
             3'd0:begin//Hsync pulse (B time)
                 Hsync = 1'b0;
-                if (counter == 12'd384)
+                if (counter == 12'd383)
                     next_state = 3'd1;
                 else
                     next_state = 3'd0;
             end 
             3'd1:begin//Back Porch (C time)
-                if (counter ==  12'd576)
+                if (counter == 12'd575)
                     next_state = 3'd2;
                 else
                     next_state = 3'd1;
             end 
             3'd2:begin//Display time (D time)
                 Hsync_allow = 1'b1;
-                if (counter == 12'd3136)
+                if (counter == 12'd3135)
                     next_state = 3'd3;
                 else
                     next_state = 3'd2;
             end 
             3'd3: begin//Front Porch (E time)
-                if (counter == 12'd3199) begin
+                if (counter == 12'd3199)
                     next_state = 3'd0;
-                    counter = 12'b0;
-                end else
+                else
                     next_state = 3'd3;
             end
             default: begin
-                counter = 12'b0;
                 Hsync = 1'b1;
                 Hsync_allow = 1'b0;
             end
@@ -68,6 +66,10 @@ module Hsync(clk, reset, Hsync, Hpixel, Hsync_allow);
             counter <= 12'b0;
         end else begin 
             counter <= counter + 1'b1;
+            
+            if ( counter == 12'd3199 )
+                counter <= 12'b0;
+
             if (Hsync_allow == 1'b1) begin
                 second_counter <= second_counter + 1'b1;
 
