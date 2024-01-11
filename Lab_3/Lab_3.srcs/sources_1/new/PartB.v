@@ -4,7 +4,7 @@ module Hsync(clk, reset, Hsync, Hpixel, Hsync_allow);
     output reg [6:0] Hpixel;
 
     reg [2:0] current_state, next_state;
-    reg [4:0] second_counter;
+    reg [5:0] second_counter;
     reg [11:0] counter;
     //A:3200 cycles
     //B:384  cycles
@@ -62,7 +62,7 @@ module Hsync(clk, reset, Hsync, Hpixel, Hsync_allow);
     always @(posedge clk or posedge reset) begin
         if ( reset == 1'b1) begin
             Hpixel <= 7'b0;
-            second_counter <= 5'b0;
+            second_counter <= 6'b0;
             counter <= 12'b0;
         end else begin 
             counter <= counter + 1'b1;
@@ -73,9 +73,9 @@ module Hsync(clk, reset, Hsync, Hpixel, Hsync_allow);
             if (Hsync_allow == 1'b1) begin
                 second_counter <= second_counter + 1'b1;
 
-                if (second_counter == 5'd19) begin
+                if (second_counter == 6'd32) begin
                     Hpixel <= Hpixel + 1'b1;
-                    second_counter <= 5'd0;
+                    second_counter <= 6'd0;
                 end
             end
         end

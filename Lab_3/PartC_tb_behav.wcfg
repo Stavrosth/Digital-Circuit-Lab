@@ -3,7 +3,7 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="Vgacontroller_tb_behav.wdb" id="1">
+      <db_ref path="Vgacontroller_tb_time_impl.wdb" id="1">
          <top_modules>
             <top_module name="Vgacontroller_tb" />
             <top_module name="glbl" />
@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="24489720366377fs"></ZoomStartTime>
-      <ZoomEndTime time="70209545926725fs"></ZoomEndTime>
-      <Cursor1Time time="62589575000000fs"></Cursor1Time>
+      <ZoomStartTime time="14876293721333fs"></ZoomStartTime>
+      <ZoomEndTime time="28276293721334fs"></ZoomEndTime>
+      <Cursor1Time time="26042960388000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="124"></NameColumnWidth>
+      <NameColumnWidth column_width="119"></NameColumnWidth>
       <ValueColumnWidth column_width="72"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="7" />
+   <WVObjectSize size="9" />
    <wvobject fp_name="/Vgacontroller_tb/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -47,5 +47,13 @@
    <wvobject fp_name="/Vgacontroller_tb/VGA_VSYNC" type="logic">
       <obj_property name="ElementShortName">VGA_VSYNC</obj_property>
       <obj_property name="ObjectShortName">VGA_VSYNC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Vgacontroller_tb/TEST/hsync/Hpixel" type="array">
+      <obj_property name="ElementShortName">Hpixel[6:0]</obj_property>
+      <obj_property name="ObjectShortName">Hpixel[6:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Vgacontroller_tb/TEST/vsync/Vpixel" type="array">
+      <obj_property name="ElementShortName">Vpixel[6:0]</obj_property>
+      <obj_property name="ObjectShortName">Vpixel[6:0]</obj_property>
    </wvobject>
 </wave_config>

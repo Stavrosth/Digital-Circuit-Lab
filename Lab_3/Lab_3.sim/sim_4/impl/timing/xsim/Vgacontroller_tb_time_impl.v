@@ -1,7 +1,7 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-// Date        : Wed Jan 10 15:36:14 2024
+// Date        : Wed Jan 10 19:48:28 2024
 // Host        : stavros running 64-bit major release  (build 9200)
 // Command     : write_verilog -mode timesim -nolib -sdf_anno true -force -file
 //               C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/Lab_3/Lab_3.sim/sim_4/impl/timing/xsim/Vgacontroller_tb_time_impl.v
@@ -451,74 +451,55 @@ module BRAM_SINGLE_MACRO__parameterized1
 endmodule
 
 module Hsync
-   (current_state,
-    VGA_HSYNC_OBUF,
+   (VGA_HSYNC_OBUF,
+    current_state,
     ADDRARDADDR,
+    current_state_0,
     CLK,
-    AR,
-    current_state_0);
-  output [1:0]current_state;
+    AR);
   output VGA_HSYNC_OBUF;
+  output [1:0]current_state;
   output [6:0]ADDRARDADDR;
+  input [1:0]current_state_0;
   input CLK;
   input [0:0]AR;
-  input [1:0]current_state_0;
 
   wire [6:0]ADDRARDADDR;
   wire [0:0]AR;
   wire CLK;
   wire \FSM_sequential_current_state[0]_i_2_n_0 ;
-  wire \FSM_sequential_current_state[0]_i_3__0_n_0 ;
+  wire \FSM_sequential_current_state[0]_i_3_n_0 ;
   wire \FSM_sequential_current_state[0]_i_4_n_0 ;
   wire \FSM_sequential_current_state[0]_i_5_n_0 ;
+  wire \FSM_sequential_current_state[0]_i_6_n_0 ;
   wire \FSM_sequential_current_state[1]_i_2_n_0 ;
   wire \FSM_sequential_current_state[1]_i_3_n_0 ;
   wire \FSM_sequential_current_state[1]_i_4_n_0 ;
   wire \FSM_sequential_current_state[1]_i_5_n_0 ;
   wire \FSM_sequential_current_state[1]_i_6_n_0 ;
-  wire \FSM_sequential_current_state[1]_i_7__0_n_0 ;
-  wire \FSM_sequential_current_state[1]_i_8_n_0 ;
   wire [6:0]Hpixel;
   wire \Hpixel[6]_i_1_n_0 ;
   wire \Hpixel[6]_i_3_n_0 ;
   wire Hsync_allow;
   wire VGA_HSYNC_OBUF;
-  wire [11:1]counter0;
+  wire [11:0]counter;
   wire counter0_carry__0_n_0;
   wire counter0_carry_n_0;
-  wire \counter[0]_i_2_n_0 ;
-  wire \counter[0]_i_3_n_0 ;
-  wire \counter[0]_i_4_n_0 ;
-  wire \counter[0]_i_5_n_0 ;
-  wire \counter[0]_i_6__0_n_0 ;
-  wire \counter[0]_i_7_n_0 ;
-  wire \counter[0]_i_8_n_0 ;
-  wire \counter[0]_i_9_n_0 ;
-  wire \counter[4]_i_2_n_0 ;
-  wire \counter[4]_i_3_n_0 ;
-  wire \counter[4]_i_4_n_0 ;
-  wire \counter[4]_i_5_n_0 ;
-  wire \counter[8]_i_2_n_0 ;
-  wire \counter[8]_i_3_n_0 ;
-  wire \counter[8]_i_4_n_0 ;
-  wire \counter[8]_i_5_n_0 ;
-  wire [11:0]counter_reg;
-  wire \counter_reg[0]_i_1_n_0 ;
-  wire \counter_reg[0]_i_1_n_4 ;
-  wire \counter_reg[0]_i_1_n_5 ;
-  wire \counter_reg[0]_i_1_n_6 ;
-  wire \counter_reg[0]_i_1_n_7 ;
-  wire \counter_reg[4]_i_1_n_0 ;
-  wire \counter_reg[4]_i_1_n_4 ;
-  wire \counter_reg[4]_i_1_n_5 ;
-  wire \counter_reg[4]_i_1_n_6 ;
-  wire \counter_reg[4]_i_1_n_7 ;
-  wire \counter_reg[8]_i_1_n_4 ;
-  wire \counter_reg[8]_i_1_n_5 ;
-  wire \counter_reg[8]_i_1_n_6 ;
-  wire \counter_reg[8]_i_1_n_7 ;
+  wire \counter_reg_n_0_[0] ;
+  wire \counter_reg_n_0_[10] ;
+  wire \counter_reg_n_0_[11] ;
+  wire \counter_reg_n_0_[1] ;
+  wire \counter_reg_n_0_[2] ;
+  wire \counter_reg_n_0_[3] ;
+  wire \counter_reg_n_0_[4] ;
+  wire \counter_reg_n_0_[5] ;
+  wire \counter_reg_n_0_[6] ;
+  wire \counter_reg_n_0_[7] ;
+  wire \counter_reg_n_0_[8] ;
+  wire \counter_reg_n_0_[9] ;
   wire [1:0]current_state;
   wire [1:0]current_state_0;
+  wire [11:1]data0;
   wire [1:0]next_state;
   wire [6:0]p_0_in;
   wire [4:0]second_counter;
@@ -531,122 +512,110 @@ module Hsync
   wire [2:0]NLW_counter0_carry__0_CO_UNCONNECTED;
   wire [3:0]NLW_counter0_carry__1_CO_UNCONNECTED;
   wire [3:3]NLW_counter0_carry__1_O_UNCONNECTED;
-  wire [2:0]\NLW_counter_reg[0]_i_1_CO_UNCONNECTED ;
-  wire [2:0]\NLW_counter_reg[4]_i_1_CO_UNCONNECTED ;
-  wire [3:0]\NLW_counter_reg[8]_i_1_CO_UNCONNECTED ;
 
   LUT6 #(
-    .INIT(64'hAAA8AAAA88888888)) 
+    .INIT(64'hFFFFFFFFEEEEAAFA)) 
     \FSM_sequential_current_state[0]_i_1 
-       (.I0(\FSM_sequential_current_state[1]_i_2_n_0 ),
-        .I1(\FSM_sequential_current_state[0]_i_2_n_0 ),
-        .I2(current_state[1]),
-        .I3(\FSM_sequential_current_state[1]_i_4_n_0 ),
-        .I4(\FSM_sequential_current_state[1]_i_3_n_0 ),
-        .I5(current_state[0]),
+       (.I0(\FSM_sequential_current_state[0]_i_2_n_0 ),
+        .I1(current_state[0]),
+        .I2(\FSM_sequential_current_state[0]_i_3_n_0 ),
+        .I3(\FSM_sequential_current_state[0]_i_4_n_0 ),
+        .I4(\FSM_sequential_current_state[1]_i_4_n_0 ),
+        .I5(\FSM_sequential_current_state[0]_i_5_n_0 ),
         .O(next_state[0]));
-  LUT6 #(
-    .INIT(64'h00000000000022F2)) 
-    \FSM_sequential_current_state[0]_i_2 
-       (.I0(\FSM_sequential_current_state[0]_i_3__0_n_0 ),
-        .I1(\FSM_sequential_current_state[0]_i_4_n_0 ),
-        .I2(\FSM_sequential_current_state[1]_i_5_n_0 ),
-        .I3(\FSM_sequential_current_state[0]_i_5_n_0 ),
-        .I4(\FSM_sequential_current_state[1]_i_8_n_0 ),
-        .I5(counter_reg[0]),
-        .O(\FSM_sequential_current_state[0]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'h08)) 
-    \FSM_sequential_current_state[0]_i_3__0 
-       (.I0(counter_reg[7]),
-        .I1(counter_reg[8]),
-        .I2(counter_reg[6]),
-        .O(\FSM_sequential_current_state[0]_i_3__0_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFFFFE)) 
-    \FSM_sequential_current_state[0]_i_4 
-       (.I0(counter_reg[11]),
-        .I1(counter_reg[10]),
-        .I2(counter_reg[1]),
-        .I3(counter_reg[9]),
-        .I4(current_state[1]),
-        .I5(current_state[0]),
-        .O(\FSM_sequential_current_state[0]_i_4_n_0 ));
-  LUT4 #(
-    .INIT(16'hEFFF)) 
-    \FSM_sequential_current_state[0]_i_5 
-       (.I0(counter_reg[7]),
-        .I1(counter_reg[1]),
-        .I2(counter_reg[6]),
-        .I3(current_state[1]),
-        .O(\FSM_sequential_current_state[0]_i_5_n_0 ));
   LUT5 #(
-    .INIT(32'hAAAA0080)) 
+    .INIT(32'h00000800)) 
+    \FSM_sequential_current_state[0]_i_2 
+       (.I0(\FSM_sequential_current_state[0]_i_6_n_0 ),
+        .I1(\counter_reg_n_0_[5] ),
+        .I2(\counter_reg_n_0_[7] ),
+        .I3(\counter_reg_n_0_[0] ),
+        .I4(\FSM_sequential_current_state[1]_i_6_n_0 ),
+        .O(\FSM_sequential_current_state[0]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \FSM_sequential_current_state[0]_i_3 
+       (.I0(current_state[1]),
+        .I1(\counter_reg_n_0_[6] ),
+        .O(\FSM_sequential_current_state[0]_i_3_n_0 ));
+  LUT3 #(
+    .INIT(8'hF7)) 
+    \FSM_sequential_current_state[0]_i_4 
+       (.I0(\counter_reg_n_0_[11] ),
+        .I1(\counter_reg_n_0_[10] ),
+        .I2(\counter_reg_n_0_[9] ),
+        .O(\FSM_sequential_current_state[0]_i_4_n_0 ));
+  LUT6 #(
+    .INIT(64'hBFFFFFFD00000000)) 
+    \FSM_sequential_current_state[0]_i_5 
+       (.I0(\counter_reg_n_0_[9] ),
+        .I1(\counter_reg_n_0_[10] ),
+        .I2(\counter_reg_n_0_[11] ),
+        .I3(current_state[1]),
+        .I4(\counter_reg_n_0_[6] ),
+        .I5(current_state[0]),
+        .O(\FSM_sequential_current_state[0]_i_5_n_0 ));
+  LUT6 #(
+    .INIT(64'h0000000000000008)) 
+    \FSM_sequential_current_state[0]_i_6 
+       (.I0(\counter_reg_n_0_[6] ),
+        .I1(\counter_reg_n_0_[8] ),
+        .I2(\counter_reg_n_0_[9] ),
+        .I3(current_state[1]),
+        .I4(\counter_reg_n_0_[10] ),
+        .I5(\counter_reg_n_0_[11] ),
+        .O(\FSM_sequential_current_state[0]_i_6_n_0 ));
+  LUT5 #(
+    .INIT(32'h8C8CFF8C)) 
     \FSM_sequential_current_state[1]_i_1 
        (.I0(\FSM_sequential_current_state[1]_i_2_n_0 ),
-        .I1(\FSM_sequential_current_state[1]_i_3_n_0 ),
+        .I1(current_state[1]),
         .I2(current_state[0]),
-        .I3(\FSM_sequential_current_state[1]_i_4_n_0 ),
-        .I4(current_state[1]),
+        .I3(\FSM_sequential_current_state[1]_i_3_n_0 ),
+        .I4(\FSM_sequential_current_state[1]_i_4_n_0 ),
         .O(next_state[1]));
   LUT5 #(
-    .INIT(32'hFDFFFFFF)) 
+    .INIT(32'hFFFEFFFF)) 
     \FSM_sequential_current_state[1]_i_2 
-       (.I0(\FSM_sequential_current_state[1]_i_5_n_0 ),
-        .I1(\FSM_sequential_current_state[1]_i_6_n_0 ),
-        .I2(\FSM_sequential_current_state[1]_i_7__0_n_0 ),
-        .I3(current_state[0]),
-        .I4(current_state[1]),
+       (.I0(\FSM_sequential_current_state[0]_i_4_n_0 ),
+        .I1(\FSM_sequential_current_state[1]_i_5_n_0 ),
+        .I2(\FSM_sequential_current_state[1]_i_6_n_0 ),
+        .I3(\counter_reg_n_0_[8] ),
+        .I4(\counter_reg_n_0_[6] ),
         .O(\FSM_sequential_current_state[1]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000000000000040)) 
+  LUT5 #(
+    .INIT(32'h00000040)) 
     \FSM_sequential_current_state[1]_i_3 
-       (.I0(counter_reg[0]),
-        .I1(counter_reg[9]),
-        .I2(counter_reg[6]),
-        .I3(counter_reg[10]),
-        .I4(counter_reg[11]),
-        .I5(\FSM_sequential_current_state[1]_i_8_n_0 ),
+       (.I0(\counter_reg_n_0_[6] ),
+        .I1(\counter_reg_n_0_[9] ),
+        .I2(current_state[0]),
+        .I3(\counter_reg_n_0_[11] ),
+        .I4(\counter_reg_n_0_[10] ),
         .O(\FSM_sequential_current_state[1]_i_3_n_0 ));
-  LUT3 #(
-    .INIT(8'hFE)) 
+  LUT5 #(
+    .INIT(32'hFFFFFFDF)) 
     \FSM_sequential_current_state[1]_i_4 
-       (.I0(counter_reg[8]),
-        .I1(counter_reg[7]),
-        .I2(counter_reg[1]),
+       (.I0(\counter_reg_n_0_[5] ),
+        .I1(\counter_reg_n_0_[7] ),
+        .I2(\counter_reg_n_0_[0] ),
+        .I3(\FSM_sequential_current_state[1]_i_6_n_0 ),
+        .I4(\counter_reg_n_0_[8] ),
         .O(\FSM_sequential_current_state[1]_i_4_n_0 ));
-  LUT4 #(
-    .INIT(16'h1000)) 
+  LUT3 #(
+    .INIT(8'hDF)) 
     \FSM_sequential_current_state[1]_i_5 
-       (.I0(counter_reg[9]),
-        .I1(counter_reg[8]),
-        .I2(counter_reg[11]),
-        .I3(counter_reg[10]),
+       (.I0(\counter_reg_n_0_[5] ),
+        .I1(\counter_reg_n_0_[7] ),
+        .I2(\counter_reg_n_0_[0] ),
         .O(\FSM_sequential_current_state[1]_i_5_n_0 ));
   LUT4 #(
     .INIT(16'h7FFF)) 
     \FSM_sequential_current_state[1]_i_6 
-       (.I0(counter_reg[6]),
-        .I1(counter_reg[2]),
-        .I2(counter_reg[5]),
-        .I3(counter_reg[3]),
+       (.I0(\counter_reg_n_0_[2] ),
+        .I1(\counter_reg_n_0_[1] ),
+        .I2(\counter_reg_n_0_[4] ),
+        .I3(\counter_reg_n_0_[3] ),
         .O(\FSM_sequential_current_state[1]_i_6_n_0 ));
-  LUT4 #(
-    .INIT(16'hFF7F)) 
-    \FSM_sequential_current_state[1]_i_7__0 
-       (.I0(counter_reg[4]),
-        .I1(counter_reg[1]),
-        .I2(counter_reg[0]),
-        .I3(counter_reg[7]),
-        .O(\FSM_sequential_current_state[1]_i_7__0_n_0 ));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    \FSM_sequential_current_state[1]_i_8 
-       (.I0(counter_reg[4]),
-        .I1(counter_reg[3]),
-        .I2(counter_reg[5]),
-        .I3(counter_reg[2]),
-        .O(\FSM_sequential_current_state[1]_i_8_n_0 ));
   (* FSM_ENCODED_STATES = "iSTATE:01,iSTATE0:10,iSTATE1:11,iSTATE2:00" *) 
   FDCE #(
     .INIT(1'b0)) 
@@ -665,80 +634,80 @@ module Hsync
         .CLR(AR),
         .D(next_state[1]),
         .Q(current_state[1]));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  (* SOFT_HLUTNM = "soft_lutpair13" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \Hpixel[0]_i_1 
        (.I0(Hpixel[0]),
         .O(p_0_in[0]));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  (* SOFT_HLUTNM = "soft_lutpair13" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \Hpixel[1]_i_1 
        (.I0(Hpixel[0]),
         .I1(Hpixel[1]),
         .O(p_0_in[1]));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT3 #(
-    .INIT(8'h6A)) 
+    .INIT(8'h78)) 
     \Hpixel[2]_i_1 
-       (.I0(Hpixel[2]),
+       (.I0(Hpixel[1]),
         .I1(Hpixel[0]),
-        .I2(Hpixel[1]),
+        .I2(Hpixel[2]),
         .O(p_0_in[2]));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT4 #(
-    .INIT(16'h6AAA)) 
+    .INIT(16'h7F80)) 
     \Hpixel[3]_i_1 
-       (.I0(Hpixel[3]),
-        .I1(Hpixel[1]),
-        .I2(Hpixel[0]),
-        .I3(Hpixel[2]),
-        .O(p_0_in[3]));
-  LUT5 #(
-    .INIT(32'h7FFF8000)) 
-    \Hpixel[4]_i_1 
        (.I0(Hpixel[2]),
         .I1(Hpixel[0]),
         .I2(Hpixel[1]),
         .I3(Hpixel[3]),
+        .O(p_0_in[3]));
+  LUT5 #(
+    .INIT(32'h7FFF8000)) 
+    \Hpixel[4]_i_1 
+       (.I0(Hpixel[3]),
+        .I1(Hpixel[1]),
+        .I2(Hpixel[0]),
+        .I3(Hpixel[2]),
         .I4(Hpixel[4]),
         .O(p_0_in[4]));
   LUT6 #(
-    .INIT(64'h6AAAAAAAAAAAAAAA)) 
+    .INIT(64'h7FFFFFFF80000000)) 
     \Hpixel[5]_i_1 
-       (.I0(Hpixel[5]),
+       (.I0(Hpixel[4]),
         .I1(Hpixel[2]),
         .I2(Hpixel[0]),
         .I3(Hpixel[1]),
         .I4(Hpixel[3]),
-        .I5(Hpixel[4]),
+        .I5(Hpixel[5]),
         .O(p_0_in[5]));
   LUT6 #(
-    .INIT(64'h0000400000000000)) 
+    .INIT(64'h0000080000000000)) 
     \Hpixel[6]_i_1 
-       (.I0(second_counter[2]),
+       (.I0(second_counter[0]),
         .I1(second_counter[1]),
-        .I2(second_counter[0]),
+        .I2(second_counter[3]),
         .I3(second_counter[4]),
-        .I4(second_counter[3]),
+        .I4(second_counter[2]),
         .I5(Hsync_allow),
         .O(\Hpixel[6]_i_1_n_0 ));
   LUT3 #(
-    .INIT(8'h6A)) 
+    .INIT(8'hD2)) 
     \Hpixel[6]_i_2 
-       (.I0(Hpixel[6]),
+       (.I0(Hpixel[5]),
         .I1(\Hpixel[6]_i_3_n_0 ),
-        .I2(Hpixel[5]),
+        .I2(Hpixel[6]),
         .O(p_0_in[6]));
   LUT5 #(
-    .INIT(32'h80000000)) 
+    .INIT(32'h7FFFFFFF)) 
     \Hpixel[6]_i_3 
-       (.I0(Hpixel[4]),
-        .I1(Hpixel[3]),
-        .I2(Hpixel[1]),
-        .I3(Hpixel[0]),
-        .I4(Hpixel[2]),
+       (.I0(Hpixel[3]),
+        .I1(Hpixel[1]),
+        .I2(Hpixel[0]),
+        .I3(Hpixel[2]),
+        .I4(Hpixel[4]),
         .O(\Hpixel[6]_i_3_n_0 ));
   FDCE #(
     .INIT(1'b0)) 
@@ -799,382 +768,303 @@ module Hsync
   LUT2 #(
     .INIT(4'hE)) 
     VGA_HSYNC_OBUF_inst_i_1
-       (.I0(current_state[1]),
-        .I1(current_state[0]),
+       (.I0(current_state[0]),
+        .I1(current_state[1]),
         .O(VGA_HSYNC_OBUF));
   (* OPT_MODIFIED = "SWEEP " *) 
   CARRY4 counter0_carry
        (.CI(1'b0),
         .CO({counter0_carry_n_0,NLW_counter0_carry_CO_UNCONNECTED[2:0]}),
-        .CYINIT(counter_reg[0]),
+        .CYINIT(\counter_reg_n_0_[0] ),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(counter0[4:1]),
-        .S(counter_reg[4:1]));
+        .O(data0[4:1]),
+        .S({\counter_reg_n_0_[4] ,\counter_reg_n_0_[3] ,\counter_reg_n_0_[2] ,\counter_reg_n_0_[1] }));
   (* OPT_MODIFIED = "SWEEP " *) 
   CARRY4 counter0_carry__0
        (.CI(counter0_carry_n_0),
         .CO({counter0_carry__0_n_0,NLW_counter0_carry__0_CO_UNCONNECTED[2:0]}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(counter0[8:5]),
-        .S(counter_reg[8:5]));
+        .O(data0[8:5]),
+        .S({\counter_reg_n_0_[8] ,\counter_reg_n_0_[7] ,\counter_reg_n_0_[6] ,\counter_reg_n_0_[5] }));
   (* OPT_MODIFIED = "SWEEP " *) 
   CARRY4 counter0_carry__1
        (.CI(counter0_carry__0_n_0),
         .CO(NLW_counter0_carry__1_CO_UNCONNECTED[3:0]),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({NLW_counter0_carry__1_O_UNCONNECTED[3],counter0[11:9]}),
-        .S({1'b0,counter_reg[11:9]}));
-  LUT2 #(
-    .INIT(4'hB)) 
-    \counter[0]_i_2 
-       (.I0(current_state[0]),
-        .I1(current_state[1]),
-        .O(\counter[0]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF2F0020)) 
-    \counter[0]_i_3 
-       (.I0(counter0[3]),
-        .I1(\counter[0]_i_7_n_0 ),
-        .I2(current_state[1]),
-        .I3(current_state[0]),
-        .I4(counter_reg[3]),
-        .O(\counter[0]_i_3_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF2F0020)) 
-    \counter[0]_i_4 
-       (.I0(counter0[2]),
-        .I1(\counter[0]_i_7_n_0 ),
-        .I2(current_state[1]),
-        .I3(current_state[0]),
-        .I4(counter_reg[2]),
-        .O(\counter[0]_i_4_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF2F0020)) 
-    \counter[0]_i_5 
-       (.I0(counter0[1]),
-        .I1(\counter[0]_i_7_n_0 ),
-        .I2(current_state[1]),
-        .I3(current_state[0]),
-        .I4(counter_reg[1]),
-        .O(\counter[0]_i_5_n_0 ));
+        .O({NLW_counter0_carry__1_O_UNCONNECTED[3],data0[11:9]}),
+        .S({1'b0,\counter_reg_n_0_[11] ,\counter_reg_n_0_[10] ,\counter_reg_n_0_[9] }));
   LUT1 #(
     .INIT(2'h1)) 
-    \counter[0]_i_6__0 
-       (.I0(counter_reg[0]),
-        .O(\counter[0]_i_6__0_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000000000000100)) 
-    \counter[0]_i_7 
-       (.I0(\counter[0]_i_8_n_0 ),
-        .I1(counter_reg[8]),
-        .I2(counter_reg[7]),
-        .I3(counter_reg[3]),
-        .I4(counter_reg[9]),
-        .I5(\counter[0]_i_9_n_0 ),
-        .O(\counter[0]_i_7_n_0 ));
-  LUT4 #(
-    .INIT(16'h7FFF)) 
-    \counter[0]_i_8 
-       (.I0(counter_reg[5]),
-        .I1(counter_reg[4]),
-        .I2(counter_reg[6]),
-        .I3(counter_reg[1]),
-        .O(\counter[0]_i_8_n_0 ));
-  LUT4 #(
-    .INIT(16'h7FFF)) 
-    \counter[0]_i_9 
-       (.I0(counter_reg[11]),
-        .I1(counter_reg[10]),
-        .I2(counter_reg[2]),
-        .I3(counter_reg[0]),
-        .O(\counter[0]_i_9_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF2F0020)) 
-    \counter[4]_i_2 
-       (.I0(counter0[7]),
-        .I1(\counter[0]_i_7_n_0 ),
-        .I2(current_state[1]),
-        .I3(current_state[0]),
-        .I4(counter_reg[7]),
-        .O(\counter[4]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF2F0020)) 
-    \counter[4]_i_3 
-       (.I0(counter0[6]),
-        .I1(\counter[0]_i_7_n_0 ),
-        .I2(current_state[1]),
-        .I3(current_state[0]),
-        .I4(counter_reg[6]),
-        .O(\counter[4]_i_3_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF2F0020)) 
-    \counter[4]_i_4 
-       (.I0(counter0[5]),
-        .I1(\counter[0]_i_7_n_0 ),
-        .I2(current_state[1]),
-        .I3(current_state[0]),
-        .I4(counter_reg[5]),
-        .O(\counter[4]_i_4_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF2F0020)) 
-    \counter[4]_i_5 
-       (.I0(counter0[4]),
-        .I1(\counter[0]_i_7_n_0 ),
-        .I2(current_state[1]),
-        .I3(current_state[0]),
-        .I4(counter_reg[4]),
-        .O(\counter[4]_i_5_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF2F0020)) 
-    \counter[8]_i_2 
-       (.I0(counter0[11]),
-        .I1(\counter[0]_i_7_n_0 ),
-        .I2(current_state[1]),
-        .I3(current_state[0]),
-        .I4(counter_reg[11]),
-        .O(\counter[8]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF2F0020)) 
-    \counter[8]_i_3 
-       (.I0(counter0[10]),
-        .I1(\counter[0]_i_7_n_0 ),
-        .I2(current_state[1]),
-        .I3(current_state[0]),
-        .I4(counter_reg[10]),
-        .O(\counter[8]_i_3_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF2F0020)) 
-    \counter[8]_i_4 
-       (.I0(counter0[9]),
-        .I1(\counter[0]_i_7_n_0 ),
-        .I2(current_state[1]),
-        .I3(current_state[0]),
-        .I4(counter_reg[9]),
-        .O(\counter[8]_i_4_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF2F0020)) 
-    \counter[8]_i_5 
-       (.I0(counter0[8]),
-        .I1(\counter[0]_i_7_n_0 ),
-        .I2(current_state[1]),
-        .I3(current_state[0]),
-        .I4(counter_reg[8]),
-        .O(\counter[8]_i_5_n_0 ));
+    \counter[0]_i_1 
+       (.I0(\counter_reg_n_0_[0] ),
+        .O(counter[0]));
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \counter[10]_i_1 
+       (.I0(\FSM_sequential_current_state[1]_i_2_n_0 ),
+        .I1(data0[10]),
+        .O(counter[10]));
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \counter[11]_i_1 
+       (.I0(\FSM_sequential_current_state[1]_i_2_n_0 ),
+        .I1(data0[11]),
+        .O(counter[11]));
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \counter[1]_i_1 
+       (.I0(\FSM_sequential_current_state[1]_i_2_n_0 ),
+        .I1(data0[1]),
+        .O(counter[1]));
+  LUT2 #(
+    .INIT(4'h8)) 
+    \counter[2]_i_1 
+       (.I0(\FSM_sequential_current_state[1]_i_2_n_0 ),
+        .I1(data0[2]),
+        .O(counter[2]));
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \counter[3]_i_1 
+       (.I0(\FSM_sequential_current_state[1]_i_2_n_0 ),
+        .I1(data0[3]),
+        .O(counter[3]));
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \counter[4]_i_1 
+       (.I0(\FSM_sequential_current_state[1]_i_2_n_0 ),
+        .I1(data0[4]),
+        .O(counter[4]));
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \counter[5]_i_1 
+       (.I0(\FSM_sequential_current_state[1]_i_2_n_0 ),
+        .I1(data0[5]),
+        .O(counter[5]));
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \counter[6]_i_1 
+       (.I0(\FSM_sequential_current_state[1]_i_2_n_0 ),
+        .I1(data0[6]),
+        .O(counter[6]));
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \counter[7]_i_1 
+       (.I0(\FSM_sequential_current_state[1]_i_2_n_0 ),
+        .I1(data0[7]),
+        .O(counter[7]));
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \counter[8]_i_1 
+       (.I0(\FSM_sequential_current_state[1]_i_2_n_0 ),
+        .I1(data0[8]),
+        .O(counter[8]));
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \counter[9]_i_1 
+       (.I0(\FSM_sequential_current_state[1]_i_2_n_0 ),
+        .I1(data0[9]),
+        .O(counter[9]));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[0] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[0]_i_1_n_7 ),
-        .Q(counter_reg[0]));
-  (* OPT_MODIFIED = "SWEEP " *) 
-  CARRY4 \counter_reg[0]_i_1 
-       (.CI(1'b0),
-        .CO({\counter_reg[0]_i_1_n_0 ,\NLW_counter_reg[0]_i_1_CO_UNCONNECTED [2:0]}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,\counter[0]_i_2_n_0 }),
-        .O({\counter_reg[0]_i_1_n_4 ,\counter_reg[0]_i_1_n_5 ,\counter_reg[0]_i_1_n_6 ,\counter_reg[0]_i_1_n_7 }),
-        .S({\counter[0]_i_3_n_0 ,\counter[0]_i_4_n_0 ,\counter[0]_i_5_n_0 ,\counter[0]_i_6__0_n_0 }));
+        .D(counter[0]),
+        .Q(\counter_reg_n_0_[0] ));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[10] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[8]_i_1_n_5 ),
-        .Q(counter_reg[10]));
+        .D(counter[10]),
+        .Q(\counter_reg_n_0_[10] ));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[11] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[8]_i_1_n_4 ),
-        .Q(counter_reg[11]));
+        .D(counter[11]),
+        .Q(\counter_reg_n_0_[11] ));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[1] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[0]_i_1_n_6 ),
-        .Q(counter_reg[1]));
+        .D(counter[1]),
+        .Q(\counter_reg_n_0_[1] ));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[2] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[0]_i_1_n_5 ),
-        .Q(counter_reg[2]));
+        .D(counter[2]),
+        .Q(\counter_reg_n_0_[2] ));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[3] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[0]_i_1_n_4 ),
-        .Q(counter_reg[3]));
+        .D(counter[3]),
+        .Q(\counter_reg_n_0_[3] ));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[4] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[4]_i_1_n_7 ),
-        .Q(counter_reg[4]));
-  (* OPT_MODIFIED = "SWEEP " *) 
-  CARRY4 \counter_reg[4]_i_1 
-       (.CI(\counter_reg[0]_i_1_n_0 ),
-        .CO({\counter_reg[4]_i_1_n_0 ,\NLW_counter_reg[4]_i_1_CO_UNCONNECTED [2:0]}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({\counter_reg[4]_i_1_n_4 ,\counter_reg[4]_i_1_n_5 ,\counter_reg[4]_i_1_n_6 ,\counter_reg[4]_i_1_n_7 }),
-        .S({\counter[4]_i_2_n_0 ,\counter[4]_i_3_n_0 ,\counter[4]_i_4_n_0 ,\counter[4]_i_5_n_0 }));
+        .D(counter[4]),
+        .Q(\counter_reg_n_0_[4] ));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[5] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[4]_i_1_n_6 ),
-        .Q(counter_reg[5]));
+        .D(counter[5]),
+        .Q(\counter_reg_n_0_[5] ));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[6] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[4]_i_1_n_5 ),
-        .Q(counter_reg[6]));
+        .D(counter[6]),
+        .Q(\counter_reg_n_0_[6] ));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[7] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[4]_i_1_n_4 ),
-        .Q(counter_reg[7]));
+        .D(counter[7]),
+        .Q(\counter_reg_n_0_[7] ));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[8] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[8]_i_1_n_7 ),
-        .Q(counter_reg[8]));
-  (* OPT_MODIFIED = "SWEEP " *) 
-  CARRY4 \counter_reg[8]_i_1 
-       (.CI(\counter_reg[4]_i_1_n_0 ),
-        .CO(\NLW_counter_reg[8]_i_1_CO_UNCONNECTED [3:0]),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({\counter_reg[8]_i_1_n_4 ,\counter_reg[8]_i_1_n_5 ,\counter_reg[8]_i_1_n_6 ,\counter_reg[8]_i_1_n_7 }),
-        .S({\counter[8]_i_2_n_0 ,\counter[8]_i_3_n_0 ,\counter[8]_i_4_n_0 ,\counter[8]_i_5_n_0 }));
+        .D(counter[8]),
+        .Q(\counter_reg_n_0_[8] ));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[9] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[8]_i_1_n_6 ),
-        .Q(counter_reg[9]));
+        .D(counter[9]),
+        .Q(\counter_reg_n_0_[9] ));
   LUT5 #(
-    .INIT(32'h00000800)) 
+    .INIT(32'h00200000)) 
     \genblk3_0.bram18_single_bl.bram18_single_bl_i_10 
-       (.I0(Hpixel[4]),
-        .I1(current_state_0[1]),
-        .I2(current_state_0[0]),
-        .I3(current_state[1]),
-        .I4(current_state[0]),
+       (.I0(current_state_0[1]),
+        .I1(current_state_0[0]),
+        .I2(current_state[1]),
+        .I3(current_state[0]),
+        .I4(Hpixel[4]),
         .O(ADDRARDADDR[4]));
   LUT5 #(
-    .INIT(32'h00000800)) 
+    .INIT(32'h00200000)) 
     \genblk3_0.bram18_single_bl.bram18_single_bl_i_11 
-       (.I0(Hpixel[3]),
-        .I1(current_state_0[1]),
-        .I2(current_state_0[0]),
-        .I3(current_state[1]),
-        .I4(current_state[0]),
+       (.I0(current_state_0[1]),
+        .I1(current_state_0[0]),
+        .I2(current_state[1]),
+        .I3(current_state[0]),
+        .I4(Hpixel[3]),
         .O(ADDRARDADDR[3]));
   LUT5 #(
-    .INIT(32'h00000800)) 
+    .INIT(32'h00200000)) 
     \genblk3_0.bram18_single_bl.bram18_single_bl_i_12 
-       (.I0(Hpixel[2]),
-        .I1(current_state_0[1]),
-        .I2(current_state_0[0]),
-        .I3(current_state[1]),
-        .I4(current_state[0]),
+       (.I0(current_state_0[1]),
+        .I1(current_state_0[0]),
+        .I2(current_state[1]),
+        .I3(current_state[0]),
+        .I4(Hpixel[2]),
         .O(ADDRARDADDR[2]));
   LUT5 #(
-    .INIT(32'h00000800)) 
+    .INIT(32'h00200000)) 
     \genblk3_0.bram18_single_bl.bram18_single_bl_i_13 
-       (.I0(Hpixel[1]),
-        .I1(current_state_0[1]),
-        .I2(current_state_0[0]),
-        .I3(current_state[1]),
-        .I4(current_state[0]),
+       (.I0(current_state_0[1]),
+        .I1(current_state_0[0]),
+        .I2(current_state[1]),
+        .I3(current_state[0]),
+        .I4(Hpixel[1]),
         .O(ADDRARDADDR[1]));
   LUT5 #(
-    .INIT(32'h00000800)) 
+    .INIT(32'h00200000)) 
     \genblk3_0.bram18_single_bl.bram18_single_bl_i_14 
-       (.I0(Hpixel[0]),
-        .I1(current_state_0[1]),
-        .I2(current_state_0[0]),
-        .I3(current_state[1]),
-        .I4(current_state[0]),
+       (.I0(current_state_0[1]),
+        .I1(current_state_0[0]),
+        .I2(current_state[1]),
+        .I3(current_state[0]),
+        .I4(Hpixel[0]),
         .O(ADDRARDADDR[0]));
   LUT5 #(
-    .INIT(32'h00000800)) 
+    .INIT(32'h00200000)) 
     \genblk3_0.bram18_single_bl.bram18_single_bl_i_8 
-       (.I0(Hpixel[6]),
-        .I1(current_state_0[1]),
-        .I2(current_state_0[0]),
-        .I3(current_state[1]),
-        .I4(current_state[0]),
+       (.I0(current_state_0[1]),
+        .I1(current_state_0[0]),
+        .I2(current_state[1]),
+        .I3(current_state[0]),
+        .I4(Hpixel[6]),
         .O(ADDRARDADDR[6]));
   LUT5 #(
-    .INIT(32'h00000800)) 
+    .INIT(32'h00200000)) 
     \genblk3_0.bram18_single_bl.bram18_single_bl_i_9 
-       (.I0(Hpixel[5]),
-        .I1(current_state_0[1]),
-        .I2(current_state_0[0]),
-        .I3(current_state[1]),
-        .I4(current_state[0]),
+       (.I0(current_state_0[1]),
+        .I1(current_state_0[0]),
+        .I2(current_state[1]),
+        .I3(current_state[0]),
+        .I4(Hpixel[5]),
         .O(ADDRARDADDR[5]));
   LUT1 #(
     .INIT(2'h1)) 
     \second_counter[0]_i_1 
        (.I0(second_counter[0]),
         .O(\second_counter[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \second_counter[1]_i_1__0 
+       (.I0(second_counter[1]),
+        .I1(second_counter[0]),
+        .O(\second_counter[1]_i_1__0_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  LUT5 #(
+    .INIT(32'h77778808)) 
+    \second_counter[2]_i_1 
        (.I0(second_counter[0]),
         .I1(second_counter[1]),
-        .O(\second_counter[1]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
-  LUT5 #(
-    .INIT(32'h6A6A2A6A)) 
-    \second_counter[2]_i_1 
-       (.I0(second_counter[2]),
-        .I1(second_counter[1]),
-        .I2(second_counter[0]),
-        .I3(second_counter[4]),
-        .I4(second_counter[3]),
+        .I2(second_counter[4]),
+        .I3(second_counter[3]),
+        .I4(second_counter[2]),
         .O(\second_counter[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT4 #(
-    .INIT(16'h6AAA)) 
+    .INIT(16'h7F80)) 
     \second_counter[3]_i_1 
-       (.I0(second_counter[3]),
-        .I1(second_counter[1]),
-        .I2(second_counter[0]),
-        .I3(second_counter[2]),
+       (.I0(second_counter[2]),
+        .I1(second_counter[0]),
+        .I2(second_counter[1]),
+        .I3(second_counter[3]),
         .O(\second_counter[3]_i_1_n_0 ));
   LUT2 #(
     .INIT(4'h2)) 
@@ -1182,15 +1072,15 @@ module Hsync
        (.I0(current_state[1]),
         .I1(current_state[0]),
         .O(Hsync_allow));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT5 #(
-    .INIT(32'h7FBF8000)) 
+    .INIT(32'h68AAAAAA)) 
     \second_counter[4]_i_2 
-       (.I0(second_counter[2]),
-        .I1(second_counter[0]),
-        .I2(second_counter[1]),
-        .I3(second_counter[3]),
-        .I4(second_counter[4]),
+       (.I0(second_counter[4]),
+        .I1(second_counter[3]),
+        .I2(second_counter[2]),
+        .I3(second_counter[0]),
+        .I4(second_counter[1]),
         .O(\second_counter[4]_i_2_n_0 ));
   FDCE #(
     .INIT(1'b0)) 
@@ -1304,42 +1194,35 @@ module Vsync
    (ADDRARDADDR,
     current_state,
     VGA_VSYNC_OBUF,
+    current_state_0,
     CLK,
-    AR,
-    current_state_0);
+    AR);
   output [6:0]ADDRARDADDR;
   output [1:0]current_state;
   output VGA_VSYNC_OBUF;
+  input [1:0]current_state_0;
   input CLK;
   input [0:0]AR;
-  input [1:0]current_state_0;
 
   wire [6:0]ADDRARDADDR;
   wire [0:0]AR;
   wire CLK;
   wire \FSM_sequential_current_state[0]_i_10_n_0 ;
-  wire \FSM_sequential_current_state[0]_i_11_n_0 ;
   wire \FSM_sequential_current_state[0]_i_2__0_n_0 ;
-  wire \FSM_sequential_current_state[0]_i_3_n_0 ;
+  wire \FSM_sequential_current_state[0]_i_3__0_n_0 ;
   wire \FSM_sequential_current_state[0]_i_4__0_n_0 ;
   wire \FSM_sequential_current_state[0]_i_5__0_n_0 ;
-  wire \FSM_sequential_current_state[0]_i_6_n_0 ;
+  wire \FSM_sequential_current_state[0]_i_6__0_n_0 ;
   wire \FSM_sequential_current_state[0]_i_7_n_0 ;
   wire \FSM_sequential_current_state[0]_i_8_n_0 ;
   wire \FSM_sequential_current_state[0]_i_9_n_0 ;
-  wire \FSM_sequential_current_state[1]_i_10_n_0 ;
-  wire \FSM_sequential_current_state[1]_i_11_n_0 ;
-  wire \FSM_sequential_current_state[1]_i_12_n_0 ;
-  wire \FSM_sequential_current_state[1]_i_13_n_0 ;
-  wire \FSM_sequential_current_state[1]_i_14_n_0 ;
   wire \FSM_sequential_current_state[1]_i_2__0_n_0 ;
   wire \FSM_sequential_current_state[1]_i_3__0_n_0 ;
   wire \FSM_sequential_current_state[1]_i_4__0_n_0 ;
   wire \FSM_sequential_current_state[1]_i_5__0_n_0 ;
   wire \FSM_sequential_current_state[1]_i_6__0_n_0 ;
   wire \FSM_sequential_current_state[1]_i_7_n_0 ;
-  wire \FSM_sequential_current_state[1]_i_8__0_n_0 ;
-  wire \FSM_sequential_current_state[1]_i_9_n_0 ;
+  wire \FSM_sequential_current_state[1]_i_8_n_0 ;
   wire VGA_VSYNC_OBUF;
   wire [6:0]Vpixel;
   wire \Vpixel[6]_i_1_n_0 ;
@@ -1349,6 +1232,7 @@ module Vsync
   wire \Vpixel[6]_i_6_n_0 ;
   wire [6:0]Vpixel_0;
   wire Vsync_allow;
+  wire [20:0]counter;
   wire counter0_carry__0_n_0;
   wire counter0_carry__0_n_4;
   wire counter0_carry__0_n_5;
@@ -1373,69 +1257,47 @@ module Vsync
   wire counter0_carry_n_5;
   wire counter0_carry_n_6;
   wire counter0_carry_n_7;
-  wire \counter[0]_i_10_n_0 ;
-  wire \counter[0]_i_11_n_0 ;
-  wire \counter[0]_i_12_n_0 ;
-  wire \counter[0]_i_2__0_n_0 ;
-  wire \counter[0]_i_3__0_n_0 ;
-  wire \counter[0]_i_4__0_n_0 ;
-  wire \counter[0]_i_5__0_n_0 ;
-  wire \counter[0]_i_6_n_0 ;
-  wire \counter[0]_i_7__0_n_0 ;
-  wire \counter[0]_i_8__0_n_0 ;
-  wire \counter[0]_i_9__0_n_0 ;
-  wire \counter[12]_i_2_n_0 ;
-  wire \counter[12]_i_3_n_0 ;
-  wire \counter[12]_i_4_n_0 ;
-  wire \counter[12]_i_5_n_0 ;
-  wire \counter[16]_i_2_n_0 ;
-  wire \counter[16]_i_3_n_0 ;
-  wire \counter[16]_i_4_n_0 ;
-  wire \counter[16]_i_5_n_0 ;
-  wire \counter[20]_i_2_n_0 ;
-  wire \counter[4]_i_2__0_n_0 ;
-  wire \counter[4]_i_3__0_n_0 ;
-  wire \counter[4]_i_4__0_n_0 ;
-  wire \counter[4]_i_5__0_n_0 ;
-  wire \counter[8]_i_2__0_n_0 ;
-  wire \counter[8]_i_3__0_n_0 ;
-  wire \counter[8]_i_4__0_n_0 ;
-  wire \counter[8]_i_5__0_n_0 ;
-  wire [20:0]counter_reg;
-  wire \counter_reg[0]_i_1__0_n_0 ;
-  wire \counter_reg[0]_i_1__0_n_4 ;
-  wire \counter_reg[0]_i_1__0_n_5 ;
-  wire \counter_reg[0]_i_1__0_n_6 ;
-  wire \counter_reg[0]_i_1__0_n_7 ;
-  wire \counter_reg[12]_i_1_n_0 ;
-  wire \counter_reg[12]_i_1_n_4 ;
-  wire \counter_reg[12]_i_1_n_5 ;
-  wire \counter_reg[12]_i_1_n_6 ;
-  wire \counter_reg[12]_i_1_n_7 ;
-  wire \counter_reg[16]_i_1_n_0 ;
-  wire \counter_reg[16]_i_1_n_4 ;
-  wire \counter_reg[16]_i_1_n_5 ;
-  wire \counter_reg[16]_i_1_n_6 ;
-  wire \counter_reg[16]_i_1_n_7 ;
-  wire \counter_reg[20]_i_1_n_7 ;
-  wire \counter_reg[4]_i_1__0_n_0 ;
-  wire \counter_reg[4]_i_1__0_n_4 ;
-  wire \counter_reg[4]_i_1__0_n_5 ;
-  wire \counter_reg[4]_i_1__0_n_6 ;
-  wire \counter_reg[4]_i_1__0_n_7 ;
-  wire \counter_reg[8]_i_1__0_n_0 ;
-  wire \counter_reg[8]_i_1__0_n_4 ;
-  wire \counter_reg[8]_i_1__0_n_5 ;
-  wire \counter_reg[8]_i_1__0_n_6 ;
-  wire \counter_reg[8]_i_1__0_n_7 ;
+  wire \counter_reg_n_0_[0] ;
+  wire \counter_reg_n_0_[10] ;
+  wire \counter_reg_n_0_[11] ;
+  wire \counter_reg_n_0_[12] ;
+  wire \counter_reg_n_0_[13] ;
+  wire \counter_reg_n_0_[14] ;
+  wire \counter_reg_n_0_[15] ;
+  wire \counter_reg_n_0_[16] ;
+  wire \counter_reg_n_0_[17] ;
+  wire \counter_reg_n_0_[18] ;
+  wire \counter_reg_n_0_[19] ;
+  wire \counter_reg_n_0_[1] ;
+  wire \counter_reg_n_0_[20] ;
+  wire \counter_reg_n_0_[2] ;
+  wire \counter_reg_n_0_[3] ;
+  wire \counter_reg_n_0_[4] ;
+  wire \counter_reg_n_0_[5] ;
+  wire \counter_reg_n_0_[6] ;
+  wire \counter_reg_n_0_[7] ;
+  wire \counter_reg_n_0_[8] ;
+  wire \counter_reg_n_0_[9] ;
   wire [1:0]current_state;
   wire [1:0]current_state_0;
-  wire [13:1]data0;
   wire [1:0]next_state;
   wire [13:0]second_counter;
   wire second_counter0_carry__0_n_0;
+  wire second_counter0_carry__0_n_4;
+  wire second_counter0_carry__0_n_5;
+  wire second_counter0_carry__0_n_6;
+  wire second_counter0_carry__0_n_7;
   wire second_counter0_carry__1_n_0;
+  wire second_counter0_carry__1_n_4;
+  wire second_counter0_carry__1_n_5;
+  wire second_counter0_carry__1_n_6;
+  wire second_counter0_carry__1_n_7;
+  wire second_counter0_carry__2_n_7;
   wire second_counter0_carry_n_0;
+  wire second_counter0_carry_n_4;
+  wire second_counter0_carry_n_5;
+  wire second_counter0_carry_n_6;
+  wire second_counter0_carry_n_7;
   wire \second_counter_reg_n_0_[0] ;
   wire \second_counter_reg_n_0_[10] ;
   wire \second_counter_reg_n_0_[11] ;
@@ -1455,228 +1317,172 @@ module Vsync
   wire [2:0]NLW_counter0_carry__1_CO_UNCONNECTED;
   wire [2:0]NLW_counter0_carry__2_CO_UNCONNECTED;
   wire [3:0]NLW_counter0_carry__3_CO_UNCONNECTED;
-  wire [2:0]\NLW_counter_reg[0]_i_1__0_CO_UNCONNECTED ;
-  wire [2:0]\NLW_counter_reg[12]_i_1_CO_UNCONNECTED ;
-  wire [2:0]\NLW_counter_reg[16]_i_1_CO_UNCONNECTED ;
-  wire [3:0]\NLW_counter_reg[20]_i_1_CO_UNCONNECTED ;
-  wire [3:1]\NLW_counter_reg[20]_i_1_O_UNCONNECTED ;
-  wire [2:0]\NLW_counter_reg[4]_i_1__0_CO_UNCONNECTED ;
-  wire [2:0]\NLW_counter_reg[8]_i_1__0_CO_UNCONNECTED ;
   wire [2:0]NLW_second_counter0_carry_CO_UNCONNECTED;
   wire [2:0]NLW_second_counter0_carry__0_CO_UNCONNECTED;
   wire [2:0]NLW_second_counter0_carry__1_CO_UNCONNECTED;
   wire [3:0]NLW_second_counter0_carry__2_CO_UNCONNECTED;
   wire [3:1]NLW_second_counter0_carry__2_O_UNCONNECTED;
 
-  LUT4 #(
-    .INIT(16'hFFFD)) 
-    \FSM_sequential_current_state[0]_i_10 
-       (.I0(counter_reg[12]),
-        .I1(counter_reg[7]),
-        .I2(counter_reg[10]),
-        .I3(counter_reg[1]),
-        .O(\FSM_sequential_current_state[0]_i_10_n_0 ));
-  LUT4 #(
-    .INIT(16'hFFFD)) 
-    \FSM_sequential_current_state[0]_i_11 
-       (.I0(counter_reg[8]),
-        .I1(counter_reg[15]),
-        .I2(counter_reg[14]),
-        .I3(counter_reg[13]),
-        .O(\FSM_sequential_current_state[0]_i_11_n_0 ));
   LUT6 #(
-    .INIT(64'hAAA8AAA8AAA8A8A8)) 
+    .INIT(64'h0000000800000000)) 
+    \FSM_sequential_current_state[0]_i_10 
+       (.I0(\counter_reg_n_0_[7] ),
+        .I1(\counter_reg_n_0_[11] ),
+        .I2(\counter_reg_n_0_[16] ),
+        .I3(\counter_reg_n_0_[9] ),
+        .I4(\counter_reg_n_0_[15] ),
+        .I5(\counter_reg_n_0_[12] ),
+        .O(\FSM_sequential_current_state[0]_i_10_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFEFEFE)) 
     \FSM_sequential_current_state[0]_i_1__0 
-       (.I0(\FSM_sequential_current_state[1]_i_2__0_n_0 ),
-        .I1(\FSM_sequential_current_state[0]_i_2__0_n_0 ),
-        .I2(\FSM_sequential_current_state[0]_i_3_n_0 ),
+       (.I0(\FSM_sequential_current_state[0]_i_2__0_n_0 ),
+        .I1(\FSM_sequential_current_state[0]_i_3__0_n_0 ),
+        .I2(\FSM_sequential_current_state[0]_i_4__0_n_0 ),
         .I3(current_state[0]),
         .I4(\FSM_sequential_current_state[1]_i_3__0_n_0 ),
-        .I5(current_state[1]),
+        .I5(\FSM_sequential_current_state[0]_i_5__0_n_0 ),
         .O(next_state[0]));
-  LUT5 #(
-    .INIT(32'h00000004)) 
+  LUT6 #(
+    .INIT(64'h0000010000000000)) 
     \FSM_sequential_current_state[0]_i_2__0 
-       (.I0(\FSM_sequential_current_state[1]_i_5__0_n_0 ),
-        .I1(\FSM_sequential_current_state[1]_i_4__0_n_0 ),
-        .I2(\FSM_sequential_current_state[0]_i_4__0_n_0 ),
-        .I3(\FSM_sequential_current_state[0]_i_5__0_n_0 ),
-        .I4(\FSM_sequential_current_state[0]_i_6_n_0 ),
+       (.I0(\FSM_sequential_current_state[0]_i_6__0_n_0 ),
+        .I1(\FSM_sequential_current_state[1]_i_7_n_0 ),
+        .I2(\FSM_sequential_current_state[1]_i_6__0_n_0 ),
+        .I3(\FSM_sequential_current_state[0]_i_7_n_0 ),
+        .I4(\FSM_sequential_current_state[1]_i_8_n_0 ),
+        .I5(\counter_reg_n_0_[8] ),
         .O(\FSM_sequential_current_state[0]_i_2__0_n_0 ));
+  LUT5 #(
+    .INIT(32'hBF000000)) 
+    \FSM_sequential_current_state[0]_i_3__0 
+       (.I0(\counter_reg_n_0_[12] ),
+        .I1(\counter_reg_n_0_[9] ),
+        .I2(\counter_reg_n_0_[15] ),
+        .I3(current_state[0]),
+        .I4(\counter_reg_n_0_[8] ),
+        .O(\FSM_sequential_current_state[0]_i_3__0_n_0 ));
   LUT6 #(
-    .INIT(64'h0000000000000004)) 
-    \FSM_sequential_current_state[0]_i_3 
-       (.I0(\FSM_sequential_current_state[0]_i_7_n_0 ),
-        .I1(\FSM_sequential_current_state[0]_i_8_n_0 ),
-        .I2(\FSM_sequential_current_state[1]_i_11_n_0 ),
-        .I3(\FSM_sequential_current_state[0]_i_9_n_0 ),
-        .I4(\FSM_sequential_current_state[0]_i_10_n_0 ),
-        .I5(\FSM_sequential_current_state[0]_i_11_n_0 ),
-        .O(\FSM_sequential_current_state[0]_i_3_n_0 ));
-  LUT4 #(
-    .INIT(16'hFF7F)) 
+    .INIT(64'hAAAA0000FCFF0000)) 
     \FSM_sequential_current_state[0]_i_4__0 
-       (.I0(counter_reg[12]),
-        .I1(current_state[1]),
-        .I2(counter_reg[15]),
-        .I3(counter_reg[16]),
+       (.I0(\FSM_sequential_current_state[0]_i_8_n_0 ),
+        .I1(\FSM_sequential_current_state[0]_i_9_n_0 ),
+        .I2(\FSM_sequential_current_state[1]_i_8_n_0 ),
+        .I3(current_state[1]),
+        .I4(current_state[0]),
+        .I5(\counter_reg_n_0_[8] ),
         .O(\FSM_sequential_current_state[0]_i_4__0_n_0 ));
-  LUT4 #(
-    .INIT(16'hFFF7)) 
+  LUT5 #(
+    .INIT(32'h00000010)) 
     \FSM_sequential_current_state[0]_i_5__0 
-       (.I0(counter_reg[9]),
-        .I1(counter_reg[8]),
-        .I2(counter_reg[18]),
-        .I3(counter_reg[17]),
+       (.I0(\FSM_sequential_current_state[1]_i_6__0_n_0 ),
+        .I1(\FSM_sequential_current_state[1]_i_7_n_0 ),
+        .I2(\FSM_sequential_current_state[0]_i_10_n_0 ),
+        .I3(\FSM_sequential_current_state[0]_i_8_n_0 ),
+        .I4(\counter_reg_n_0_[8] ),
         .O(\FSM_sequential_current_state[0]_i_5__0_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFFFFE)) 
-    \FSM_sequential_current_state[0]_i_6 
-       (.I0(counter_reg[4]),
-        .I1(counter_reg[3]),
-        .I2(counter_reg[5]),
-        .I3(counter_reg[6]),
-        .I4(counter_reg[10]),
-        .I5(counter_reg[11]),
-        .O(\FSM_sequential_current_state[0]_i_6_n_0 ));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
+  LUT2 #(
+    .INIT(4'hE)) 
+    \FSM_sequential_current_state[0]_i_6__0 
+       (.I0(\counter_reg_n_0_[7] ),
+        .I1(\counter_reg_n_0_[11] ),
+        .O(\FSM_sequential_current_state[0]_i_6__0_n_0 ));
+  LUT5 #(
+    .INIT(32'h08000000)) 
     \FSM_sequential_current_state[0]_i_7 
-       (.I0(current_state[0]),
+       (.I0(\counter_reg_n_0_[12] ),
         .I1(current_state[1]),
-        .I2(counter_reg[6]),
-        .I3(counter_reg[5]),
+        .I2(\counter_reg_n_0_[16] ),
+        .I3(\counter_reg_n_0_[15] ),
+        .I4(\counter_reg_n_0_[9] ),
         .O(\FSM_sequential_current_state[0]_i_7_n_0 ));
-  LUT4 #(
-    .INIT(16'h0001)) 
+  LUT5 #(
+    .INIT(32'hFFFFFFFE)) 
     \FSM_sequential_current_state[0]_i_8 
-       (.I0(counter_reg[20]),
-        .I1(counter_reg[19]),
-        .I2(counter_reg[18]),
-        .I3(counter_reg[17]),
+       (.I0(\counter_reg_n_0_[19] ),
+        .I1(\counter_reg_n_0_[20] ),
+        .I2(\counter_reg_n_0_[13] ),
+        .I3(\counter_reg_n_0_[14] ),
+        .I4(current_state[1]),
         .O(\FSM_sequential_current_state[0]_i_8_n_0 ));
   LUT3 #(
     .INIT(8'hFD)) 
     \FSM_sequential_current_state[0]_i_9 
-       (.I0(counter_reg[11]),
-        .I1(counter_reg[16]),
-        .I2(counter_reg[9]),
+       (.I0(\counter_reg_n_0_[12] ),
+        .I1(\counter_reg_n_0_[15] ),
+        .I2(\counter_reg_n_0_[9] ),
         .O(\FSM_sequential_current_state[0]_i_9_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFFFFE)) 
-    \FSM_sequential_current_state[1]_i_10 
-       (.I0(counter_reg[11]),
-        .I1(counter_reg[10]),
-        .I2(counter_reg[19]),
-        .I3(counter_reg[20]),
-        .I4(counter_reg[13]),
-        .I5(counter_reg[14]),
-        .O(\FSM_sequential_current_state[1]_i_10_n_0 ));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    \FSM_sequential_current_state[1]_i_11 
-       (.I0(counter_reg[2]),
-        .I1(counter_reg[0]),
-        .I2(counter_reg[4]),
-        .I3(counter_reg[3]),
-        .O(\FSM_sequential_current_state[1]_i_11_n_0 ));
-  LUT3 #(
-    .INIT(8'hFB)) 
-    \FSM_sequential_current_state[1]_i_12 
-       (.I0(counter_reg[12]),
-        .I1(counter_reg[16]),
-        .I2(counter_reg[18]),
-        .O(\FSM_sequential_current_state[1]_i_12_n_0 ));
-  LUT4 #(
-    .INIT(16'hFFDF)) 
-    \FSM_sequential_current_state[1]_i_13 
-       (.I0(counter_reg[15]),
-        .I1(counter_reg[1]),
-        .I2(counter_reg[7]),
-        .I3(counter_reg[5]),
-        .O(\FSM_sequential_current_state[1]_i_13_n_0 ));
-  LUT4 #(
-    .INIT(16'hEFFF)) 
-    \FSM_sequential_current_state[1]_i_14 
-       (.I0(counter_reg[17]),
-        .I1(counter_reg[6]),
-        .I2(counter_reg[9]),
-        .I3(counter_reg[8]),
-        .O(\FSM_sequential_current_state[1]_i_14_n_0 ));
-  LUT4 #(
-    .INIT(16'h8A88)) 
+    .INIT(64'hFFFEFFFF22222222)) 
     \FSM_sequential_current_state[1]_i_1__0 
        (.I0(\FSM_sequential_current_state[1]_i_2__0_n_0 ),
-        .I1(current_state[1]),
-        .I2(\FSM_sequential_current_state[1]_i_3__0_n_0 ),
-        .I3(current_state[0]),
+        .I1(\FSM_sequential_current_state[1]_i_3__0_n_0 ),
+        .I2(\FSM_sequential_current_state[1]_i_4__0_n_0 ),
+        .I3(\counter_reg_n_0_[8] ),
+        .I4(current_state[0]),
+        .I5(current_state[1]),
         .O(next_state[1]));
   LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFFFFD)) 
+    .INIT(64'h0040000000000000)) 
     \FSM_sequential_current_state[1]_i_2__0 
-       (.I0(\FSM_sequential_current_state[1]_i_4__0_n_0 ),
-        .I1(\FSM_sequential_current_state[1]_i_5__0_n_0 ),
-        .I2(\FSM_sequential_current_state[1]_i_6__0_n_0 ),
-        .I3(\FSM_sequential_current_state[1]_i_7_n_0 ),
-        .I4(\FSM_sequential_current_state[1]_i_8__0_n_0 ),
-        .I5(\FSM_sequential_current_state[1]_i_9_n_0 ),
+       (.I0(\FSM_sequential_current_state[1]_i_5__0_n_0 ),
+        .I1(\counter_reg_n_0_[8] ),
+        .I2(current_state[0]),
+        .I3(\counter_reg_n_0_[12] ),
+        .I4(\counter_reg_n_0_[9] ),
+        .I5(\counter_reg_n_0_[15] ),
         .O(\FSM_sequential_current_state[1]_i_2__0_n_0 ));
   LUT5 #(
-    .INIT(32'hFFFFFFFE)) 
+    .INIT(32'hFFFEFFFF)) 
     \FSM_sequential_current_state[1]_i_3__0 
-       (.I0(\FSM_sequential_current_state[1]_i_10_n_0 ),
-        .I1(\FSM_sequential_current_state[1]_i_11_n_0 ),
-        .I2(\FSM_sequential_current_state[1]_i_12_n_0 ),
-        .I3(\FSM_sequential_current_state[1]_i_13_n_0 ),
-        .I4(\FSM_sequential_current_state[1]_i_14_n_0 ),
+       (.I0(\FSM_sequential_current_state[1]_i_6__0_n_0 ),
+        .I1(\FSM_sequential_current_state[1]_i_7_n_0 ),
+        .I2(\counter_reg_n_0_[7] ),
+        .I3(\counter_reg_n_0_[11] ),
+        .I4(\counter_reg_n_0_[16] ),
         .O(\FSM_sequential_current_state[1]_i_3__0_n_0 ));
   LUT4 #(
-    .INIT(16'h8000)) 
+    .INIT(16'hFEFF)) 
     \FSM_sequential_current_state[1]_i_4__0 
-       (.I0(counter_reg[14]),
-        .I1(counter_reg[7]),
-        .I2(counter_reg[19]),
-        .I3(counter_reg[13]),
+       (.I0(\FSM_sequential_current_state[1]_i_8_n_0 ),
+        .I1(\counter_reg_n_0_[9] ),
+        .I2(\counter_reg_n_0_[15] ),
+        .I3(\counter_reg_n_0_[12] ),
         .O(\FSM_sequential_current_state[1]_i_4__0_n_0 ));
   LUT4 #(
-    .INIT(16'hFFEF)) 
+    .INIT(16'hFFFE)) 
     \FSM_sequential_current_state[1]_i_5__0 
-       (.I0(counter_reg[2]),
-        .I1(counter_reg[0]),
-        .I2(counter_reg[20]),
-        .I3(counter_reg[1]),
+       (.I0(\counter_reg_n_0_[14] ),
+        .I1(\counter_reg_n_0_[13] ),
+        .I2(\counter_reg_n_0_[20] ),
+        .I3(\counter_reg_n_0_[19] ),
         .O(\FSM_sequential_current_state[1]_i_5__0_n_0 ));
   LUT6 #(
-    .INIT(64'hEFFFFFFFFFFFFFFF)) 
+    .INIT(64'hFEFFFFFFFFFFFFFF)) 
     \FSM_sequential_current_state[1]_i_6__0 
-       (.I0(counter_reg[17]),
-        .I1(counter_reg[6]),
-        .I2(counter_reg[5]),
-        .I3(counter_reg[16]),
-        .I4(counter_reg[3]),
-        .I5(counter_reg[4]),
+       (.I0(\counter_reg_n_0_[17] ),
+        .I1(\counter_reg_n_0_[18] ),
+        .I2(\counter_reg_n_0_[10] ),
+        .I3(\counter_reg_n_0_[6] ),
+        .I4(\counter_reg_n_0_[1] ),
+        .I5(\counter_reg_n_0_[0] ),
         .O(\FSM_sequential_current_state[1]_i_6__0_n_0 ));
   LUT4 #(
-    .INIT(16'hFF7F)) 
+    .INIT(16'h7FFF)) 
     \FSM_sequential_current_state[1]_i_7 
-       (.I0(counter_reg[10]),
-        .I1(counter_reg[9]),
-        .I2(counter_reg[11]),
-        .I3(counter_reg[18]),
+       (.I0(\counter_reg_n_0_[3] ),
+        .I1(\counter_reg_n_0_[2] ),
+        .I2(\counter_reg_n_0_[5] ),
+        .I3(\counter_reg_n_0_[4] ),
         .O(\FSM_sequential_current_state[1]_i_7_n_0 ));
-  LUT3 #(
-    .INIT(8'hFB)) 
-    \FSM_sequential_current_state[1]_i_8__0 
-       (.I0(counter_reg[12]),
-        .I1(counter_reg[8]),
-        .I2(counter_reg[15]),
-        .O(\FSM_sequential_current_state[1]_i_8__0_n_0 ));
-  LUT2 #(
-    .INIT(4'h7)) 
-    \FSM_sequential_current_state[1]_i_9 
-       (.I0(current_state[1]),
-        .I1(current_state[0]),
-        .O(\FSM_sequential_current_state[1]_i_9_n_0 ));
+  LUT4 #(
+    .INIT(16'h7FFF)) 
+    \FSM_sequential_current_state[1]_i_8 
+       (.I0(\counter_reg_n_0_[14] ),
+        .I1(\counter_reg_n_0_[13] ),
+        .I2(\counter_reg_n_0_[20] ),
+        .I3(\counter_reg_n_0_[19] ),
+        .O(\FSM_sequential_current_state[1]_i_8_n_0 ));
   (* FSM_ENCODED_STATES = "iSTATE:01,iSTATE0:10,iSTATE1:11,iSTATE2:00" *) 
   FDCE #(
     .INIT(1'b0)) 
@@ -1698,80 +1504,80 @@ module Vsync
   LUT2 #(
     .INIT(4'hE)) 
     VGA_VSYNC_OBUF_inst_i_1
-       (.I0(current_state[1]),
-        .I1(current_state[0]),
+       (.I0(current_state[0]),
+        .I1(current_state[1]),
         .O(VGA_VSYNC_OBUF));
-  (* SOFT_HLUTNM = "soft_lutpair23" *) 
+  (* SOFT_HLUTNM = "soft_lutpair36" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \Vpixel[0]_i_1 
        (.I0(Vpixel[0]),
         .O(Vpixel_0[0]));
-  (* SOFT_HLUTNM = "soft_lutpair23" *) 
+  (* SOFT_HLUTNM = "soft_lutpair36" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \Vpixel[1]_i_1 
        (.I0(Vpixel[0]),
         .I1(Vpixel[1]),
         .O(Vpixel_0[1]));
-  (* SOFT_HLUTNM = "soft_lutpair15" *) 
+  (* SOFT_HLUTNM = "soft_lutpair28" *) 
   LUT3 #(
-    .INIT(8'h6A)) 
+    .INIT(8'h78)) 
     \Vpixel[2]_i_1 
+       (.I0(Vpixel[1]),
+        .I1(Vpixel[0]),
+        .I2(Vpixel[2]),
+        .O(Vpixel_0[2]));
+  (* SOFT_HLUTNM = "soft_lutpair28" *) 
+  LUT4 #(
+    .INIT(16'h7F80)) 
+    \Vpixel[3]_i_1 
        (.I0(Vpixel[2]),
         .I1(Vpixel[0]),
         .I2(Vpixel[1]),
-        .O(Vpixel_0[2]));
-  (* SOFT_HLUTNM = "soft_lutpair15" *) 
-  LUT4 #(
-    .INIT(16'h6AAA)) 
-    \Vpixel[3]_i_1 
+        .I3(Vpixel[3]),
+        .O(Vpixel_0[3]));
+  LUT5 #(
+    .INIT(32'h7FFF8000)) 
+    \Vpixel[4]_i_1 
        (.I0(Vpixel[3]),
         .I1(Vpixel[1]),
         .I2(Vpixel[0]),
         .I3(Vpixel[2]),
-        .O(Vpixel_0[3]));
-  LUT5 #(
-    .INIT(32'h6AAAAAAA)) 
-    \Vpixel[4]_i_1 
-       (.I0(Vpixel[4]),
-        .I1(Vpixel[2]),
-        .I2(Vpixel[0]),
-        .I3(Vpixel[1]),
-        .I4(Vpixel[3]),
+        .I4(Vpixel[4]),
         .O(Vpixel_0[4]));
-  (* SOFT_HLUTNM = "soft_lutpair16" *) 
+  (* SOFT_HLUTNM = "soft_lutpair29" *) 
   LUT3 #(
-    .INIT(8'hC1)) 
+    .INIT(8'h89)) 
     \Vpixel[5]_i_1 
-       (.I0(Vpixel[6]),
-        .I1(\Vpixel[6]_i_4_n_0 ),
-        .I2(Vpixel[5]),
+       (.I0(\Vpixel[6]_i_4_n_0 ),
+        .I1(Vpixel[5]),
+        .I2(Vpixel[6]),
         .O(Vpixel_0[5]));
   LUT3 #(
-    .INIT(8'h20)) 
+    .INIT(8'h04)) 
     \Vpixel[6]_i_1 
-       (.I0(\Vpixel[6]_i_3_n_0 ),
-        .I1(current_state[0]),
-        .I2(current_state[1]),
+       (.I0(current_state[0]),
+        .I1(current_state[1]),
+        .I2(\Vpixel[6]_i_3_n_0 ),
         .O(\Vpixel[6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair16" *) 
+  (* SOFT_HLUTNM = "soft_lutpair29" *) 
   LUT3 #(
     .INIT(8'hA4)) 
     \Vpixel[6]_i_2 
-       (.I0(Vpixel[6]),
+       (.I0(\Vpixel[6]_i_4_n_0 ),
         .I1(Vpixel[5]),
-        .I2(\Vpixel[6]_i_4_n_0 ),
+        .I2(Vpixel[6]),
         .O(Vpixel_0[6]));
   LUT6 #(
-    .INIT(64'h0020000000000000)) 
+    .INIT(64'hFFFFFFFFBFFFFFFF)) 
     \Vpixel[6]_i_3 
        (.I0(\Vpixel[6]_i_5_n_0 ),
-        .I1(\Vpixel[6]_i_6_n_0 ),
-        .I2(\second_counter_reg_n_0_[0] ),
-        .I3(\second_counter_reg_n_0_[8] ),
-        .I4(\second_counter_reg_n_0_[13] ),
-        .I5(\second_counter_reg_n_0_[5] ),
+        .I1(\second_counter_reg_n_0_[3] ),
+        .I2(\second_counter_reg_n_0_[2] ),
+        .I3(\second_counter_reg_n_0_[5] ),
+        .I4(\second_counter_reg_n_0_[4] ),
+        .I5(\Vpixel[6]_i_6_n_0 ),
         .O(\Vpixel[6]_i_3_n_0 ));
   LUT5 #(
     .INIT(32'h7FFFFFFF)) 
@@ -1782,23 +1588,23 @@ module Vsync
         .I3(Vpixel[2]),
         .I4(Vpixel[4]),
         .O(\Vpixel[6]_i_4_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000800000000000)) 
-    \Vpixel[6]_i_5 
-       (.I0(\second_counter_reg_n_0_[12] ),
-        .I1(\second_counter_reg_n_0_[11] ),
-        .I2(\second_counter_reg_n_0_[3] ),
-        .I3(\second_counter_reg_n_0_[4] ),
-        .I4(\second_counter_reg_n_0_[7] ),
-        .I5(\second_counter_reg_n_0_[2] ),
-        .O(\Vpixel[6]_i_5_n_0 ));
   LUT4 #(
-    .INIT(16'h7FFF)) 
-    \Vpixel[6]_i_6 
-       (.I0(\second_counter_reg_n_0_[10] ),
-        .I1(\second_counter_reg_n_0_[6] ),
+    .INIT(16'hFFDF)) 
+    \Vpixel[6]_i_5 
+       (.I0(\second_counter_reg_n_0_[6] ),
+        .I1(\second_counter_reg_n_0_[7] ),
         .I2(\second_counter_reg_n_0_[9] ),
-        .I3(\second_counter_reg_n_0_[1] ),
+        .I3(\second_counter_reg_n_0_[8] ),
+        .O(\Vpixel[6]_i_5_n_0 ));
+  LUT6 #(
+    .INIT(64'h7FFFFFFFFFFFFFFF)) 
+    \Vpixel[6]_i_6 
+       (.I0(\second_counter_reg_n_0_[12] ),
+        .I1(\second_counter_reg_n_0_[13] ),
+        .I2(\second_counter_reg_n_0_[10] ),
+        .I3(\second_counter_reg_n_0_[11] ),
+        .I4(\second_counter_reg_n_0_[1] ),
+        .I5(\second_counter_reg_n_0_[0] ),
         .O(\Vpixel[6]_i_6_n_0 ));
   FDCE #(
     .INIT(1'b0)) 
@@ -1860,10 +1666,10 @@ module Vsync
   CARRY4 counter0_carry
        (.CI(1'b0),
         .CO({counter0_carry_n_0,NLW_counter0_carry_CO_UNCONNECTED[2:0]}),
-        .CYINIT(counter_reg[0]),
+        .CYINIT(\counter_reg_n_0_[0] ),
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O({counter0_carry_n_4,counter0_carry_n_5,counter0_carry_n_6,counter0_carry_n_7}),
-        .S(counter_reg[4:1]));
+        .S({\counter_reg_n_0_[4] ,\counter_reg_n_0_[3] ,\counter_reg_n_0_[2] ,\counter_reg_n_0_[1] }));
   (* OPT_MODIFIED = "SWEEP " *) 
   CARRY4 counter0_carry__0
        (.CI(counter0_carry_n_0),
@@ -1871,7 +1677,7 @@ module Vsync
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O({counter0_carry__0_n_4,counter0_carry__0_n_5,counter0_carry__0_n_6,counter0_carry__0_n_7}),
-        .S(counter_reg[8:5]));
+        .S({\counter_reg_n_0_[8] ,\counter_reg_n_0_[7] ,\counter_reg_n_0_[6] ,\counter_reg_n_0_[5] }));
   (* OPT_MODIFIED = "SWEEP " *) 
   CARRY4 counter0_carry__1
        (.CI(counter0_carry__0_n_0),
@@ -1879,7 +1685,7 @@ module Vsync
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O({counter0_carry__1_n_4,counter0_carry__1_n_5,counter0_carry__1_n_6,counter0_carry__1_n_7}),
-        .S(counter_reg[12:9]));
+        .S({\counter_reg_n_0_[12] ,\counter_reg_n_0_[11] ,\counter_reg_n_0_[10] ,\counter_reg_n_0_[9] }));
   (* OPT_MODIFIED = "SWEEP " *) 
   CARRY4 counter0_carry__2
        (.CI(counter0_carry__1_n_0),
@@ -1887,7 +1693,7 @@ module Vsync
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O({counter0_carry__2_n_4,counter0_carry__2_n_5,counter0_carry__2_n_6,counter0_carry__2_n_7}),
-        .S(counter_reg[16:13]));
+        .S({\counter_reg_n_0_[16] ,\counter_reg_n_0_[15] ,\counter_reg_n_0_[14] ,\counter_reg_n_0_[13] }));
   (* OPT_MODIFIED = "SWEEP " *) 
   CARRY4 counter0_carry__3
        (.CI(counter0_carry__2_n_0),
@@ -1895,528 +1701,422 @@ module Vsync
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O({counter0_carry__3_n_4,counter0_carry__3_n_5,counter0_carry__3_n_6,counter0_carry__3_n_7}),
-        .S(counter_reg[20:17]));
+        .S({\counter_reg_n_0_[20] ,\counter_reg_n_0_[19] ,\counter_reg_n_0_[18] ,\counter_reg_n_0_[17] }));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \counter[0]_i_1__0 
+       (.I0(\counter_reg_n_0_[0] ),
+        .O(counter[0]));
+  (* SOFT_HLUTNM = "soft_lutpair18" *) 
   LUT4 #(
-    .INIT(16'h0001)) 
-    \counter[0]_i_10 
-       (.I0(counter_reg[2]),
-        .I1(counter_reg[1]),
-        .I2(counter_reg[17]),
-        .I3(counter_reg[15]),
-        .O(\counter[0]_i_10_n_0 ));
+    .INIT(16'hFE00)) 
+    \counter[10]_i_1__0 
+       (.I0(\FSM_sequential_current_state[1]_i_3__0_n_0 ),
+        .I1(\FSM_sequential_current_state[1]_i_4__0_n_0 ),
+        .I2(\counter_reg_n_0_[8] ),
+        .I3(counter0_carry__1_n_6),
+        .O(counter[10]));
+  (* SOFT_HLUTNM = "soft_lutpair24" *) 
   LUT4 #(
-    .INIT(16'hFFFD)) 
-    \counter[0]_i_11 
-       (.I0(counter_reg[8]),
-        .I1(counter_reg[18]),
-        .I2(counter_reg[12]),
-        .I3(counter_reg[6]),
-        .O(\counter[0]_i_11_n_0 ));
-  LUT5 #(
-    .INIT(32'hBFFFFFFF)) 
-    \counter[0]_i_12 
-       (.I0(counter_reg[0]),
-        .I1(counter_reg[19]),
-        .I2(counter_reg[20]),
-        .I3(counter_reg[3]),
-        .I4(counter_reg[7]),
-        .O(\counter[0]_i_12_n_0 ));
-  LUT2 #(
-    .INIT(4'hB)) 
-    \counter[0]_i_2__0 
-       (.I0(current_state[0]),
-        .I1(current_state[1]),
-        .O(\counter[0]_i_2__0_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF2F0020)) 
-    \counter[0]_i_3__0 
-       (.I0(counter0_carry_n_5),
-        .I1(\counter[0]_i_7__0_n_0 ),
-        .I2(current_state[1]),
-        .I3(current_state[0]),
-        .I4(counter_reg[3]),
-        .O(\counter[0]_i_3__0_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF2F0020)) 
-    \counter[0]_i_4__0 
-       (.I0(counter0_carry_n_6),
-        .I1(\counter[0]_i_7__0_n_0 ),
-        .I2(current_state[1]),
-        .I3(current_state[0]),
-        .I4(counter_reg[2]),
-        .O(\counter[0]_i_4__0_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF2F0020)) 
-    \counter[0]_i_5__0 
-       (.I0(counter0_carry_n_7),
-        .I1(\counter[0]_i_7__0_n_0 ),
-        .I2(current_state[1]),
-        .I3(current_state[0]),
-        .I4(counter_reg[1]),
-        .O(\counter[0]_i_5__0_n_0 ));
+    .INIT(16'hFE00)) 
+    \counter[11]_i_1__0 
+       (.I0(\FSM_sequential_current_state[1]_i_3__0_n_0 ),
+        .I1(\FSM_sequential_current_state[1]_i_4__0_n_0 ),
+        .I2(\counter_reg_n_0_[8] ),
+        .I3(counter0_carry__1_n_5),
+        .O(counter[11]));
+  (* SOFT_HLUTNM = "soft_lutpair23" *) 
   LUT4 #(
-    .INIT(16'h5155)) 
-    \counter[0]_i_6 
-       (.I0(counter_reg[0]),
-        .I1(\counter[0]_i_7__0_n_0 ),
-        .I2(current_state[0]),
-        .I3(current_state[1]),
-        .O(\counter[0]_i_6_n_0 ));
-  LUT5 #(
-    .INIT(32'h00000010)) 
-    \counter[0]_i_7__0 
-       (.I0(\counter[0]_i_8__0_n_0 ),
-        .I1(\counter[0]_i_9__0_n_0 ),
-        .I2(\counter[0]_i_10_n_0 ),
-        .I3(\counter[0]_i_11_n_0 ),
-        .I4(\counter[0]_i_12_n_0 ),
-        .O(\counter[0]_i_7__0_n_0 ));
+    .INIT(16'hFE00)) 
+    \counter[12]_i_1 
+       (.I0(\FSM_sequential_current_state[1]_i_3__0_n_0 ),
+        .I1(\FSM_sequential_current_state[1]_i_4__0_n_0 ),
+        .I2(\counter_reg_n_0_[8] ),
+        .I3(counter0_carry__1_n_4),
+        .O(counter[12]));
+  (* SOFT_HLUTNM = "soft_lutpair20" *) 
   LUT4 #(
-    .INIT(16'h7FFF)) 
-    \counter[0]_i_8__0 
-       (.I0(counter_reg[10]),
-        .I1(counter_reg[9]),
-        .I2(counter_reg[11]),
-        .I3(counter_reg[5]),
-        .O(\counter[0]_i_8__0_n_0 ));
+    .INIT(16'hFE00)) 
+    \counter[13]_i_1 
+       (.I0(\FSM_sequential_current_state[1]_i_3__0_n_0 ),
+        .I1(\FSM_sequential_current_state[1]_i_4__0_n_0 ),
+        .I2(\counter_reg_n_0_[8] ),
+        .I3(counter0_carry__2_n_7),
+        .O(counter[13]));
+  (* SOFT_HLUTNM = "soft_lutpair22" *) 
   LUT4 #(
-    .INIT(16'h7FFF)) 
-    \counter[0]_i_9__0 
-       (.I0(counter_reg[14]),
-        .I1(counter_reg[13]),
-        .I2(counter_reg[16]),
-        .I3(counter_reg[4]),
-        .O(\counter[0]_i_9__0_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF2F0020)) 
-    \counter[12]_i_2 
-       (.I0(counter0_carry__2_n_5),
-        .I1(\counter[0]_i_7__0_n_0 ),
-        .I2(current_state[1]),
-        .I3(current_state[0]),
-        .I4(counter_reg[15]),
-        .O(\counter[12]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF2F0020)) 
-    \counter[12]_i_3 
-       (.I0(counter0_carry__2_n_6),
-        .I1(\counter[0]_i_7__0_n_0 ),
-        .I2(current_state[1]),
-        .I3(current_state[0]),
-        .I4(counter_reg[14]),
-        .O(\counter[12]_i_3_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF2F0020)) 
-    \counter[12]_i_4 
-       (.I0(counter0_carry__2_n_7),
-        .I1(\counter[0]_i_7__0_n_0 ),
-        .I2(current_state[1]),
-        .I3(current_state[0]),
-        .I4(counter_reg[13]),
-        .O(\counter[12]_i_4_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF2F0020)) 
-    \counter[12]_i_5 
-       (.I0(counter0_carry__1_n_4),
-        .I1(\counter[0]_i_7__0_n_0 ),
-        .I2(current_state[1]),
-        .I3(current_state[0]),
-        .I4(counter_reg[12]),
-        .O(\counter[12]_i_5_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF2F0020)) 
-    \counter[16]_i_2 
-       (.I0(counter0_carry__3_n_5),
-        .I1(\counter[0]_i_7__0_n_0 ),
-        .I2(current_state[1]),
-        .I3(current_state[0]),
-        .I4(counter_reg[19]),
-        .O(\counter[16]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF2F0020)) 
-    \counter[16]_i_3 
-       (.I0(counter0_carry__3_n_6),
-        .I1(\counter[0]_i_7__0_n_0 ),
-        .I2(current_state[1]),
-        .I3(current_state[0]),
-        .I4(counter_reg[18]),
-        .O(\counter[16]_i_3_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF2F0020)) 
-    \counter[16]_i_4 
-       (.I0(counter0_carry__3_n_7),
-        .I1(\counter[0]_i_7__0_n_0 ),
-        .I2(current_state[1]),
-        .I3(current_state[0]),
-        .I4(counter_reg[17]),
-        .O(\counter[16]_i_4_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF2F0020)) 
-    \counter[16]_i_5 
-       (.I0(counter0_carry__2_n_4),
-        .I1(\counter[0]_i_7__0_n_0 ),
-        .I2(current_state[1]),
-        .I3(current_state[0]),
-        .I4(counter_reg[16]),
-        .O(\counter[16]_i_5_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF2F0020)) 
-    \counter[20]_i_2 
-       (.I0(counter0_carry__3_n_4),
-        .I1(\counter[0]_i_7__0_n_0 ),
-        .I2(current_state[1]),
-        .I3(current_state[0]),
-        .I4(counter_reg[20]),
-        .O(\counter[20]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF2F0020)) 
-    \counter[4]_i_2__0 
-       (.I0(counter0_carry__0_n_5),
-        .I1(\counter[0]_i_7__0_n_0 ),
-        .I2(current_state[1]),
-        .I3(current_state[0]),
-        .I4(counter_reg[7]),
-        .O(\counter[4]_i_2__0_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF2F0020)) 
-    \counter[4]_i_3__0 
-       (.I0(counter0_carry__0_n_6),
-        .I1(\counter[0]_i_7__0_n_0 ),
-        .I2(current_state[1]),
-        .I3(current_state[0]),
-        .I4(counter_reg[6]),
-        .O(\counter[4]_i_3__0_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF2F0020)) 
-    \counter[4]_i_4__0 
-       (.I0(counter0_carry__0_n_7),
-        .I1(\counter[0]_i_7__0_n_0 ),
-        .I2(current_state[1]),
-        .I3(current_state[0]),
-        .I4(counter_reg[5]),
-        .O(\counter[4]_i_4__0_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF2F0020)) 
-    \counter[4]_i_5__0 
-       (.I0(counter0_carry_n_4),
-        .I1(\counter[0]_i_7__0_n_0 ),
-        .I2(current_state[1]),
-        .I3(current_state[0]),
-        .I4(counter_reg[4]),
-        .O(\counter[4]_i_5__0_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF2F0020)) 
-    \counter[8]_i_2__0 
-       (.I0(counter0_carry__1_n_5),
-        .I1(\counter[0]_i_7__0_n_0 ),
-        .I2(current_state[1]),
-        .I3(current_state[0]),
-        .I4(counter_reg[11]),
-        .O(\counter[8]_i_2__0_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF2F0020)) 
-    \counter[8]_i_3__0 
-       (.I0(counter0_carry__1_n_6),
-        .I1(\counter[0]_i_7__0_n_0 ),
-        .I2(current_state[1]),
-        .I3(current_state[0]),
-        .I4(counter_reg[10]),
-        .O(\counter[8]_i_3__0_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF2F0020)) 
-    \counter[8]_i_4__0 
-       (.I0(counter0_carry__1_n_7),
-        .I1(\counter[0]_i_7__0_n_0 ),
-        .I2(current_state[1]),
-        .I3(current_state[0]),
-        .I4(counter_reg[9]),
-        .O(\counter[8]_i_4__0_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF2F0020)) 
-    \counter[8]_i_5__0 
-       (.I0(counter0_carry__0_n_4),
-        .I1(\counter[0]_i_7__0_n_0 ),
-        .I2(current_state[1]),
-        .I3(current_state[0]),
-        .I4(counter_reg[8]),
-        .O(\counter[8]_i_5__0_n_0 ));
+    .INIT(16'hFE00)) 
+    \counter[14]_i_1 
+       (.I0(\FSM_sequential_current_state[1]_i_3__0_n_0 ),
+        .I1(\FSM_sequential_current_state[1]_i_4__0_n_0 ),
+        .I2(\counter_reg_n_0_[8] ),
+        .I3(counter0_carry__2_n_6),
+        .O(counter[14]));
+  (* SOFT_HLUTNM = "soft_lutpair19" *) 
+  LUT4 #(
+    .INIT(16'hFE00)) 
+    \counter[15]_i_1 
+       (.I0(\FSM_sequential_current_state[1]_i_3__0_n_0 ),
+        .I1(\FSM_sequential_current_state[1]_i_4__0_n_0 ),
+        .I2(\counter_reg_n_0_[8] ),
+        .I3(counter0_carry__2_n_5),
+        .O(counter[15]));
+  (* SOFT_HLUTNM = "soft_lutpair21" *) 
+  LUT4 #(
+    .INIT(16'hFE00)) 
+    \counter[16]_i_1 
+       (.I0(\FSM_sequential_current_state[1]_i_3__0_n_0 ),
+        .I1(\FSM_sequential_current_state[1]_i_4__0_n_0 ),
+        .I2(\counter_reg_n_0_[8] ),
+        .I3(counter0_carry__2_n_4),
+        .O(counter[16]));
+  (* SOFT_HLUTNM = "soft_lutpair21" *) 
+  LUT4 #(
+    .INIT(16'hFE00)) 
+    \counter[17]_i_1 
+       (.I0(\FSM_sequential_current_state[1]_i_3__0_n_0 ),
+        .I1(\FSM_sequential_current_state[1]_i_4__0_n_0 ),
+        .I2(\counter_reg_n_0_[8] ),
+        .I3(counter0_carry__3_n_7),
+        .O(counter[17]));
+  (* SOFT_HLUTNM = "soft_lutpair18" *) 
+  LUT4 #(
+    .INIT(16'hFE00)) 
+    \counter[18]_i_1 
+       (.I0(\FSM_sequential_current_state[1]_i_3__0_n_0 ),
+        .I1(\FSM_sequential_current_state[1]_i_4__0_n_0 ),
+        .I2(\counter_reg_n_0_[8] ),
+        .I3(counter0_carry__3_n_6),
+        .O(counter[18]));
+  (* SOFT_HLUTNM = "soft_lutpair20" *) 
+  LUT4 #(
+    .INIT(16'hFE00)) 
+    \counter[19]_i_1 
+       (.I0(\FSM_sequential_current_state[1]_i_3__0_n_0 ),
+        .I1(\FSM_sequential_current_state[1]_i_4__0_n_0 ),
+        .I2(\counter_reg_n_0_[8] ),
+        .I3(counter0_carry__3_n_5),
+        .O(counter[19]));
+  (* SOFT_HLUTNM = "soft_lutpair27" *) 
+  LUT4 #(
+    .INIT(16'hFE00)) 
+    \counter[1]_i_1__0 
+       (.I0(\FSM_sequential_current_state[1]_i_3__0_n_0 ),
+        .I1(\FSM_sequential_current_state[1]_i_4__0_n_0 ),
+        .I2(\counter_reg_n_0_[8] ),
+        .I3(counter0_carry_n_7),
+        .O(counter[1]));
+  (* SOFT_HLUTNM = "soft_lutpair19" *) 
+  LUT4 #(
+    .INIT(16'hFE00)) 
+    \counter[20]_i_1 
+       (.I0(\FSM_sequential_current_state[1]_i_3__0_n_0 ),
+        .I1(\FSM_sequential_current_state[1]_i_4__0_n_0 ),
+        .I2(\counter_reg_n_0_[8] ),
+        .I3(counter0_carry__3_n_4),
+        .O(counter[20]));
+  (* SOFT_HLUTNM = "soft_lutpair26" *) 
+  LUT4 #(
+    .INIT(16'hFE00)) 
+    \counter[2]_i_1__0 
+       (.I0(\FSM_sequential_current_state[1]_i_3__0_n_0 ),
+        .I1(\FSM_sequential_current_state[1]_i_4__0_n_0 ),
+        .I2(\counter_reg_n_0_[8] ),
+        .I3(counter0_carry_n_6),
+        .O(counter[2]));
+  (* SOFT_HLUTNM = "soft_lutpair27" *) 
+  LUT4 #(
+    .INIT(16'hFE00)) 
+    \counter[3]_i_1__0 
+       (.I0(\FSM_sequential_current_state[1]_i_3__0_n_0 ),
+        .I1(\FSM_sequential_current_state[1]_i_4__0_n_0 ),
+        .I2(\counter_reg_n_0_[8] ),
+        .I3(counter0_carry_n_5),
+        .O(counter[3]));
+  (* SOFT_HLUTNM = "soft_lutpair26" *) 
+  LUT4 #(
+    .INIT(16'hFE00)) 
+    \counter[4]_i_1__0 
+       (.I0(\FSM_sequential_current_state[1]_i_3__0_n_0 ),
+        .I1(\FSM_sequential_current_state[1]_i_4__0_n_0 ),
+        .I2(\counter_reg_n_0_[8] ),
+        .I3(counter0_carry_n_4),
+        .O(counter[4]));
+  (* SOFT_HLUTNM = "soft_lutpair25" *) 
+  LUT4 #(
+    .INIT(16'hFE00)) 
+    \counter[5]_i_1__0 
+       (.I0(\FSM_sequential_current_state[1]_i_3__0_n_0 ),
+        .I1(\FSM_sequential_current_state[1]_i_4__0_n_0 ),
+        .I2(\counter_reg_n_0_[8] ),
+        .I3(counter0_carry__0_n_7),
+        .O(counter[5]));
+  (* SOFT_HLUTNM = "soft_lutpair22" *) 
+  LUT4 #(
+    .INIT(16'hFE00)) 
+    \counter[6]_i_1__0 
+       (.I0(\FSM_sequential_current_state[1]_i_3__0_n_0 ),
+        .I1(\FSM_sequential_current_state[1]_i_4__0_n_0 ),
+        .I2(\counter_reg_n_0_[8] ),
+        .I3(counter0_carry__0_n_6),
+        .O(counter[6]));
+  (* SOFT_HLUTNM = "soft_lutpair25" *) 
+  LUT4 #(
+    .INIT(16'hFE00)) 
+    \counter[7]_i_1__0 
+       (.I0(\FSM_sequential_current_state[1]_i_3__0_n_0 ),
+        .I1(\FSM_sequential_current_state[1]_i_4__0_n_0 ),
+        .I2(\counter_reg_n_0_[8] ),
+        .I3(counter0_carry__0_n_5),
+        .O(counter[7]));
+  (* SOFT_HLUTNM = "soft_lutpair24" *) 
+  LUT4 #(
+    .INIT(16'hFE00)) 
+    \counter[8]_i_1__0 
+       (.I0(\FSM_sequential_current_state[1]_i_3__0_n_0 ),
+        .I1(\FSM_sequential_current_state[1]_i_4__0_n_0 ),
+        .I2(\counter_reg_n_0_[8] ),
+        .I3(counter0_carry__0_n_4),
+        .O(counter[8]));
+  (* SOFT_HLUTNM = "soft_lutpair23" *) 
+  LUT4 #(
+    .INIT(16'hFE00)) 
+    \counter[9]_i_1__0 
+       (.I0(\FSM_sequential_current_state[1]_i_3__0_n_0 ),
+        .I1(\FSM_sequential_current_state[1]_i_4__0_n_0 ),
+        .I2(\counter_reg_n_0_[8] ),
+        .I3(counter0_carry__1_n_7),
+        .O(counter[9]));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[0] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[0]_i_1__0_n_7 ),
-        .Q(counter_reg[0]));
-  (* OPT_MODIFIED = "SWEEP " *) 
-  CARRY4 \counter_reg[0]_i_1__0 
-       (.CI(1'b0),
-        .CO({\counter_reg[0]_i_1__0_n_0 ,\NLW_counter_reg[0]_i_1__0_CO_UNCONNECTED [2:0]}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,\counter[0]_i_2__0_n_0 }),
-        .O({\counter_reg[0]_i_1__0_n_4 ,\counter_reg[0]_i_1__0_n_5 ,\counter_reg[0]_i_1__0_n_6 ,\counter_reg[0]_i_1__0_n_7 }),
-        .S({\counter[0]_i_3__0_n_0 ,\counter[0]_i_4__0_n_0 ,\counter[0]_i_5__0_n_0 ,\counter[0]_i_6_n_0 }));
+        .D(counter[0]),
+        .Q(\counter_reg_n_0_[0] ));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[10] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[8]_i_1__0_n_5 ),
-        .Q(counter_reg[10]));
+        .D(counter[10]),
+        .Q(\counter_reg_n_0_[10] ));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[11] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[8]_i_1__0_n_4 ),
-        .Q(counter_reg[11]));
+        .D(counter[11]),
+        .Q(\counter_reg_n_0_[11] ));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[12] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[12]_i_1_n_7 ),
-        .Q(counter_reg[12]));
-  (* OPT_MODIFIED = "SWEEP " *) 
-  CARRY4 \counter_reg[12]_i_1 
-       (.CI(\counter_reg[8]_i_1__0_n_0 ),
-        .CO({\counter_reg[12]_i_1_n_0 ,\NLW_counter_reg[12]_i_1_CO_UNCONNECTED [2:0]}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({\counter_reg[12]_i_1_n_4 ,\counter_reg[12]_i_1_n_5 ,\counter_reg[12]_i_1_n_6 ,\counter_reg[12]_i_1_n_7 }),
-        .S({\counter[12]_i_2_n_0 ,\counter[12]_i_3_n_0 ,\counter[12]_i_4_n_0 ,\counter[12]_i_5_n_0 }));
+        .D(counter[12]),
+        .Q(\counter_reg_n_0_[12] ));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[13] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[12]_i_1_n_6 ),
-        .Q(counter_reg[13]));
+        .D(counter[13]),
+        .Q(\counter_reg_n_0_[13] ));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[14] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[12]_i_1_n_5 ),
-        .Q(counter_reg[14]));
+        .D(counter[14]),
+        .Q(\counter_reg_n_0_[14] ));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[15] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[12]_i_1_n_4 ),
-        .Q(counter_reg[15]));
+        .D(counter[15]),
+        .Q(\counter_reg_n_0_[15] ));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[16] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[16]_i_1_n_7 ),
-        .Q(counter_reg[16]));
-  (* OPT_MODIFIED = "SWEEP " *) 
-  CARRY4 \counter_reg[16]_i_1 
-       (.CI(\counter_reg[12]_i_1_n_0 ),
-        .CO({\counter_reg[16]_i_1_n_0 ,\NLW_counter_reg[16]_i_1_CO_UNCONNECTED [2:0]}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({\counter_reg[16]_i_1_n_4 ,\counter_reg[16]_i_1_n_5 ,\counter_reg[16]_i_1_n_6 ,\counter_reg[16]_i_1_n_7 }),
-        .S({\counter[16]_i_2_n_0 ,\counter[16]_i_3_n_0 ,\counter[16]_i_4_n_0 ,\counter[16]_i_5_n_0 }));
+        .D(counter[16]),
+        .Q(\counter_reg_n_0_[16] ));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[17] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[16]_i_1_n_6 ),
-        .Q(counter_reg[17]));
+        .D(counter[17]),
+        .Q(\counter_reg_n_0_[17] ));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[18] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[16]_i_1_n_5 ),
-        .Q(counter_reg[18]));
+        .D(counter[18]),
+        .Q(\counter_reg_n_0_[18] ));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[19] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[16]_i_1_n_4 ),
-        .Q(counter_reg[19]));
+        .D(counter[19]),
+        .Q(\counter_reg_n_0_[19] ));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[1] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[0]_i_1__0_n_6 ),
-        .Q(counter_reg[1]));
+        .D(counter[1]),
+        .Q(\counter_reg_n_0_[1] ));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[20] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[20]_i_1_n_7 ),
-        .Q(counter_reg[20]));
-  CARRY4 \counter_reg[20]_i_1 
-       (.CI(\counter_reg[16]_i_1_n_0 ),
-        .CO(\NLW_counter_reg[20]_i_1_CO_UNCONNECTED [3:0]),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({\NLW_counter_reg[20]_i_1_O_UNCONNECTED [3:1],\counter_reg[20]_i_1_n_7 }),
-        .S({1'b0,1'b0,1'b0,\counter[20]_i_2_n_0 }));
+        .D(counter[20]),
+        .Q(\counter_reg_n_0_[20] ));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[2] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[0]_i_1__0_n_5 ),
-        .Q(counter_reg[2]));
+        .D(counter[2]),
+        .Q(\counter_reg_n_0_[2] ));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[3] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[0]_i_1__0_n_4 ),
-        .Q(counter_reg[3]));
+        .D(counter[3]),
+        .Q(\counter_reg_n_0_[3] ));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[4] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[4]_i_1__0_n_7 ),
-        .Q(counter_reg[4]));
-  (* OPT_MODIFIED = "SWEEP " *) 
-  CARRY4 \counter_reg[4]_i_1__0 
-       (.CI(\counter_reg[0]_i_1__0_n_0 ),
-        .CO({\counter_reg[4]_i_1__0_n_0 ,\NLW_counter_reg[4]_i_1__0_CO_UNCONNECTED [2:0]}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({\counter_reg[4]_i_1__0_n_4 ,\counter_reg[4]_i_1__0_n_5 ,\counter_reg[4]_i_1__0_n_6 ,\counter_reg[4]_i_1__0_n_7 }),
-        .S({\counter[4]_i_2__0_n_0 ,\counter[4]_i_3__0_n_0 ,\counter[4]_i_4__0_n_0 ,\counter[4]_i_5__0_n_0 }));
+        .D(counter[4]),
+        .Q(\counter_reg_n_0_[4] ));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[5] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[4]_i_1__0_n_6 ),
-        .Q(counter_reg[5]));
+        .D(counter[5]),
+        .Q(\counter_reg_n_0_[5] ));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[6] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[4]_i_1__0_n_5 ),
-        .Q(counter_reg[6]));
+        .D(counter[6]),
+        .Q(\counter_reg_n_0_[6] ));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[7] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[4]_i_1__0_n_4 ),
-        .Q(counter_reg[7]));
+        .D(counter[7]),
+        .Q(\counter_reg_n_0_[7] ));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[8] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[8]_i_1__0_n_7 ),
-        .Q(counter_reg[8]));
-  (* OPT_MODIFIED = "SWEEP " *) 
-  CARRY4 \counter_reg[8]_i_1__0 
-       (.CI(\counter_reg[4]_i_1__0_n_0 ),
-        .CO({\counter_reg[8]_i_1__0_n_0 ,\NLW_counter_reg[8]_i_1__0_CO_UNCONNECTED [2:0]}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({\counter_reg[8]_i_1__0_n_4 ,\counter_reg[8]_i_1__0_n_5 ,\counter_reg[8]_i_1__0_n_6 ,\counter_reg[8]_i_1__0_n_7 }),
-        .S({\counter[8]_i_2__0_n_0 ,\counter[8]_i_3__0_n_0 ,\counter[8]_i_4__0_n_0 ,\counter[8]_i_5__0_n_0 }));
+        .D(counter[8]),
+        .Q(\counter_reg_n_0_[8] ));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[9] 
        (.C(CLK),
         .CE(1'b1),
         .CLR(AR),
-        .D(\counter_reg[8]_i_1__0_n_6 ),
-        .Q(counter_reg[9]));
+        .D(counter[9]),
+        .Q(\counter_reg_n_0_[9] ));
   LUT5 #(
-    .INIT(32'h00000800)) 
+    .INIT(32'h00200000)) 
     \genblk3_0.bram18_single_bl.bram18_single_bl_i_1 
-       (.I0(Vpixel[6]),
-        .I1(current_state[1]),
-        .I2(current_state[0]),
-        .I3(current_state_0[1]),
-        .I4(current_state_0[0]),
+       (.I0(current_state[1]),
+        .I1(current_state[0]),
+        .I2(current_state_0[1]),
+        .I3(current_state_0[0]),
+        .I4(Vpixel[6]),
         .O(ADDRARDADDR[6]));
   LUT5 #(
-    .INIT(32'h00000800)) 
+    .INIT(32'h00200000)) 
     \genblk3_0.bram18_single_bl.bram18_single_bl_i_2 
-       (.I0(Vpixel[5]),
-        .I1(current_state[1]),
-        .I2(current_state[0]),
-        .I3(current_state_0[1]),
-        .I4(current_state_0[0]),
+       (.I0(current_state[1]),
+        .I1(current_state[0]),
+        .I2(current_state_0[1]),
+        .I3(current_state_0[0]),
+        .I4(Vpixel[5]),
         .O(ADDRARDADDR[5]));
   LUT5 #(
-    .INIT(32'h00000800)) 
+    .INIT(32'h00200000)) 
     \genblk3_0.bram18_single_bl.bram18_single_bl_i_3 
-       (.I0(Vpixel[4]),
-        .I1(current_state[1]),
-        .I2(current_state[0]),
-        .I3(current_state_0[1]),
-        .I4(current_state_0[0]),
+       (.I0(current_state[1]),
+        .I1(current_state[0]),
+        .I2(current_state_0[1]),
+        .I3(current_state_0[0]),
+        .I4(Vpixel[4]),
         .O(ADDRARDADDR[4]));
   LUT5 #(
-    .INIT(32'h00000800)) 
+    .INIT(32'h00200000)) 
     \genblk3_0.bram18_single_bl.bram18_single_bl_i_4 
-       (.I0(Vpixel[3]),
-        .I1(current_state[1]),
-        .I2(current_state[0]),
-        .I3(current_state_0[1]),
-        .I4(current_state_0[0]),
+       (.I0(current_state[1]),
+        .I1(current_state[0]),
+        .I2(current_state_0[1]),
+        .I3(current_state_0[0]),
+        .I4(Vpixel[3]),
         .O(ADDRARDADDR[3]));
   LUT5 #(
-    .INIT(32'h00000800)) 
+    .INIT(32'h00200000)) 
     \genblk3_0.bram18_single_bl.bram18_single_bl_i_5 
-       (.I0(Vpixel[2]),
-        .I1(current_state[1]),
-        .I2(current_state[0]),
-        .I3(current_state_0[1]),
-        .I4(current_state_0[0]),
+       (.I0(current_state[1]),
+        .I1(current_state[0]),
+        .I2(current_state_0[1]),
+        .I3(current_state_0[0]),
+        .I4(Vpixel[2]),
         .O(ADDRARDADDR[2]));
   LUT5 #(
-    .INIT(32'h00000800)) 
+    .INIT(32'h00200000)) 
     \genblk3_0.bram18_single_bl.bram18_single_bl_i_6 
-       (.I0(Vpixel[1]),
-        .I1(current_state[1]),
-        .I2(current_state[0]),
-        .I3(current_state_0[1]),
-        .I4(current_state_0[0]),
+       (.I0(current_state[1]),
+        .I1(current_state[0]),
+        .I2(current_state_0[1]),
+        .I3(current_state_0[0]),
+        .I4(Vpixel[1]),
         .O(ADDRARDADDR[1]));
   LUT5 #(
-    .INIT(32'h00000800)) 
+    .INIT(32'h00200000)) 
     \genblk3_0.bram18_single_bl.bram18_single_bl_i_7 
-       (.I0(Vpixel[0]),
-        .I1(current_state[1]),
-        .I2(current_state[0]),
-        .I3(current_state_0[1]),
-        .I4(current_state_0[0]),
+       (.I0(current_state[1]),
+        .I1(current_state[0]),
+        .I2(current_state_0[1]),
+        .I3(current_state_0[0]),
+        .I4(Vpixel[0]),
         .O(ADDRARDADDR[0]));
   (* OPT_MODIFIED = "SWEEP " *) 
   CARRY4 second_counter0_carry
@@ -2424,7 +2124,7 @@ module Vsync
         .CO({second_counter0_carry_n_0,NLW_second_counter0_carry_CO_UNCONNECTED[2:0]}),
         .CYINIT(\second_counter_reg_n_0_[0] ),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(data0[4:1]),
+        .O({second_counter0_carry_n_4,second_counter0_carry_n_5,second_counter0_carry_n_6,second_counter0_carry_n_7}),
         .S({\second_counter_reg_n_0_[4] ,\second_counter_reg_n_0_[3] ,\second_counter_reg_n_0_[2] ,\second_counter_reg_n_0_[1] }));
   (* OPT_MODIFIED = "SWEEP " *) 
   CARRY4 second_counter0_carry__0
@@ -2432,7 +2132,7 @@ module Vsync
         .CO({second_counter0_carry__0_n_0,NLW_second_counter0_carry__0_CO_UNCONNECTED[2:0]}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(data0[8:5]),
+        .O({second_counter0_carry__0_n_4,second_counter0_carry__0_n_5,second_counter0_carry__0_n_6,second_counter0_carry__0_n_7}),
         .S({\second_counter_reg_n_0_[8] ,\second_counter_reg_n_0_[7] ,\second_counter_reg_n_0_[6] ,\second_counter_reg_n_0_[5] }));
   (* OPT_MODIFIED = "SWEEP " *) 
   CARRY4 second_counter0_carry__1
@@ -2440,40 +2140,40 @@ module Vsync
         .CO({second_counter0_carry__1_n_0,NLW_second_counter0_carry__1_CO_UNCONNECTED[2:0]}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(data0[12:9]),
+        .O({second_counter0_carry__1_n_4,second_counter0_carry__1_n_5,second_counter0_carry__1_n_6,second_counter0_carry__1_n_7}),
         .S({\second_counter_reg_n_0_[12] ,\second_counter_reg_n_0_[11] ,\second_counter_reg_n_0_[10] ,\second_counter_reg_n_0_[9] }));
   CARRY4 second_counter0_carry__2
        (.CI(second_counter0_carry__1_n_0),
         .CO(NLW_second_counter0_carry__2_CO_UNCONNECTED[3:0]),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({NLW_second_counter0_carry__2_O_UNCONNECTED[3:1],data0[13]}),
+        .O({NLW_second_counter0_carry__2_O_UNCONNECTED[3:1],second_counter0_carry__2_n_7}),
         .S({1'b0,1'b0,1'b0,\second_counter_reg_n_0_[13] }));
   LUT1 #(
     .INIT(2'h1)) 
     \second_counter[0]_i_1__0 
        (.I0(\second_counter_reg_n_0_[0] ),
         .O(second_counter[0]));
-  (* SOFT_HLUTNM = "soft_lutpair17" *) 
+  (* SOFT_HLUTNM = "soft_lutpair31" *) 
   LUT2 #(
-    .INIT(4'h2)) 
+    .INIT(4'h8)) 
     \second_counter[10]_i_1 
-       (.I0(data0[10]),
-        .I1(\Vpixel[6]_i_3_n_0 ),
+       (.I0(\Vpixel[6]_i_3_n_0 ),
+        .I1(second_counter0_carry__1_n_6),
         .O(second_counter[10]));
-  (* SOFT_HLUTNM = "soft_lutpair18" *) 
+  (* SOFT_HLUTNM = "soft_lutpair32" *) 
   LUT2 #(
-    .INIT(4'h2)) 
+    .INIT(4'h8)) 
     \second_counter[11]_i_1 
-       (.I0(data0[11]),
-        .I1(\Vpixel[6]_i_3_n_0 ),
+       (.I0(\Vpixel[6]_i_3_n_0 ),
+        .I1(second_counter0_carry__1_n_5),
         .O(second_counter[11]));
-  (* SOFT_HLUTNM = "soft_lutpair18" *) 
+  (* SOFT_HLUTNM = "soft_lutpair32" *) 
   LUT2 #(
-    .INIT(4'h2)) 
+    .INIT(4'h8)) 
     \second_counter[12]_i_1 
-       (.I0(data0[12]),
-        .I1(\Vpixel[6]_i_3_n_0 ),
+       (.I0(\Vpixel[6]_i_3_n_0 ),
+        .I1(second_counter0_carry__1_n_4),
         .O(second_counter[12]));
   LUT2 #(
     .INIT(4'h2)) 
@@ -2481,74 +2181,74 @@ module Vsync
        (.I0(current_state[1]),
         .I1(current_state[0]),
         .O(Vsync_allow));
-  (* SOFT_HLUTNM = "soft_lutpair17" *) 
+  (* SOFT_HLUTNM = "soft_lutpair30" *) 
   LUT2 #(
-    .INIT(4'h2)) 
+    .INIT(4'h8)) 
     \second_counter[13]_i_2 
-       (.I0(data0[13]),
-        .I1(\Vpixel[6]_i_3_n_0 ),
+       (.I0(\Vpixel[6]_i_3_n_0 ),
+        .I1(second_counter0_carry__2_n_7),
         .O(second_counter[13]));
-  (* SOFT_HLUTNM = "soft_lutpair19" *) 
   LUT2 #(
-    .INIT(4'h2)) 
+    .INIT(4'h8)) 
     \second_counter[1]_i_1 
-       (.I0(data0[1]),
-        .I1(\Vpixel[6]_i_3_n_0 ),
+       (.I0(\Vpixel[6]_i_3_n_0 ),
+        .I1(second_counter0_carry_n_7),
         .O(second_counter[1]));
-  (* SOFT_HLUTNM = "soft_lutpair21" *) 
+  (* SOFT_HLUTNM = "soft_lutpair34" *) 
   LUT2 #(
-    .INIT(4'h2)) 
+    .INIT(4'h8)) 
     \second_counter[2]_i_1__0 
-       (.I0(data0[2]),
-        .I1(\Vpixel[6]_i_3_n_0 ),
+       (.I0(\Vpixel[6]_i_3_n_0 ),
+        .I1(second_counter0_carry_n_6),
         .O(second_counter[2]));
-  (* SOFT_HLUTNM = "soft_lutpair20" *) 
+  (* SOFT_HLUTNM = "soft_lutpair35" *) 
   LUT2 #(
-    .INIT(4'h2)) 
+    .INIT(4'h8)) 
     \second_counter[3]_i_1__0 
-       (.I0(data0[3]),
-        .I1(\Vpixel[6]_i_3_n_0 ),
+       (.I0(\Vpixel[6]_i_3_n_0 ),
+        .I1(second_counter0_carry_n_5),
         .O(second_counter[3]));
+  (* SOFT_HLUTNM = "soft_lutpair31" *) 
   LUT2 #(
-    .INIT(4'h2)) 
+    .INIT(4'h8)) 
     \second_counter[4]_i_1__0 
-       (.I0(data0[4]),
-        .I1(\Vpixel[6]_i_3_n_0 ),
+       (.I0(\Vpixel[6]_i_3_n_0 ),
+        .I1(second_counter0_carry_n_4),
         .O(second_counter[4]));
-  (* SOFT_HLUTNM = "soft_lutpair22" *) 
+  (* SOFT_HLUTNM = "soft_lutpair35" *) 
   LUT2 #(
-    .INIT(4'h2)) 
+    .INIT(4'h8)) 
     \second_counter[5]_i_1 
-       (.I0(data0[5]),
-        .I1(\Vpixel[6]_i_3_n_0 ),
+       (.I0(\Vpixel[6]_i_3_n_0 ),
+        .I1(second_counter0_carry__0_n_7),
         .O(second_counter[5]));
-  (* SOFT_HLUTNM = "soft_lutpair20" *) 
+  (* SOFT_HLUTNM = "soft_lutpair34" *) 
   LUT2 #(
-    .INIT(4'h2)) 
+    .INIT(4'h8)) 
     \second_counter[6]_i_1 
-       (.I0(data0[6]),
-        .I1(\Vpixel[6]_i_3_n_0 ),
+       (.I0(\Vpixel[6]_i_3_n_0 ),
+        .I1(second_counter0_carry__0_n_6),
         .O(second_counter[6]));
-  (* SOFT_HLUTNM = "soft_lutpair22" *) 
+  (* SOFT_HLUTNM = "soft_lutpair30" *) 
   LUT2 #(
-    .INIT(4'h2)) 
+    .INIT(4'h8)) 
     \second_counter[7]_i_1 
-       (.I0(data0[7]),
-        .I1(\Vpixel[6]_i_3_n_0 ),
+       (.I0(\Vpixel[6]_i_3_n_0 ),
+        .I1(second_counter0_carry__0_n_5),
         .O(second_counter[7]));
-  (* SOFT_HLUTNM = "soft_lutpair21" *) 
+  (* SOFT_HLUTNM = "soft_lutpair33" *) 
   LUT2 #(
-    .INIT(4'h2)) 
+    .INIT(4'h8)) 
     \second_counter[8]_i_1 
-       (.I0(data0[8]),
-        .I1(\Vpixel[6]_i_3_n_0 ),
+       (.I0(\Vpixel[6]_i_3_n_0 ),
+        .I1(second_counter0_carry__0_n_4),
         .O(second_counter[8]));
-  (* SOFT_HLUTNM = "soft_lutpair19" *) 
+  (* SOFT_HLUTNM = "soft_lutpair33" *) 
   LUT2 #(
-    .INIT(4'h2)) 
+    .INIT(4'h8)) 
     \second_counter[9]_i_1 
-       (.I0(data0[9]),
-        .I1(\Vpixel[6]_i_3_n_0 ),
+       (.I0(\Vpixel[6]_i_3_n_0 ),
+        .I1(second_counter0_carry__1_n_7),
         .O(second_counter[9]));
   FDCE #(
     .INIT(1'b0)) 
@@ -2664,7 +2364,7 @@ module Vsync
         .Q(\second_counter_reg_n_0_[9] ));
 endmodule
 
-(* ECO_CHECKSUM = "7f4b3736" *) (* POWER_OPT_BRAM_CDC = "0" *) (* POWER_OPT_BRAM_SR_ADDR = "3" *) 
+(* ECO_CHECKSUM = "882ed4e" *) (* POWER_OPT_BRAM_CDC = "0" *) (* POWER_OPT_BRAM_SR_ADDR = "3" *) 
 (* POWER_OPT_LOOPED_NET_PERCENTAGE = "0" *) 
 (* NotValidForBitStream *)
 module vgacontroller
