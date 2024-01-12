@@ -8,7 +8,7 @@ module vgacontroller(reset, clk, VGA_RED, VGA_GREEN, VGA_BLUE, VGA_HSYNC, VGA_VS
     wire [13:0] address;
 
     //assigns the address of the pixels that goes into the VRAM
-    assign address = (Hsync_allow == 1'b1 && Vsync_allow == 1'b1) ? {Vpixel, Hpixel} : 14'b0;
+    assign address = (Hsync_allow == 1'b1 && Vsync_allow == 1'b1) ? {Vpixel, Hpixel} : 14'd13000;
 
     //intantiates the memories
     VRAMred   red  (.DO(VGA_RED)  , .ADDR(address), .CLK(clk), .RST(reset));

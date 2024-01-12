@@ -2,8 +2,8 @@
 # Vivado v2018.3 (64-bit)
 # SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 # IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
-# Start of session at: Fri Jan 12 14:43:45 2024
-# Process ID: 19328
+# Start of session at: Fri Jan 12 16:29:49 2024
+# Process ID: 11848
 # Current directory: C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/Lab_3/Lab_3.runs/impl_1
 # Command line: vivado.exe -log vgacontroller.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source vgacontroller.tcl -notrace
 # Log file: C:/Users/sstat/OneDrive/Documents/GitHub/Digital-Circuit-Lab/Lab_3/Lab_3.runs/impl_1/vgacontroller.vdi
