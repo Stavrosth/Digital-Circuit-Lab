@@ -12,7 +12,7 @@ module Vsync(clk, reset, Vsync, Vpixel, Vsync_allow);
     //R:1536000 cycles
     //S:32000 cycles
 
-    //FSM
+    //combination alawys of FSM
     always @(current_state or counter) begin
         next_state = current_state;        
         Vsync = 1'b1;
@@ -21,7 +21,6 @@ module Vsync(clk, reset, Vsync, Vpixel, Vsync_allow);
        case (current_state)
             3'd0:begin//Vsync pulse (P time)
                 Vsync = 1'b0;
-              //  Vpixel = 7'b0;
                 if (counter == 21'd6399)
                     next_state = 3'd1;
                 else
@@ -41,7 +40,7 @@ module Vsync(clk, reset, Vsync, Vpixel, Vsync_allow);
                     next_state = 3'd2;
             end 
             3'd3: begin//Front Porch (S time)
-                if (counter == 21'd1667199) ////////////propably should be 1667000
+                if (counter == 21'd1667199)
                     next_state = 3'd0;
                 else
                     next_state = 3'd3;
@@ -49,11 +48,11 @@ module Vsync(clk, reset, Vsync, Vpixel, Vsync_allow);
             default: begin
                 Vsync = 1'b1;
                 Vsync_allow = 1'b0;
-               // Vpixel = 7'b0;
             end
        endcase
     end
 
+    //sequential always of FSM
     always @(posedge clk or posedge reset) begin
         if ( reset == 1'b1)
             current_state <= 0;
@@ -62,16 +61,19 @@ module Vsync(clk, reset, Vsync, Vpixel, Vsync_allow);
     end
 
     always @(posedge clk or posedge reset) begin
-        if ( reset == 1'b1) begin
+        if ( reset == 1'b1) begin //resets everything to zero
             Vpixel <= 7'b0;
             second_counter <= 14'b0;
             counter <= 21'b0;
         end else begin 
+            //increases the counter 
             counter <= counter + 1'b1;
 
+            //checks if one frame has been displayed
             if ( counter == 21'd1667199 )
                 counter <= 21'b0;
 
+            //increases the Vpixel counter accordingly
             if (Vsync_allow == 1'b1) begin
                 second_counter <= second_counter + 1'b1;
 

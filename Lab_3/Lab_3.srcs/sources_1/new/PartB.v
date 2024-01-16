@@ -12,7 +12,7 @@ module Hsync(clk, reset, Hsync, Hpixel, Hsync_allow);
     //D:2560 cycles
     //E:64   cycles
 
-    //FSM
+    //combination alawys of FSM
     always @(current_state or counter) begin
         next_state = current_state;        
         Hsync = 1'b1;
@@ -52,6 +52,7 @@ module Hsync(clk, reset, Hsync, Hpixel, Hsync_allow);
         endcase
     end
 
+    //sequential always of FSM
     always @(posedge clk or posedge reset) begin
         if ( reset == 1'b1)
             current_state <= 0;
@@ -59,17 +60,21 @@ module Hsync(clk, reset, Hsync, Hpixel, Hsync_allow);
             current_state <= next_state;
     end
 
+    //third always that supports the FSM
     always @(posedge clk or posedge reset) begin
-        if ( reset == 1'b1) begin
+        if ( reset == 1'b1) begin //resets everything to zero
             Hpixel <= 7'b0;
             second_counter <= 5'b0;
             counter <= 12'b0;
         end else begin 
+            //increases the counter 
             counter <= counter + 1'b1;
             
+            //checks if one line has been displayed
             if ( counter == 12'd3199 )
                 counter <= 12'b0;
 
+            //increases the Hpixel counter accordingly
             if (Hsync_allow == 1'b1) begin
                 second_counter <= second_counter + 1'b1;
 
