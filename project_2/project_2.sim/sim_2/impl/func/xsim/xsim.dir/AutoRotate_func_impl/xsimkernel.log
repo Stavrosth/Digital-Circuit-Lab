@@ -1,7 +1,0 @@
-Running: xsim.dir/AutoRotate_func_impl/xsimk.exe -simmode gui -wdb AutoRotate_func_impl.wdb -simrunnum 0 -socket 65474
-Design successfully loaded
-Design Loading Memory Usage: 8668 KB (Peak: 8668 KB)
-Design Loading CPU Usage: 15 ms
-Simulation completed
-Simulation Memory Usage: 9944 KB (Peak: 9944 KB)
-Simulation CPU Usage: 15 ms

@@ -1,1 +1,0 @@
--wto "50f606291c16447b97ea6b53aef4c8da" --incr --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "unisims_ver" -L "unimacro_ver" -L "secureip" --snapshot "Vgacontroller_tb_behav" "xil_defaultlib.Vgacontroller_tb" "xil_defaultlib.glbl" -log "elaborate.log" 
